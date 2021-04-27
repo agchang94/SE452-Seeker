@@ -1,15 +1,12 @@
 package se452.group9.seeker;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
+
 
 import lombok.Data;
 
 @Data
 public class Recruiter {
-    @Min(value = 1, message = "recruiter ID must be greater than 0")
+    /*@Min(value = 1, message = "recruiter ID must be greater than 0")
     @Max(value = 99999999, message = "recruiter ID can be at most 8 digits")
     private int recruiterID;
 
@@ -25,6 +22,6 @@ public class Recruiter {
 
     @Email(message = "invalid email address format")
     private String email;
-
+    */
 
 }
