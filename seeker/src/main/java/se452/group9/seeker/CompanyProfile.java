@@ -2,6 +2,8 @@ package se452.group9.seeker;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
