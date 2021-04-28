@@ -10,6 +10,8 @@ import lombok.Data;
 @Data
 public class Company {
 
+    private int id;
+
     @Min(value = 1, message = "company ID must be greater than 0")
     @Max(value = 99999999, message = "company ID can be at most 8 digits")
     private int companyID;
@@ -24,10 +26,11 @@ public class Company {
     private String companyInfo;
 
 
-    public Company(String companyName) {
+    public Company(String companyName, int companyID) {
         if (companyName == null) throw new IllegalArgumentException();
 
         this.companyName = companyName;
+        this.companyID = companyID;
     }
 
     
