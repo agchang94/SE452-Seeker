@@ -13,12 +13,12 @@ import lombok.*;
 
 @Entity
 @Table(name = "jobs")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+// @Getter
+// @Setter
+// @NoArgsConstructor
+// @AllArgsConstructor
+// @ToString
+// @EqualsAndHashCode
 public class Job {
 
     @Id
@@ -43,43 +43,43 @@ public class Job {
     // }
     //Getters and Setters
 
-    // public Long getID(){
-    //     return id;
-    // }
+    public Long getID(){
+        return id;
+    }
 
-    // public void setID(Long id){
-    //     this.id = id;
-    // }
+    public void setID(Long id){
+        this.id = id;
+    }
 
-    // public String getTitle(){
-    //     return title;
-    // }
+    public String getTitle(){
+        return title;
+    }
 
-    // public void setTitle(String title){
-    //     this.title = title;
-    // }
+    public void setTitle(String title){
+        this.title = title;
+    }
 
-    // public String getDescription(){
-    //     return desc;
-    // }
+    public String getDescription(){
+        return desc;
+    }
 
-    // public void setDescription(String description){
-    //     this.desc = description;
-    // }
-    // public String getDatePosted(){
-    //     return datePosted;
-    // }
+    public void setDescription(String description){
+        this.desc = description;
+    }
+    public String getDatePosted(){
+        return datePosted;
+    }
 
-    // public void setDatePosted(String datePosted){
-    //     this.datePosted = datePosted;
-    // }
+    public void setDatePosted(String datePosted){
+        this.datePosted = datePosted;
+    }
 
-    // public Boolean getIsActive(){
-    //     return isActive;
-    // }
+    public Boolean getIsActive(){
+        return isActive;
+    }
 
-    // public void setIsActive(Boolean isActive){
-    //     this.isActive = isActive;
-    // }
+    public void setIsActive(Boolean isActive){
+        this.isActive = isActive;
+    }
 
 }
