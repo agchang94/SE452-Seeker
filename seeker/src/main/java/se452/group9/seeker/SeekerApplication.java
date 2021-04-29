@@ -45,10 +45,61 @@ public class SeekerApplication {
 		};
 	}
 
-	/*
+	@Bean
+	public CommandLineRunner addDummyJob(DummyJobsRepository repository) {
+		return (args) -> {
+			log.info("--------  Adding dummyJob dummyJob1 ----------- ");
+			DummyJobs newJob = new DummyJobs();
+			newJob.setJobTitle("dummyJob1");
+			newJob.setDummyJobID(604);
+			newJob.setJobMsg("Develop fake applications");
 
-	*/
+			repository.save(newJob);
+		};
+	}
 
+	@Bean
+	public CommandLineRunner showDummyJobs(DummyJobsRepository repository) {
+		return (args) -> {
+			// fetching jobs
+			log.info("--------  Jobs found with findAll() ----------- ");
+			repository.findAll().forEach((job)-> {
+				log.info(job.toString());
+			});
+			log.info("------------------------------------------------------");
+		};
+	}
 
+	@Bean
+	public CommandLineRunner addCompany(CompanyRepository companyRepo, DummyJobsRepository jobRepo) {
+		return (args) -> {
+			log.info("--------  Adding company DummyCompany1 ----------- ");
+			// create a fake job for the company
+			DummyJobs tmpJob = new DummyJobs();
+			tmpJob.setJobTitle("FakeCompanyJob1");
+			tmpJob.setJobMsg("Job created by company DummyCompany1");
+			jobRepo.save(tmpJob);
+
+			// create the company
+			Company newCompany = new Company();
+			newCompany.setCompanyName("DummyCompany1");
+			newCompany.setAddress("600 W. Fake Street, Chicago, IL");
+			newCompany.setCompanyInfo("A company created for testing purposes");
+			companyRepo.save(newCompany);
+
+		};
+	}
+
+	@Bean
+	public CommandLineRunner showCompanies(CompanyRepository repository) {
+		return (args) -> {
+			// fetching companies
+			log.info("--------  Companies found with findAll() ----------- ");
+			repository.findAll().forEach((company)-> {
+				log.info(company.toString());
+			});
+			log.info("------------------------------------------------------");
+		};
+	}
 
 }

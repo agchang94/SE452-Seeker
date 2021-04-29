@@ -29,9 +29,5 @@ public class DummyJobs {
     @Column(name = "jobInfo")
     @Size(max = 250, message = "limit for job info is 250 chars.")
     private String jobMsg;
-
-    public DummyJobs (String jobTitle) {
-        this.jobTitle = jobTitle;
-    }
     
 }
