@@ -1,0 +1,5 @@
+"none", "Computer Science", 1.85, "DePaul University"
+"valedictorian, rhodes scholar, student of the month", "Business", 3.95, "Harvard University"
+"none", "Computer Science", 2.84, "Truman College"
+"Student Leader and Captain of Basketball Team", "History", 3.45, "Yale University"
+"Graduated with Distinction", "Software Engineering", 3.85, Loyola University
