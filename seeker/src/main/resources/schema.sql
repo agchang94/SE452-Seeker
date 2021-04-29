@@ -7,20 +7,18 @@ DROP TABLE IF EXISTS recruiters;
 CREATE SEQUENCE hibernate_sequence START WITH 100 INCREMENT BY 1;
 
 CREATE TABLE dummy_jobs (
-    id              INT AUTO_INCREMENT PRIMARY KEY,
-    jobID           INT(8),
+    jobID           INT AUTO_INCREMENT PRIMARY KEY,
     jobTitle        VARCHAR(50),
     jobInfo         VARCHAR(250),
-    PRIMARY KEY(id)
+    PRIMARY KEY(jobID)
 );
 
 CREATE TABLE companies (
-    id              INT AUTO_INCREMENT PRIMARY KEY,
-    companyID       INT(8),    
+    companyID       INT AUTO_INCREMENT PRIMARY KEY,    
     companyName     VARCHAR(50),
     companyAddress  VARCHAR(250),
     companyInfo     VARCHAR(250),
-    PRIMARY KEY(id)
+    PRIMARY KEY(companyID)
 );
 
 CREATE TABLE company_jobs (
@@ -31,12 +29,11 @@ CREATE TABLE company_jobs (
 );
 
 CREATE TABLE recruiters (
-    id              INT AUTO_INCREMENT PRIMARY KEY,
-    recruiterID     INT(8),    
+    recruiterID     INT AUTO_INCREMENT PRIMARY KEY,    
     companyID       INT(8),
     fname           VARCHAR(50),
     lname           VARCHAR(50),
     email           VARCHAR(50),
-    PRIMARY KEY(id)
+    PRIMARY KEY(recruiterID)
 );
 
