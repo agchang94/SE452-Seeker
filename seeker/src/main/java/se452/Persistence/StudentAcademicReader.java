@@ -3,7 +3,7 @@ package se452.Persistence;
 import java.io.BufferedReader;
 import java.util.ArrayList;
 
-import se452.group9.seeker.StudentTable.StudentAcademics;
+import se452.group9.seeker.model.*;
 
 public class StudentAcademicReader {
     public static ArrayList<StudentAcademics> getStudentAcademics (BufferedReader reader){

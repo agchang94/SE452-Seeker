@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import antlr.collections.List;
-import se452.group9.seeker.StudentTable.Student;
+import se452.group9.seeker.model.*;
 
 public class StudentReader {
     public static ArrayList<Student> getStudents (BufferedReader reader){

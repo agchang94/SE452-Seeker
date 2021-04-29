@@ -3,12 +3,13 @@ import lombok.Data;
 import se452.Persistence.StudentAcademicReader;
 import se452.Persistence.StudentCertsReader;
 import se452.Persistence.StudentReader;
-import se452.group9.seeker.StudentTable.Student;
-import se452.group9.seeker.StudentTable.StudentAcademicRepository;
-import se452.group9.seeker.StudentTable.StudentAcademics;
-import se452.group9.seeker.StudentTable.StudentCerts;
-import se452.group9.seeker.StudentTable.StudentCertsRepository;
-import se452.group9.seeker.StudentTable.StudentRepository;
+
+import se452.group9.seeker.model.*;
+import se452.group9.seeker.repo.StudentAcademicRepository;
+import se452.group9.seeker.repo.StudentCertsRepository;
+import se452.group9.seeker.repo.StudentRepository;
+import se452.*;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -47,7 +48,7 @@ public class SeekerApplication {
 
 }
 @Bean
-public CommandLineRunner addStudents (StudentRepository studentRepository, StudentAcademicRepository studentAcademicRepository, 
+public CommandLineRunner addStudents (StudentRepository studentRepository ,StudentAcademicRepository studentAcademicRepository, 
 StudentCertsRepository studentCertsRepository) {
 	
 	return (args) -> {
