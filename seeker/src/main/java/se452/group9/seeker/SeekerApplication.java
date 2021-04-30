@@ -1,4 +1,5 @@
 package se452.group9.seeker;
+
 import lombok.Data;
 import se452.Persistence.StudentAcademicReader;
 import se452.Persistence.StudentCertsReader;
@@ -8,7 +9,7 @@ import se452.group9.seeker.model.*;
 import se452.group9.seeker.repo.StudentAcademicRepository;
 import se452.group9.seeker.repo.StudentCertsRepository;
 import se452.group9.seeker.repo.StudentRepository;
-import se452.*;
+// import se452.*;
 
 
 import java.io.BufferedReader;
