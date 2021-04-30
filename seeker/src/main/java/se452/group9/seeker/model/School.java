@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-//@Entity
+@Entity
 @Table(name = "schools")
 public class School {
 

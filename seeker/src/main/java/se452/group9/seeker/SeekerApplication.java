@@ -86,7 +86,8 @@ public class SeekerApplication {
 
 		};
 
-}
+	}
+	
 @Bean
 public CommandLineRunner addStudents (StudentRepository studentRepository ,StudentAcademicRepository studentAcademicRepository, 
 StudentCertsRepository studentCertsRepository) {
