@@ -1,4 +1,4 @@
-package se452.group9.seeker;
+package se452.group9.seeker.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
