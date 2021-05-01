@@ -93,8 +93,7 @@ public class SeekerApplication {
 	}
 	
 @Bean
-public CommandLineRunner addStudents (StudentRepository studentRepository ,StudentAcademicRepository studentAcademicRepository, 
-StudentCertsRepository studentCertsRepository) {
+public CommandLineRunner addStudents (StudentRepository studentRepository, StudentAcademicRepository studentAcademicRepository, StudentCertsRepository studentCertsRepository) {
 	
 	return (args) -> {
 		try{
@@ -294,4 +293,39 @@ return(args) -> {
 		};
 	}
 
+	@Bean
+	public CommandLineRunner showResumes(StudentResumeRepository repository) {
+		return (args) -> {
+			// fetching companies
+			log.info("--------  Companies found with findAll() ----------- ");
+			repository.findAll().forEach((resume)-> {
+				log.info(resume.toString());
+			});
+			log.info("------------------------------------------------------");
+		};
+	}
+
+	@Bean
+	public CommandLineRunner showAttributes(StudentAttributesRepository repository) {
+		return (args) -> {
+			// fetching companies
+			log.info("--------  Companies found with findAll() ----------- ");
+			repository.findAll().forEach((attributes)-> {
+				log.info(attributes.toString());
+			});
+			log.info("------------------------------------------------------");
+		};
+	}
+
+	@Bean
+	public CommandLineRunner showLogs(StudentLogsRepository repository) {
+		return (args) -> {
+			// fetching companies
+			log.info("--------  Companies found with findAll() ----------- ");
+			repository.findAll().forEach((logs)-> {
+				log.info(logs.toString());
+			});
+			log.info("------------------------------------------------------");
+		};
+	}
 }
