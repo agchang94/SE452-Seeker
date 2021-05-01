@@ -9,10 +9,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
-import lombok.*;
+import lombok.Data;
 
 @Entity
 @Table(name = "jobs")
+@Data
 // @Getter
 // @Setter
 // @NoArgsConstructor
