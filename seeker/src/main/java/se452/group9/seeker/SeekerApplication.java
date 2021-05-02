@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.List;
 import java.util.Set;
@@ -27,6 +28,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import org.h2.command.Command;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -91,8 +93,34 @@ public class SeekerApplication {
 	}
 	
 @Bean
-public CommandLineRunner addStudents (StudentRepository studentRepository ,StudentAcademicRepository studentAcademicRepository, 
-StudentCertsRepository studentCertsRepository) {
+public CommandLineRunner addStudentCerts (StudentCertsRepository studentCertsRepository) {
+	return (args) -> {
+	
+		StudentCerts s0 = new StudentCerts();
+        StudentCerts s1 = new StudentCerts();
+        StudentCerts s2 = new StudentCerts();
+        StudentCerts s3 = new StudentCerts();
+        
+		s0.setCerts(Arrays.asList(
+            new Certs("cybersecurity", "cisco", 2017), 
+            new Certs("web development", "HTML", 2015)));
+
+        s1.setCerts(Arrays.asList(new Certs("none", "none", 2020)));
+        s2.setCerts(Arrays.asList(
+            new Certs("cybersecurity", "CompTIA", 2018)));
+
+        s3.setCerts(Arrays.asList(new Certs("IT", "Microsoft tech associate", 2016)));            
+
+        studentCertsRepository.deleteAll();
+
+        List<StudentCerts> studentCerts = Arrays.asList(s0, s1, s2, s3);
+        studentCertsRepository.saveAll(studentCerts);
+	};
+	}
+
+
+@Bean
+public CommandLineRunner addStudents (StudentRepository studentRepository ,StudentAcademicRepository studentAcademicRepository ) {
 	
 	return (args) -> {
 		try{
@@ -102,8 +130,8 @@ StudentCertsRepository studentCertsRepository) {
 			InputStream in2 =  getClass().getResourceAsStream("/student_academics.txt");
 			Reader fr2 = new InputStreamReader(in2, "utf-8");
 
-			InputStream in3 =  getClass().getResourceAsStream("/student_certs.txt");
-			Reader fr3= new InputStreamReader(in3, "utf-8");
+			/*InputStream in3 =  getClass().getResourceAsStream("/student_certs.txt");
+			Reader fr3= new InputStreamReader(in3, "utf-8"); */
 		
 			BufferedReader reader = new BufferedReader(fr); 
 			ArrayList<Student> students = new ArrayList<Student>();
@@ -113,9 +141,9 @@ StudentCertsRepository studentCertsRepository) {
 			ArrayList<StudentAcademics> studentAcademics = new ArrayList<StudentAcademics>();
 			studentAcademics = StudentAcademicReader.getStudentAcademics(reader2);
 
-			BufferedReader reader3 = new BufferedReader(fr3); 
+			/*BufferedReader reader3 = new BufferedReader(fr3); 
 			ArrayList<StudentCerts> studentCerts = new ArrayList<StudentCerts>();
-			studentCerts = StudentCertsReader.getStudentCerts(reader3);
+			studentCerts = StudentCertsReader.getStudentCerts(reader3); */
 			
 			for(Student student:students) {
 				System.out.println(student.toString());
@@ -130,12 +158,12 @@ StudentCertsRepository studentCertsRepository) {
 			}
 			count = 0;  
 
-			for(StudentCerts studentCert : studentCerts) {
+			/*for(StudentCerts studentCert : studentCerts) {
 				students.get(count).setStudentCerts(studentCert);
 				studentCert.setStudent(students.get(count));
 				studentCertsRepository.save(studentCert);
 				count++;
-			}
+			} */
 
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
