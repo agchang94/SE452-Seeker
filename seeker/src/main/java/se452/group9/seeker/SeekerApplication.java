@@ -262,7 +262,7 @@ return(args) -> {
 
 
 	@Bean
-	public CommandLineRunner addDummyStudentResumeLogAttr(StudentResumeRepository resumeRepo, StudentLogsRepository logsRepo, StudentAttributesRepository SARepo) {
+	public CommandLineRunner addDummyStudentResume(StudentResumeRepository resumeRepo, StudentLogsRepository logsRepo) {
 		return (args) -> {
 			// adding dummy resume information
 			log.info("--------  Adding Resume info ----------- ");
@@ -284,20 +284,27 @@ return(args) -> {
 			sl.setLastApplication(Date.valueOf("2021-04-30"));
 			sl.setLastLogin(Date.valueOf("2021-04-30"));
 			logsRepo.save(sl);
-
-			StudentAttributes sa = new StudentAttributes();
-			sa.setStudentID(9999);
-			sa.setSkills("skills");
-			sa.setLanguages("languages");
-			SARepo.save(sa);
 		};
 	}
 
 	@Bean
+	public CommandLineRunner addDummyAttributes (StudentAttributesRepository sar){
+		return strings -> {
+			StudentAttributes sa = new StudentAttributes();
+			sa.setStudentID(1);
+			sa.setLanguages("languages");
+			sa.setSkills("skills");
+			sar.save(sa);
+
+			sar.save(new StudentAttributes(9999, "i exist i guess", "languages"));
+        };
+	}
+	
+	@Bean
 	public CommandLineRunner showResumes(StudentResumeRepository repository) {
 		return (args) -> {
-			// fetching companies
-			log.info("--------  Companies found with findAll() ----------- ");
+			// fetching student resumes
+			log.info("--------  Resumes found with findAll() ----------- ");
 			repository.findAll().forEach((resume)-> {
 				log.info(resume.toString());
 			});
@@ -306,9 +313,21 @@ return(args) -> {
 	}
 
 	@Bean
+	public CommandLineRunner showLogs(StudentLogsRepository repository) {
+		return (args) -> {
+			// fetching student logs
+			log.info("--------  Logs found with findAll() ----------- ");
+			repository.findAll().forEach((logs)-> {
+				log.info(logs.toString());
+			});
+			log.info("------------------------------------------------------");
+		};
+	}
+
+	@Bean
 	public CommandLineRunner showAttributes(StudentAttributesRepository repository) {
 		return (args) -> {
-			// fetching companies
+			// fetching attributes
 			log.info("--------  Companies found with findAll() ----------- ");
 			repository.findAll().forEach((attributes)-> {
 				log.info(attributes.toString());
@@ -317,15 +336,5 @@ return(args) -> {
 		};
 	}
 
-	@Bean
-	public CommandLineRunner showLogs(StudentLogsRepository repository) {
-		return (args) -> {
-			// fetching companies
-			log.info("--------  Companies found with findAll() ----------- ");
-			repository.findAll().forEach((logs)-> {
-				log.info(logs.toString());
-			});
-			log.info("------------------------------------------------------");
-		};
-	}
+
 }
