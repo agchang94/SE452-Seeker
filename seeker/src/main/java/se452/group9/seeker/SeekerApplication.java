@@ -301,7 +301,7 @@ return(args) -> {
 	}
 	
 	@Bean
-	public CommandLineRunner showResumes(StudentResumeRepository repository) {
+	public CommandLineRunner showStudentResumes(StudentResumeRepository repository) {
 		return (args) -> {
 			// fetching student resumes
 			log.info("--------  Resumes found with findAll() ----------- ");
@@ -313,7 +313,7 @@ return(args) -> {
 	}
 
 	@Bean
-	public CommandLineRunner showLogs(StudentLogsRepository repository) {
+	public CommandLineRunner showStudentLogs(StudentLogsRepository repository) {
 		return (args) -> {
 			// fetching student logs
 			log.info("--------  Logs found with findAll() ----------- ");
@@ -325,10 +325,10 @@ return(args) -> {
 	}
 
 	@Bean
-	public CommandLineRunner showAttributes(StudentAttributesRepository repository) {
+	public CommandLineRunner showStudentAttributes(StudentAttributesRepository repository) {
 		return (args) -> {
 			// fetching attributes
-			log.info("--------  Companies found with findAll() ----------- ");
+			log.info("--------  Attributes found with findAll() ----------- ");
 			repository.findAll().forEach((attributes)-> {
 				log.info(attributes.toString());
 			});
