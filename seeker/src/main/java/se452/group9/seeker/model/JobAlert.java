@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
+import java.util.List;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
@@ -17,5 +19,5 @@ import lombok.Data;
 public class JobAlert {
     @Id 
     private long id;
-    private List<Strings> searchTerms;
+    private List<String> searchTerms;
 }
