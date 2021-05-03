@@ -51,6 +51,43 @@ public class SeekerApplication {
   private static final Logger log = LoggerFactory.getLogger(SeekerApplication.class);
 
 
+
+  @Bean
+  public CommandLineRunner saveJobAlert(JobAlertRepository repository) {
+    return (args) -> {
+      JobAlert JobAlert1 = new JobAlert();
+      JobAlert1.setId(111);
+      JobAlert1.setSearchTerm1("searchTerm1");
+	  JobAlert1.setSearchTerm2("searchTerm2");
+	  JobAlert1.setSearchTerm3("searchTerm3");
+      repository.save(JobAlert1);
+   
+    };
+  }
+
+  @Bean
+  public CommandLineRunner saveJobSkill(JobSkillRepository repository) {
+    return (args) -> {
+      JobSkill JobSkill1 = new JobSkill();
+      JobSkill1.setId(111);
+      JobSkill1.setSkills("Skill1, Skill2, Skill3");
+      repository.save(JobSkill1);
+   
+    };
+  }
+
+  @Bean
+  public CommandLineRunner saveJobType(JobTypeRepository repository) {
+    return (args) -> {
+      JobType JobType1 = new JobType();
+      JobType1.setId(111);
+      JobType1.setType("Computer Engineer");;
+      repository.save(JobType1);
+   
+    };
+  }
+
+
   @Bean
   public CommandLineRunner saveSchool(SchoolRepository repository) {
     return (args) -> {
