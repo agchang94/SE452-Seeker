@@ -17,7 +17,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Calendar;
+
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.List;
 import java.util.Set;
@@ -29,6 +30,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import org.h2.command.Command;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -93,7 +95,35 @@ public class SeekerApplication {
 	}
 	
 @Bean
-public CommandLineRunner addStudents (StudentRepository studentRepository, StudentAcademicRepository studentAcademicRepository, StudentCertsRepository studentCertsRepository) {
+public CommandLineRunner addStudentCerts (StudentCertsRepository studentCertsRepository) {
+	return (args) -> {
+	
+		StudentCerts s0 = new StudentCerts();
+        StudentCerts s1 = new StudentCerts();
+        StudentCerts s2 = new StudentCerts();
+        StudentCerts s3 = new StudentCerts();
+        
+		s0.setCerts(Arrays.asList(
+            new Certs("cybersecurity", "cisco", 2017), 
+            new Certs("web development", "HTML", 2015)));
+
+        s1.setCerts(Arrays.asList(new Certs("none", "none", 2020)));
+        s2.setCerts(Arrays.asList(
+            new Certs("cybersecurity", "CompTIA", 2018)));
+
+        s3.setCerts(Arrays.asList(new Certs("IT", "Microsoft tech associate", 2016)));            
+
+        studentCertsRepository.deleteAll();
+
+        List<StudentCerts> studentCerts = Arrays.asList(s0, s1, s2, s3);
+        studentCertsRepository.saveAll(studentCerts);
+	};
+	}
+
+
+@Bean
+public CommandLineRunner addStudents (StudentRepository studentRepository ,StudentAcademicRepository studentAcademicRepository ) {
+
 	
 	return (args) -> {
 		try{
@@ -103,8 +133,8 @@ public CommandLineRunner addStudents (StudentRepository studentRepository, Stude
 			InputStream in2 =  getClass().getResourceAsStream("/student_academics.txt");
 			Reader fr2 = new InputStreamReader(in2, "utf-8");
 
-			InputStream in3 =  getClass().getResourceAsStream("/student_certs.txt");
-			Reader fr3= new InputStreamReader(in3, "utf-8");
+			/*InputStream in3 =  getClass().getResourceAsStream("/student_certs.txt");
+			Reader fr3= new InputStreamReader(in3, "utf-8"); */
 		
 			BufferedReader reader = new BufferedReader(fr); 
 			ArrayList<Student> students = new ArrayList<Student>();
@@ -114,9 +144,9 @@ public CommandLineRunner addStudents (StudentRepository studentRepository, Stude
 			ArrayList<StudentAcademics> studentAcademics = new ArrayList<StudentAcademics>();
 			studentAcademics = StudentAcademicReader.getStudentAcademics(reader2);
 
-			BufferedReader reader3 = new BufferedReader(fr3); 
+			/*BufferedReader reader3 = new BufferedReader(fr3); 
 			ArrayList<StudentCerts> studentCerts = new ArrayList<StudentCerts>();
-			studentCerts = StudentCertsReader.getStudentCerts(reader3);
+			studentCerts = StudentCertsReader.getStudentCerts(reader3); */
 			
 			for(Student student:students) {
 				System.out.println(student.toString());
@@ -131,12 +161,12 @@ public CommandLineRunner addStudents (StudentRepository studentRepository, Stude
 			}
 			count = 0;  
 
-			for(StudentCerts studentCert : studentCerts) {
+			/*for(StudentCerts studentCert : studentCerts) {
 				students.get(count).setStudentCerts(studentCert);
 				studentCert.setStudent(students.get(count));
 				studentCertsRepository.save(studentCert);
 				count++;
-			}
+			} */
 
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -264,7 +294,7 @@ return(args) -> {
 	
 
 	@Bean
-	public CommandLineRunner addDummyStudentResumeLogAttr(StudentResumeRepository resumeRepo, StudentLogsRepository logsRepo, StudentAttributesRepository SARepo) {
+	public CommandLineRunner addDummyStudentResume(StudentResumeRepository resumeRepo, StudentLogsRepository logsRepo) {
 		return (args) -> {
 			// adding dummy resume information
 			log.info("--------  Adding Resume info ----------- ");
@@ -286,20 +316,27 @@ return(args) -> {
 			sl.setLastApplication(Date.valueOf("2021-04-30"));
 			sl.setLastLogin(Date.valueOf("2021-04-30"));
 			logsRepo.save(sl);
-
-			StudentAttributes sa = new StudentAttributes();
-			sa.setStudentID(9999);
-			sa.setSkills("skills");
-			sa.setLanguages("languages");
-			SARepo.save(sa);
 		};
 	}
 
 	@Bean
-	public CommandLineRunner showResumes(StudentResumeRepository repository) {
+	public CommandLineRunner addDummyAttributes (StudentAttributesRepository sar){
+		return strings -> {
+			StudentAttributes sa = new StudentAttributes();
+			sa.setStudentID(1);
+			sa.setLanguages("languages");
+			sa.setSkills("skills");
+			sar.save(sa);
+
+			sar.save(new StudentAttributes(9999, "i exist i guess", "languages"));
+        };
+	}
+	
+	@Bean
+	public CommandLineRunner showStudentResumes(StudentResumeRepository repository) {
 		return (args) -> {
-			// fetching companies
-			log.info("--------  Companies found with findAll() ----------- ");
+			// fetching student resumes
+			log.info("--------  Resumes found with findAll() ----------- ");
 			repository.findAll().forEach((resume)-> {
 				log.info(resume.toString());
 			});
@@ -308,10 +345,22 @@ return(args) -> {
 	}
 
 	@Bean
-	public CommandLineRunner showAttributes(StudentAttributesRepository repository) {
+	public CommandLineRunner showStudentLogs(StudentLogsRepository repository) {
 		return (args) -> {
-			// fetching companies
-			log.info("--------  Companies found with findAll() ----------- ");
+			// fetching student logs
+			log.info("--------  Logs found with findAll() ----------- ");
+			repository.findAll().forEach((logs)-> {
+				log.info(logs.toString());
+			});
+			log.info("------------------------------------------------------");
+		};
+	}
+
+	@Bean
+	public CommandLineRunner showStudentAttributes(StudentAttributesRepository repository) {
+		return (args) -> {
+			// fetching attributes
+			log.info("--------  Attributes found with findAll() ----------- ");
 			repository.findAll().forEach((attributes)-> {
 				log.info(attributes.toString());
 			});
@@ -319,15 +368,5 @@ return(args) -> {
 		};
 	}
 
-	@Bean
-	public CommandLineRunner showLogs(StudentLogsRepository repository) {
-		return (args) -> {
-			// fetching companies
-			log.info("--------  Companies found with findAll() ----------- ");
-			repository.findAll().forEach((logs)-> {
-				log.info(logs.toString());
-			});
-			log.info("------------------------------------------------------");
-		};
-	}
+
 }
