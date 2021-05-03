@@ -60,7 +60,8 @@ public class SeekerApplication {
       JobAlert1.setSearchTerm1("searchTerm1");
 	  JobAlert1.setSearchTerm2("searchTerm2");
 	  JobAlert1.setSearchTerm3("searchTerm3");
-      repository.save(JobAlert1);
+      repository.deleteAll(); 
+	  repository.save(JobAlert1);
    
     };
   }
@@ -71,7 +72,8 @@ public class SeekerApplication {
       JobSkill JobSkill1 = new JobSkill();
       JobSkill1.setId(111);
       JobSkill1.setSkills("Skill1, Skill2, Skill3");
-      repository.save(JobSkill1);
+	  repository.deleteAll();  
+	  repository.save(JobSkill1);
    
     };
   }
@@ -82,7 +84,8 @@ public class SeekerApplication {
       JobType JobType1 = new JobType();
       JobType1.setId(111);
       JobType1.setType("Computer Engineer");;
-      repository.save(JobType1);
+	  repository.deleteAll();  
+	  repository.save(JobType1);
    
     };
   }
@@ -99,7 +102,8 @@ public class SeekerApplication {
       School school2 = new School();
       school2.setSchoolID(2);;
       school2.setSchoolName("Wisconsin");
-      repository.save(school2);      
+	  repository.deleteAll();  
+	  repository.save(school2);      
     };
   }
 
