@@ -1,0 +1,5 @@
+[
+    {"_id": 400,"companyID": 500,"fname": "John","lname": "Smith","email":"jSmith1@depaul.edu"},
+    {"_id": 401,"companyID": 501,"fname": "David","lname": "Lee","email":"dLee2@depaul.edu"},
+    {"_id": 402,"companyID": 502,"fname": "Jane","lname": "Doe","email":"jDoe3@depaul.edu"}
+]
