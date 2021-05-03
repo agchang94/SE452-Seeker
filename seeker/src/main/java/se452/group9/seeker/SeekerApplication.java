@@ -213,8 +213,8 @@ return(args) -> {
 			Recruiter newRecruit = new Recruiter();
 			newRecruit.setRecruiterID(404);
 			newRecruit.setCompanyID(502);
-			newRecruit.setFName("TESTING");
-			newRecruit.setLName("RECRUITER");
+			newRecruit.setFname("Testing");
+			newRecruit.setLname("Recruiter");
 			newRecruit.setEmail("test01@depaul.edu");
 
 			repository.save(newRecruit);
@@ -233,6 +233,7 @@ return(args) -> {
 		};
 	}
 
+	
 	@Bean
 	public CommandLineRunner addDummyJob(DummyJobsRepository repository) {
 		return (args) -> {
@@ -290,6 +291,7 @@ return(args) -> {
 		};
 	}
 
+	
 
 	@Bean
 	public CommandLineRunner addDummyStudentResume(StudentResumeRepository resumeRepo, StudentLogsRepository logsRepo) {
