@@ -7,16 +7,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
-@Entity
-@Table(name = "jobAlerts")
 @Data
-public class JobAlert {
+@Document(collection = "JobAlert")
+public class JobAlert implements Serializable{
     @Id 
     private long id;
     private String searchTerm1;
