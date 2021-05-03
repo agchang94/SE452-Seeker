@@ -42,9 +42,9 @@ public class Student {
     cascade = CascadeType.ALL)
     private StudentAcademics studentAcademics;
 
-    @OneToOne (mappedBy = "student", fetch = FetchType.LAZY,
+    /*@OneToOne (mappedBy = "student", fetch = FetchType.LAZY,
     cascade = CascadeType.ALL)
-    private StudentCerts studentCerts;
+    private StudentCerts studentCerts; */
 
     //@CreationTimeStamp is used to make a time stamp 
 }

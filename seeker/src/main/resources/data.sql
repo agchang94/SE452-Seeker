@@ -110,3 +110,19 @@ INSERT INTO recruiters (recruiterID,companyID, fname, lname, email) VALUES
     (401,501,'David','Lee','dLee2@depaul.edu'),
     (402,502,'Jane','Doe','jDoe3@depaul.edu');
 
+
+INSERT INTO STUDENT_ATTRIBUTES (studentID, skills, languages) VALUES (9999, 'TEST SKILLS 9', 'TEST LANGUAGES 9');
+INSERT INTO STUDENT_ATTRIBUTES (studentID, skills, languages) VALUES (0000, 'TEST SKILLS 0', 'TEST LANGUAGES 0');
+INSERT INTO STUDENT_ATTRIBUTES (studentID, skills, languages) VALUES (1111, 'TEST SKILLS 1', 'TEST LANGUAGES 1');
+
+INSERT INTO STUDENT_LOGS (studentID, lastLoginDate, lastApplicationDate) VALUES (9999, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO STUDENT_LOGS (studentID, lastLoginDate, lastApplicationDate) VALUES (1111, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO STUDENT_LOGS (studentID, lastLoginDate, lastApplicationDate) VALUES (0000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+
+
+INSERT INTO STUDENT_RESUME(studentID, isCurrentJob, startDate, endDate, jobTitle, companyName, 
+                            jobCity, jobState, jobCountry, jobDescription) 
+                    VALUES (9999, 'N', '2014-12-03', '2019-04-19', 'Test Job Title', 'Test Company', 
+                            'Test Job City', 'Test Job State', 'Test Job Country', 'Test Job Description');
+

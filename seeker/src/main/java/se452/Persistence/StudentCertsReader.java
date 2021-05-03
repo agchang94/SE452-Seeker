@@ -1,4 +1,4 @@
-package se452.Persistence;
+/*package se452.Persistence;
 
 import java.io.BufferedReader;
 import java.util.ArrayList;
@@ -26,3 +26,4 @@ public class StudentCertsReader {
     }
     
 }
+*/

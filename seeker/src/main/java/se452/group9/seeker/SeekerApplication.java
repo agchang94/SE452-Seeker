@@ -11,22 +11,26 @@ import se452.group9.seeker.repo.StudentCertsRepository;
 import se452.group9.seeker.repo.StudentRepository;
 // import se452.*;
 
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
+
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.List;
 import java.util.Set;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import org.h2.command.Command;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -87,8 +91,35 @@ public class SeekerApplication {
 	}
 	
 @Bean
-public CommandLineRunner addStudents (StudentRepository studentRepository ,StudentAcademicRepository studentAcademicRepository, 
-StudentCertsRepository studentCertsRepository) {
+public CommandLineRunner addStudentCerts (StudentCertsRepository studentCertsRepository) {
+	return (args) -> {
+	
+		StudentCerts s0 = new StudentCerts();
+        StudentCerts s1 = new StudentCerts();
+        StudentCerts s2 = new StudentCerts();
+        StudentCerts s3 = new StudentCerts();
+        
+		s0.setCerts(Arrays.asList(
+            new Certs("cybersecurity", "cisco", 2017), 
+            new Certs("web development", "HTML", 2015)));
+
+        s1.setCerts(Arrays.asList(new Certs("none", "none", 2020)));
+        s2.setCerts(Arrays.asList(
+            new Certs("cybersecurity", "CompTIA", 2018)));
+
+        s3.setCerts(Arrays.asList(new Certs("IT", "Microsoft tech associate", 2016)));            
+
+        studentCertsRepository.deleteAll();
+
+        List<StudentCerts> studentCerts = Arrays.asList(s0, s1, s2, s3);
+        studentCertsRepository.saveAll(studentCerts);
+	};
+	}
+
+
+@Bean
+public CommandLineRunner addStudents (StudentRepository studentRepository ,StudentAcademicRepository studentAcademicRepository ) {
+
 	
 	return (args) -> {
 		try{
@@ -98,8 +129,8 @@ StudentCertsRepository studentCertsRepository) {
 			InputStream in2 =  getClass().getResourceAsStream("/student_academics.txt");
 			Reader fr2 = new InputStreamReader(in2, "utf-8");
 
-			InputStream in3 =  getClass().getResourceAsStream("/student_certs.txt");
-			Reader fr3= new InputStreamReader(in3, "utf-8");
+			/*InputStream in3 =  getClass().getResourceAsStream("/student_certs.txt");
+			Reader fr3= new InputStreamReader(in3, "utf-8"); */
 		
 			BufferedReader reader = new BufferedReader(fr); 
 			ArrayList<Student> students = new ArrayList<Student>();
@@ -109,9 +140,9 @@ StudentCertsRepository studentCertsRepository) {
 			ArrayList<StudentAcademics> studentAcademics = new ArrayList<StudentAcademics>();
 			studentAcademics = StudentAcademicReader.getStudentAcademics(reader2);
 
-			BufferedReader reader3 = new BufferedReader(fr3); 
+			/*BufferedReader reader3 = new BufferedReader(fr3); 
 			ArrayList<StudentCerts> studentCerts = new ArrayList<StudentCerts>();
-			studentCerts = StudentCertsReader.getStudentCerts(reader3);
+			studentCerts = StudentCertsReader.getStudentCerts(reader3); */
 			
 			for(Student student:students) {
 				System.out.println(student.toString());
@@ -126,12 +157,12 @@ StudentCertsRepository studentCertsRepository) {
 			}
 			count = 0;  
 
-			for(StudentCerts studentCert : studentCerts) {
+			/*for(StudentCerts studentCert : studentCerts) {
 				students.get(count).setStudentCerts(studentCert);
 				studentCert.setStudent(students.get(count));
 				studentCertsRepository.save(studentCert);
 				count++;
-			}
+			} */
 
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -178,8 +209,8 @@ return(args) -> {
 			Recruiter newRecruit = new Recruiter();
 			newRecruit.setRecruiterID(404);
 			newRecruit.setCompanyID(502);
-			newRecruit.setFName("TESTING");
-			newRecruit.setLName("RECRUITER");
+			newRecruit.setFname("Testing");
+			newRecruit.setLname("Recruiter");
 			newRecruit.setEmail("test01@depaul.edu");
 
 			repository.save(newRecruit);
@@ -198,6 +229,7 @@ return(args) -> {
 		};
 	}
 
+	
 	@Bean
 	public CommandLineRunner addDummyJob(DummyJobsRepository repository) {
 		return (args) -> {
@@ -254,5 +286,83 @@ return(args) -> {
 			log.info("------------------------------------------------------");
 		};
 	}
+
+	
+
+	@Bean
+	public CommandLineRunner addDummyStudentResume(StudentResumeRepository resumeRepo, StudentLogsRepository logsRepo) {
+		return (args) -> {
+			// adding dummy resume information
+			log.info("--------  Adding Resume info ----------- ");
+			StudentResume sr = new StudentResume();
+			sr.setStudentID(9999);
+			sr.setIsCurrentJob("N");
+			sr.setStartDate(Date.valueOf("2014-12-03"));
+			sr.setEndDate(Date.valueOf("2019-04-19"));			
+			sr.setCompany("company name");
+			sr.setTitle("title");
+			sr.setCity("city");
+			sr.setState("state");
+			sr.setCountry("country");
+			sr.setDescription("...");	
+			resumeRepo.save(sr);
+
+			StudentLogs sl = new StudentLogs();
+			sl.setStudentID(9999);
+			sl.setLastApplication(Date.valueOf("2021-04-30"));
+			sl.setLastLogin(Date.valueOf("2021-04-30"));
+			logsRepo.save(sl);
+		};
+	}
+
+	@Bean
+	public CommandLineRunner addDummyAttributes (StudentAttributesRepository sar){
+		return strings -> {
+			StudentAttributes sa = new StudentAttributes();
+			sa.setStudentID(1);
+			sa.setLanguages("languages");
+			sa.setSkills("skills");
+			sar.save(sa);
+
+			sar.save(new StudentAttributes(9999, "i exist i guess", "languages"));
+        };
+	}
+	
+	@Bean
+	public CommandLineRunner showStudentResumes(StudentResumeRepository repository) {
+		return (args) -> {
+			// fetching student resumes
+			log.info("--------  Resumes found with findAll() ----------- ");
+			repository.findAll().forEach((resume)-> {
+				log.info(resume.toString());
+			});
+			log.info("------------------------------------------------------");
+		};
+	}
+
+	@Bean
+	public CommandLineRunner showStudentLogs(StudentLogsRepository repository) {
+		return (args) -> {
+			// fetching student logs
+			log.info("--------  Logs found with findAll() ----------- ");
+			repository.findAll().forEach((logs)-> {
+				log.info(logs.toString());
+			});
+			log.info("------------------------------------------------------");
+		};
+	}
+
+	@Bean
+	public CommandLineRunner showStudentAttributes(StudentAttributesRepository repository) {
+		return (args) -> {
+			// fetching attributes
+			log.info("--------  Attributes found with findAll() ----------- ");
+			repository.findAll().forEach((attributes)-> {
+				log.info(attributes.toString());
+			});
+			log.info("------------------------------------------------------");
+		};
+	}
+
 
 }
