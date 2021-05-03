@@ -1,20 +1,18 @@
 package se452.group9.seeker.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
 
 @Data
-@Entity
-@Table(name = "schools")
-public class School {
+@Document(collection = "school")
+public class School implements Serializable{
 
-    // @Size(min = 1, max = 4, message = "school ID must be between 1 and 4 characters")
     @Max(value=4, message="school ID must be between 1 and 4 characters")
     @Min(value=1, message="school ID must be between 1 and 4 characters")
     @Id
