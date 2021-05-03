@@ -32,23 +32,6 @@ CREATE TABLE company_jobs (
     PRIMARY KEY(id)
 );
 
-CREATE TABLE recruiters (
-    recruiterID     INT AUTO_INCREMENT PRIMARY KEY,    
-    companyID       INT(8),
-    fname           VARCHAR(50),
-    lname           VARCHAR(50),
-    email           VARCHAR(50),
-    PRIMARY KEY(recruiterID)
-);
-
-
-CREATE TABLE STUDENT_ATTRIBUTES (
-    id INT AUTO_INCREMENT  PRIMARY KEY,
-    studentID INT,
-    skills VARCHAR(100),
-    languages VARCHAR(100)
-);
-
 CREATE TABLE STUDENT_LOGS (
     id INT AUTO_INCREMENT  PRIMARY KEY,
     studentID INT,
