@@ -43,42 +43,38 @@ import se452.group9.seeker.repo.*;
 @SpringBootApplication
 public class SeekerApplication {
 
-  private static final Logger log = LoggerFactory.getLogger(SeekerApplication.class);
-
   public static void main(String[] args) {
     SpringApplication.run(SeekerApplication.class, args);
 
-    //final SchoolRepository repo;
-
-    School school = new School();
-
-    school.setSchoolID(4);
-    school.setSchoolName("California Berkely");
-    //repo.save(school);
-
-    List<School> schools;
-
-    ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-    Validator validator = factory.getValidator();
-    Set<ConstraintViolation<School>> violations = validator.validate(school);
-    for (ConstraintViolation<School> violation : violations) {
-      System.err.println(violation.getMessage());
-    }
-    System.out.print(school);
-
   }
 
-  /*
-   * private static final Logger log =
-   * LoggerFactory.getLogger(SeekerApplication.class);
-   * 
-   * @Bean public CommandLineRunner showSchools(SchoolRepository repository) {
-   * return (args) -> { // fetch all Students
-   * log.info("Schools found with findAll():");
-   * log.info("-------------------------------");
-   * repository.findAll().forEach((school) -> { log.info(school.toString()); });
-   * log.info("-------------------------------"); }; }
-   */
+  private static final Logger log = LoggerFactory.getLogger(SeekerApplication.class);
+
+
+  @Bean
+  public CommandLineRunner saveSchool(SchoolRepository repository) {
+    return (args) -> {
+      School school1 = new School();
+      school1.setSchoolID(1);;
+      school1.setSchoolName("Illinois");
+      repository.save(school1);
+
+      School school2 = new School();
+      school2.setSchoolID(2);;
+      school2.setSchoolName("Wisconsin");
+      repository.save(school2);      
+    };
+  }
+
+  @Bean
+  public CommandLineRunner showCourseReview(SchoolRepository repository) {
+    return (args) -> {
+      List<School> reviews = repository.findAll();
+      for (School review : reviews) {
+        log.info(review.toString());
+      }
+    };
+  }
 
 	
 	public CommandLineRunner showStudents (StudentRepository studentRepository) {

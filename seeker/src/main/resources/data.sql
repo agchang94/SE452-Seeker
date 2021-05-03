@@ -61,13 +61,6 @@ DROP TABLE IF EXISTS schools;
 DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS applications;
 
-
-CREATE TABLE schools (
-    schoolID NUMBER(8) PRIMARY KEY,
-    schoolName VARCHAR(50) NOT NULL
-
-);
-
 CREATE TABLE locations (
     cityID NUMBER(8) PRIMARY KEY,
     cityName VARCHAR(50),
@@ -85,11 +78,6 @@ CREATE TABLE applications (
     applicationStatus VARCHAR(10)
 
 );
-
-INSERT INTO schools (schoolID, schoolName)VALUES
-(1, 'Illinois'),
-(2, 'Michigan'),
-(3, 'Indiana');
 
 INSERT INTO locations (cityID, cityName, stateName, companyName, companyID)VALUES
 (1, 'Chicago', 'Illinois', 'CME Group', 111),
