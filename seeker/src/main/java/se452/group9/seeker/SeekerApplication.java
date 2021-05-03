@@ -2,7 +2,7 @@ package se452.group9.seeker;
 
 import lombok.Data;
 import se452.Persistence.StudentAcademicReader;
-import se452.Persistence.StudentCertsReader;
+// import se452.Persistence.StudentCertsReader;
 import se452.Persistence.StudentReader;
 
 import se452.group9.seeker.model.*;
@@ -30,7 +30,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-import org.h2.command.Command;
+// import org.h2.command.Command;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

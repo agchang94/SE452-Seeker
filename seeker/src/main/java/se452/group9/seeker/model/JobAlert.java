@@ -13,11 +13,13 @@ import java.util.List;
 import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
-
-@Document(collection = "jobAlerts")
+@Entity
+@Table(name = "jobAlerts")
 @Data
 public class JobAlert {
     @Id 
     private long id;
-    private List<String> searchTerms;
+    private String searchTerm1;
+    private String searchTerm2;
+    private String searchTerm3;
 }
