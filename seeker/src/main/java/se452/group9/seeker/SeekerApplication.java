@@ -11,17 +11,19 @@ import se452.group9.seeker.repo.StudentCertsRepository;
 import se452.group9.seeker.repo.StudentRepository;
 // import se452.*;
 
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.List;
 import java.util.Set;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -121,6 +123,7 @@ public CommandLineRunner addStudentCerts (StudentCertsRepository studentCertsRep
 
 @Bean
 public CommandLineRunner addStudents (StudentRepository studentRepository ,StudentAcademicRepository studentAcademicRepository ) {
+
 	
 	return (args) -> {
 		try{
@@ -287,4 +290,72 @@ return(args) -> {
 		};
 	}
 
+
+	@Bean
+	public CommandLineRunner addDummyStudentResumeLogAttr(StudentResumeRepository resumeRepo, StudentLogsRepository logsRepo, StudentAttributesRepository SARepo) {
+		return (args) -> {
+			// adding dummy resume information
+			log.info("--------  Adding Resume info ----------- ");
+			StudentResume sr = new StudentResume();
+			sr.setStudentID(9999);
+			sr.setIsCurrentJob("N");
+			sr.setStartDate(Date.valueOf("2014-12-03"));
+			sr.setEndDate(Date.valueOf("2019-04-19"));			
+			sr.setCompany("company name");
+			sr.setTitle("title");
+			sr.setCity("city");
+			sr.setState("state");
+			sr.setCountry("country");
+			sr.setDescription("...");	
+			resumeRepo.save(sr);
+
+			StudentLogs sl = new StudentLogs();
+			sl.setStudentID(9999);
+			sl.setLastApplication(Date.valueOf("2021-04-30"));
+			sl.setLastLogin(Date.valueOf("2021-04-30"));
+			logsRepo.save(sl);
+
+			StudentAttributes sa = new StudentAttributes();
+			sa.setStudentID(9999);
+			sa.setSkills("skills");
+			sa.setLanguages("languages");
+			SARepo.save(sa);
+		};
+	}
+
+	@Bean
+	public CommandLineRunner showResumes(StudentResumeRepository repository) {
+		return (args) -> {
+			// fetching companies
+			log.info("--------  Companies found with findAll() ----------- ");
+			repository.findAll().forEach((resume)-> {
+				log.info(resume.toString());
+			});
+			log.info("------------------------------------------------------");
+		};
+	}
+
+	@Bean
+	public CommandLineRunner showAttributes(StudentAttributesRepository repository) {
+		return (args) -> {
+			// fetching companies
+			log.info("--------  Companies found with findAll() ----------- ");
+			repository.findAll().forEach((attributes)-> {
+				log.info(attributes.toString());
+			});
+			log.info("------------------------------------------------------");
+		};
+	}
+
+	@Bean
+	public CommandLineRunner showLogs(StudentLogsRepository repository) {
+		return (args) -> {
+			// fetching companies
+			log.info("--------  Companies found with findAll() ----------- ");
+			repository.findAll().forEach((logs)-> {
+				log.info(logs.toString());
+			});
+			log.info("------------------------------------------------------");
+		};
+	}
 }
