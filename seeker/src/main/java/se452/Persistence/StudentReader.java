@@ -26,8 +26,8 @@ public class StudentReader {
                 student.setAddress(fields[5].concat(" ").concat(fields[6]).concat(" ").concat(fields[7]));
                 student.setZip(Integer.parseInt(fields[8]));
                 student.setPhone(fields[9]);
-                student.setSchoolID(Integer.parseInt(fields[10]));
-                student.setDob((fields[11]));
+                student.setDob((fields[10]));
+                student.setPassword(fields[11]);
                 students.add(student);
             }
 

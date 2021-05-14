@@ -3,9 +3,34 @@
 <head> 
     <title>Getting Started: Serving Web Content</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet"btype="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
-    <h1>Home Page</h1>
+    <div class="container text-center">
+    <div>
+        <h1>Welcome To The Seeker Job App</h1>
+        </div>
     <p><a href="jobs/jobPosts">Jobs</a></p>
+    </div>
+    <img src="../static/images/Seeker.jpg" width="850" height="775" th:src="@{images/Seeker.jpg}"/>
+    
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+    </div>
+    
+    <div>
+        <label for="pass">Password (8 characters minimum):</label>
+        <input type="password" id="pass" name="password"
+               minlength="8" required>
+    </div>
+    
+    <input type="submit" value="Sign in">
+    
+    
+    <div>
+        <p style="text-align: right">Click on the link below to register!</p>
+        <h3 style="text-align: right"><a href="jobs/register">Register</a></h3>
+    </div>
 </body>
 </html>

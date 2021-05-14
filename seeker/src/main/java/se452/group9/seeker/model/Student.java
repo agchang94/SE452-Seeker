@@ -20,6 +20,8 @@ public class Student {
     private String fname;
     @Column(name = "ST_lname")
     private String lname;
+    @Column(name="ST_pword")
+    private String password;
     @Column(name = "ST_email")
     private String email; 
    
@@ -33,8 +35,6 @@ public class Student {
     private int zip;
     @Column(name = "ST_phone")
     private String phone;
-    @Column(name = "ST_sid")
-    private int schoolID;
     @Column(name = "ST_dob")
     private String dob; 
 
