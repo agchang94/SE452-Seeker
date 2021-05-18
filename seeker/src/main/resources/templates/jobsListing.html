@@ -4,19 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Browse all Jobs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
 
-<body>
+<body class="bg-light">
     <h1 class="text-center font-weight-bold">Browse Jobs</h1>
     <br>
     <div th:each = "job: ${jobs}"  style="margin: 20px">
-        <div class="container border shadow-sm p-3 mb-5 rounded bg-light">
+        <div class="container">
             <div class="row pt-3">
-                <div class="col-6">
-                    <h5 class="card-title" th:text = "${job.title}"></h5>
-                    <h3 class="card-title" th:text = "${job.datePosted}"></h3>
-                    <p class="card-text" th:text = "${job.description}"></p>
+                <div class="col-4 bg-white">
+                    <div class="row">
+                        <h5>Search</h5>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title" th:text = "${job.title}"></h5>
+                          <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">Company</h6>
+                          <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">Location</h6>
+                        </div>
+                      </div>
+                    <!-- <h5 class="card-title" th:text = "${job.title}"></h5> -->
+                    <!-- <h3 class="card-title" th:text = "${job.datePosted}"></h3>
+                    <p class="card-text" th:text = "${job.description}"></p> -->
                     <!-- <div class="col-4">
                         <a class="btn btn-info" th:href="@{/productview(info, name=${products.name})}">View</a>
                     </div> -->

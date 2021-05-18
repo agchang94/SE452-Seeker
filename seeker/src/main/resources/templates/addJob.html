@@ -13,7 +13,7 @@
 
 <body>
     <div class="container my-5">
-        <h3> Add Job</h3>
+        <h2> Add Job</h2>
         <div class="card">
             <div class="card-body">
                 <div class="col-md-10">
@@ -23,12 +23,51 @@
                                 <label for="title" class="col-form-label">Title</label> <input type="text" th:field="*{title}" class="form-control" id="title" placeholder="Title"> <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-danger"></span>
                             </div>
                             <div class="form-group col-md-8">
+                                <label for="jobType" class="col-form-label">Job Type</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Full-Time
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Part-Time
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Internship
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Temporary
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-8">
                                 <label for="description" class="col-form-label">Description</label> <textarea rows="10" cols="10" type="text" maxlength="500" th:field="*{description}" class="form-control" id="description" placeholder="Description"></textarea><span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger"></span>
                             </div>
                             <div class="form-group col-md-8">
                                 <label for="date" class="col-form-label">Date</label> <input type="date" th:field="*{datePosted}" class="form-control" id="datePosted" placeholder="postedDate"> <span th:if="${#fields.hasErrors('datePosted')}" th:errors="*{datePosted}" class="text-danger"></span>
                             </div><div class="form-group col-md-8">
                                 <label for="active" class="col-form-label">Active</label> <input type="checkbox" th:field="*{isActive}" class="form-control" id="isActive" placeholder="isActive"> <span th:if="${#fields.hasErrors('isActive')}" th:errors="*{isActive}" class="text-danger"></span>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Internship
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Temporary
+                                    </label>
+                                </div>
                             </div>
                             <div class="form-group col-md-8"></div>
                             <div class="col-md-6">
