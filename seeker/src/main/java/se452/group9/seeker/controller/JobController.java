@@ -2,7 +2,11 @@ package se452.group9.seeker.controller;
 
 import se452.group9.seeker.model.Job;
 import se452.group9.seeker.model.Student;
+import se452.group9.seeker.model.StudentAcademics;
+import se452.group9.seeker.model.StudentCerts;
 import se452.group9.seeker.repo.JobRepository;
+import se452.group9.seeker.repo.StudentAcademicRepository;
+import se452.group9.seeker.repo.StudentCertsRepository;
 import se452.group9.seeker.repo.StudentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +29,16 @@ public class JobController {
 
 	private final JobRepository jobRepository;
     private final StudentRepository studentRepository;
+    private final StudentCertsRepository studentCertsRepository;
+    private final StudentAcademicRepository studentAcademicRepository;
 	
 	@Autowired
-	public JobController(JobRepository jobRepository, StudentRepository studentRepository){
+	public JobController(StudentCertsRepository studentCertsRepository,
+        JobRepository jobRepository, StudentRepository studentRepository, StudentAcademicRepository studentAcademicRepository){
 		this.jobRepository = jobRepository;
         this.studentRepository=studentRepository;
+        this.studentCertsRepository=studentCertsRepository;
+        this.studentAcademicRepository=studentAcademicRepository;
 	} 
 
 	@GetMapping("addJob")
@@ -71,5 +80,30 @@ public class JobController {
         jobRepository.save(job);
         return "redirect:jobPosts";
     }
+
+    /*@GetMapping("studentacademic")
+    public String showCertsForm(Model model) {
+        model.addAttribute("studentacademics", new StudentAcademics());
+        return "addAcademic";
+    }
+
+    @PostMapping("studentacademic")
+    public String addCerts(StudentAcademics studentAcademics){
+        studentAcademicRepository.save(studentAcademics);
+        return "register";
+    }
+ 
+    /*@GetMapping("studentcerts")
+    public String showCertsForm(Model model) {
+        model.addAttribute("studentcerts", new StudentCerts());
+        return "addCerts";
+    }
+
+    @PostMapping("studentcerts")
+    public String addCerts(StudentCerts studentCerts){
+        studentCertsRepository.save(studentCerts);
+        return "addCerts"; 
+    } */
+
 
 }

@@ -131,35 +131,31 @@ public class SeekerApplication {
 
 	}
 	
-@Bean
+/*@Bean
 public CommandLineRunner addStudentCerts (StudentCertsRepository studentCertsRepository) {
 	return (args) -> {
 	
 		StudentCerts s0 = new StudentCerts();
         StudentCerts s1 = new StudentCerts();
-        StudentCerts s2 = new StudentCerts();
         StudentCerts s3 = new StudentCerts();
         
-		s0.setCerts(Arrays.asList(
-            new Certs("cybersecurity", "cisco", 2017), 
-            new Certs("web development", "HTML", 2015)));
+		s0.setCerts(Arrays.asList("cisco, html, java"));
 
-        s1.setCerts(Arrays.asList(new Certs("none", "none", 2020)));
-        s2.setCerts(Arrays.asList(
-            new Certs("cybersecurity", "CompTIA", 2018)));
+        s1.setCerts(Arrays.asList("none"));
 
-        s3.setCerts(Arrays.asList(new Certs("IT", "Microsoft tech associate", 2016)));            
+        s3.setCerts(Arrays.asList("Microsoft tech associate", "test"));            
 
         studentCertsRepository.deleteAll();
-
-        List<StudentCerts> studentCerts = Arrays.asList(s0, s1, s2, s3);
-        studentCertsRepository.saveAll(studentCerts);
+        studentCertsRepository.save(s0);
+		studentCertsRepository.save(s1);
+		studentCertsRepository.save(s3);
 	};
-	}
+	} */
 
 
 @Bean
-public CommandLineRunner addStudents (StudentRepository studentRepository ,StudentAcademicRepository studentAcademicRepository ) {
+public CommandLineRunner addStudents (StudentRepository studentRepository ,StudentAcademicRepository studentAcademicRepository, StudentLogsRepository logsRepo, 
+StudentResumeRepository resumeRepo ) {
 
 	
 	return (args) -> {
@@ -170,8 +166,6 @@ public CommandLineRunner addStudents (StudentRepository studentRepository ,Stude
 			InputStream in2 =  getClass().getResourceAsStream("/student_academics.txt");
 			Reader fr2 = new InputStreamReader(in2, "utf-8");
 
-			/*InputStream in3 =  getClass().getResourceAsStream("/student_certs.txt");
-			Reader fr3= new InputStreamReader(in3, "utf-8"); */
 		
 			BufferedReader reader = new BufferedReader(fr); 
 			ArrayList<Student> students = new ArrayList<Student>();
@@ -181,9 +175,7 @@ public CommandLineRunner addStudents (StudentRepository studentRepository ,Stude
 			ArrayList<StudentAcademics> studentAcademics = new ArrayList<StudentAcademics>();
 			studentAcademics = StudentAcademicReader.getStudentAcademics(reader2);
 
-			/*BufferedReader reader3 = new BufferedReader(fr3); 
-			ArrayList<StudentCerts> studentCerts = new ArrayList<StudentCerts>();
-			studentCerts = StudentCertsReader.getStudentCerts(reader3); */
+
 			
 			for(Student student:students) {
 				System.out.println(student.toString());
@@ -198,12 +190,38 @@ public CommandLineRunner addStudents (StudentRepository studentRepository ,Stude
 			}
 			count = 0;  
 
-			/*for(StudentCerts studentCert : studentCerts) {
-				students.get(count).setStudentCerts(studentCert);
-				studentCert.setStudent(students.get(count));
-				studentCertsRepository.save(studentCert);
-				count++;
-			} */
+			StudentLogs sl = new StudentLogs();
+			sl.setLastApplication(Date.valueOf("2021-04-30"));
+			sl.setLastLogin(Date.valueOf("2021-04-30"));
+			sl.setStudent(students.get(2));
+			logsRepo.save(sl);
+
+			
+			StudentResume sr = new StudentResume();
+			sr.setIsCurrentJob("N");
+			sr.setStartDate(Date.valueOf("2014-12-03"));
+			sr.setEndDate(Date.valueOf("2019-04-19"));			
+			sr.setCompany("company name");
+			sr.setTitle("title");
+			sr.setCity("city");
+			sr.setState("state");
+			sr.setCountry("country");
+			sr.setDescription("...");
+			sr.setStudent(students.get(2));
+			resumeRepo.save(sr);
+
+			StudentResume sr2 = new StudentResume();
+			sr2.setIsCurrentJob("N");
+			sr2.setStartDate(Date.valueOf("2010-10-10"));
+			sr2.setEndDate(Date.valueOf("2015-06-25"));			
+			sr2.setCompany("Apple");
+			sr2.setTitle("Developer");
+			sr2.setCity("Los Angeles");
+			sr2.setState("California");
+			sr2.setCountry("United States");
+			sr2.setDescription("Coded cool stuff");
+			sr2.setStudent(students.get(2));
+			resumeRepo.save(sr2);
 
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -330,13 +348,12 @@ return(args) -> {
 
 	
 
-	@Bean
-	public CommandLineRunner addDummyStudentResume(StudentResumeRepository resumeRepo, StudentLogsRepository logsRepo) {
+	//@Bean
+	public CommandLineRunner addStudentResume(StudentResumeRepository resumeRepo) {
 		return (args) -> {
 			// adding dummy resume information
 			log.info("--------  Adding Resume info ----------- ");
 			StudentResume sr = new StudentResume();
-			sr.setStudentID(9999);
 			sr.setIsCurrentJob("N");
 			sr.setStartDate(Date.valueOf("2014-12-03"));
 			sr.setEndDate(Date.valueOf("2019-04-19"));			
@@ -348,11 +365,7 @@ return(args) -> {
 			sr.setDescription("...");	
 			resumeRepo.save(sr);
 
-			StudentLogs sl = new StudentLogs();
-			sl.setStudentID(9999);
-			sl.setLastApplication(Date.valueOf("2021-04-30"));
-			sl.setLastLogin(Date.valueOf("2021-04-30"));
-			logsRepo.save(sl);
+			
 		};
 	}
 
@@ -369,7 +382,7 @@ return(args) -> {
         };
 	}
 	
-	@Bean
+	//@Bean
 	public CommandLineRunner showStudentResumes(StudentResumeRepository repository) {
 		return (args) -> {
 			// fetching student resumes
@@ -381,7 +394,7 @@ return(args) -> {
 		};
 	}
 
-	@Bean
+	//@Bean
 	public CommandLineRunner showStudentLogs(StudentLogsRepository repository) {
 		return (args) -> {
 			// fetching student logs
