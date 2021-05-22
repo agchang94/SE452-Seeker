@@ -24,4 +24,5 @@ public class StudentCerts {
     @Id
     private String id;
     private List <String> certs;
+    //private String certs;
 }
