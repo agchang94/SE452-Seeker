@@ -264,15 +264,28 @@ return(args) -> {
 	@Bean
 	public CommandLineRunner addRecruiter(RecruiterRepository repository) {
 		return (args) -> {
-			log.info("--------  Adding recruiter TESTING RECRUITER ----------- ");
-			Recruiter newRecruit = new Recruiter();
-			newRecruit.setRecruiterID(404);
-			newRecruit.setCompanyID(502);
-			newRecruit.setFname("Testing");
-			newRecruit.setLname("Recruiter");
-			newRecruit.setEmail("test01@depaul.edu");
+			log.info("--------  Adding recruiter Chris Field ----------- ");
 
-			repository.save(newRecruit);
+			Recruiter rec = repository.findByrecruiterID(404);
+
+			
+			// if recruiter with id 404 is not in database, add him
+			if((rec == null) || (rec.getRecruiterID() != 404)) {
+				Recruiter newRecruit = new Recruiter();
+				newRecruit.setRecruiterID(404);
+				newRecruit.setCompanyID(502);
+				newRecruit.setFname("Chris");
+				newRecruit.setLname("Field");
+				newRecruit.setEmail("test01@depaul.edu");
+
+				repository.save(newRecruit);
+			}
+			else {
+				log.info("recruiter with recruiterID [404] is already in database");
+			}
+			
+			log.info("----------------------------------------------------- ");
+
 		};
 	}
 
