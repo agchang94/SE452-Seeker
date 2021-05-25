@@ -1,7 +1,6 @@
 package se452.group9.seeker.model;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -49,17 +48,6 @@ public class Company {
         joinColumns = { @JoinColumn(name="company_ID", referencedColumnName = "companyID") }
     )
     @ToString.Exclude
-    private List<Job> jobs;
-
-    public Company() {
-        this.jobs = new ArrayList<Job>();
-    }
-    
-    public void addJob(Job newJob) {
-        if (newJob == null) throw new IllegalArgumentException();
-
-        jobs.add(newJob);
-    }
-
+    private List<DummyJobs> jobs; 
 
 }

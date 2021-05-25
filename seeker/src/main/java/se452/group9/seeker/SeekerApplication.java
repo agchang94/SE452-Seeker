@@ -264,28 +264,15 @@ return(args) -> {
 	@Bean
 	public CommandLineRunner addRecruiter(RecruiterRepository repository) {
 		return (args) -> {
-			log.info("--------  Adding recruiter Chris Field ----------- ");
+			log.info("--------  Adding recruiter TESTING RECRUITER ----------- ");
+			Recruiter newRecruit = new Recruiter();
+			newRecruit.setRecruiterID(404);
+			newRecruit.setCompanyID(502);
+			newRecruit.setFname("Testing");
+			newRecruit.setLname("Recruiter");
+			newRecruit.setEmail("test01@depaul.edu");
 
-			Recruiter rec = repository.findByrecruiterID(404);
-
-			
-			// if recruiter with id 404 is not in database, add him
-			if((rec == null) || (rec.getRecruiterID() != 404)) {
-				Recruiter newRecruit = new Recruiter();
-				newRecruit.setRecruiterID(404);
-				newRecruit.setCompanyID(502);
-				newRecruit.setFname("Chris");
-				newRecruit.setLname("Field");
-				newRecruit.setEmail("test01@depaul.edu");
-
-				repository.save(newRecruit);
-			}
-			else {
-				log.info("recruiter with recruiterID [404] is already in database");
-			}
-			
-			log.info("----------------------------------------------------- ");
-
+			repository.save(newRecruit);
 		};
 	}
 
@@ -301,89 +288,49 @@ return(args) -> {
 		};
 	}
 
+	
 	@Bean
-	public CommandLineRunner addCompanyJobs(CompanyRepository companyRepo, JobRepository jobRepo) {
+	public CommandLineRunner addDummyJob(DummyJobsRepository repository) {
 		return (args) -> {
-			log.info("--------  Adding jobs to the job table  ----------");
-			Job job1 = new Job();
-			Job job2 = new Job();
-			Job job3 = new Job();
-			Job job4 = new Job();
+			log.info("--------  Adding dummyJob dummyJob1 ----------- ");
+			DummyJobs newJob = new DummyJobs();
+			newJob.setJobTitle("dummyJob1");
+			newJob.setDummyJobID(604);
+			newJob.setJobMsg("Develop fake applications");
 
-			job1.setTitle("Junior Software Developer");
-			job2.setTitle("Python Software Engineer");
-			job3.setTitle("Front End Developer");
-			job4.setTitle("Software Developer");
-
-			job1.setDescription("Skills with relational databases and moderately advanced SQL is a must");
-			job2.setDescription("Work on backend applications to support new features and capabilities");
-			job3.setDescription("Build front-end frames that integrate easily with other systems and technologies");
-			job4.setDescription("Develops and codes software programs, algorithms and automated processes");
-
-			job1.setDatePosted("2021-04-01");
-			job2.setDatePosted("2021-04-02");
-			job3.setDatePosted("2021-04-03");
-			job4.setDatePosted("2021-04-04");
-
-			job1.setIsActive(true);
-			job2.setIsActive(true);
-			job3.setIsActive(true);
-			job4.setIsActive(true);
-
-			log.info("--------------------------------------------------");
-
-
-			log.info("--------  Adding companies ----------- ");
-
-			Company c1 = new Company();
-			Company c2 = new Company();
-			Company c3 = new Company();
-			Company c4 = new Company();
-
-			c1.setCompanyName("Capitol One");
-			c2.setCompanyName("AllState");
-			c3.setCompanyName("Motorola Solutions");
-			c4.setCompanyName("DummyCompany1");
-
-			c1.setAddress("Chicago, IL 60695");
-			c2.setAddress("2775 Sanders Rd, NORTHBROOK, IL 60062");
-			c3.setAddress("500 W. Monroe St, Chicago, IL");
-			c4.setAddress("600 W. Fake Street, Chicago, IL");
-
-			c1.setCompanyInfo("A bank holding company");
-			c2.setCompanyInfo("An insurance company");
-			c3.setCompanyInfo("Data communications and telecommunications equipment provider");
-			c4.setCompanyInfo("A company created for testing purposes");
-			
-			// matching jobs to companies
-			c1.addJob(job1);
-			c1.addJob(job2);
-			c2.addJob(job3);
-			c3.addJob(job4);
-
-			// saving to the repositories
-			jobRepo.save(job1);
-			jobRepo.save(job2);
-			jobRepo.save(job3);
-			jobRepo.save(job4);
-
-			companyRepo.save(c1);
-			companyRepo.save(c2);
-			companyRepo.save(c3);
-			companyRepo.save(c4);
-
-			log.info("--------------------------------------------------- ");
+			repository.save(newJob);
 		};
 	}
 
 	@Bean
-	public CommandLineRunner showAllJobs(JobRepository repository) {
+	public CommandLineRunner showDummyJobs(DummyJobsRepository repository) {
 		return (args) -> {
+			// fetching jobs
 			log.info("--------  Jobs found with findAll() ----------- ");
 			repository.findAll().forEach((job)-> {
 				log.info(job.toString());
 			});
-			log.info("-------------------------------------------------");
+			log.info("------------------------------------------------------");
+		};
+	}
+
+	@Bean
+	public CommandLineRunner addCompany(CompanyRepository companyRepo, DummyJobsRepository jobRepo) {
+		return (args) -> {
+			log.info("--------  Adding company DummyCompany1 ----------- ");
+			// create a fake job for the company
+			DummyJobs tmpJob = new DummyJobs();
+			tmpJob.setJobTitle("FakeCompanyJob1");
+			tmpJob.setJobMsg("Job created by company DummyCompany1");
+			jobRepo.save(tmpJob);
+
+			// create the company
+			Company newCompany = new Company();
+			newCompany.setCompanyName("DummyCompany1");
+			newCompany.setAddress("600 W. Fake Street, Chicago, IL");
+			newCompany.setCompanyInfo("A company created for testing purposes");
+			companyRepo.save(newCompany);
+
 		};
 	}
 
