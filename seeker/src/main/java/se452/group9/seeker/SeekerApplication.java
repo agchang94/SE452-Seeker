@@ -302,56 +302,36 @@ return(args) -> {
 	}
 
 	@Bean
-	public CommandLineRunner addJobs(JobRepository repository) {
+	public CommandLineRunner addCompanyJobs(CompanyRepository companyRepo, JobRepository jobRepo) {
 		return (args) -> {
 			log.info("--------  Adding jobs to the job table  ----------");
 			Job job1 = new Job();
 			Job job2 = new Job();
 			Job job3 = new Job();
+			Job job4 = new Job();
 
 			job1.setTitle("Junior Software Developer");
 			job2.setTitle("Python Software Engineer");
 			job3.setTitle("Front End Developer");
+			job4.setTitle("Software Developer");
 
 			job1.setDescription("Skills with relational databases and moderately advanced SQL is a must");
 			job2.setDescription("Work on backend applications to support new features and capabilities");
 			job3.setDescription("Build front-end frames that integrate easily with other systems and technologies");
+			job4.setDescription("Develops and codes software programs, algorithms and automated processes");
 
 			job1.setDatePosted("2021-04-01");
 			job2.setDatePosted("2021-04-02");
 			job3.setDatePosted("2021-04-03");
+			job4.setDatePosted("2021-04-04");
 
 			job1.setIsActive(true);
 			job2.setIsActive(true);
 			job3.setIsActive(true);
-
-			repository.save(job1);
-			repository.save(job2);
-			repository.save(job3);
+			job4.setIsActive(true);
 
 			log.info("--------------------------------------------------");
-		};
-	}
 
-	@Bean
-	public CommandLineRunner showAllJobs(JobRepository repository) {
-		return (args) -> {
-			log.info("--------  Jobs found with findAll() ----------- ");
-			repository.findAll().forEach((job)-> {
-				log.info(job.toString());
-			});
-			log.info("-------------------------------------------------");
-		};
-	}
-
-	@Bean
-	public CommandLineRunner addCompanies(CompanyRepository companyRepo, JobRepository jobRepo) {
-		return (args) -> {
-			Job job = new Job();
-			job.setTitle("Software Developer");
-			job.setDescription("Develops and codes software programs, algorithms and automated processes");
-			job.setDatePosted("2021-04-04");
-			job.setIsActive(true);
 
 			log.info("--------  Adding companies ----------- ");
 
@@ -374,15 +354,36 @@ return(args) -> {
 			c2.setCompanyInfo("An insurance company");
 			c3.setCompanyInfo("Data communications and telecommunications equipment provider");
 			c4.setCompanyInfo("A company created for testing purposes");
-			c4.addJob(job);
+			
+			// matching jobs to companies
+			c1.addJob(job1);
+			c1.addJob(job2);
+			c2.addJob(job3);
+			c3.addJob(job4);
 
-			jobRepo.save(job);
+			// saving to the repositories
+			jobRepo.save(job1);
+			jobRepo.save(job2);
+			jobRepo.save(job3);
+			jobRepo.save(job4);
+
 			companyRepo.save(c1);
 			companyRepo.save(c2);
 			companyRepo.save(c3);
 			companyRepo.save(c4);
 
 			log.info("--------------------------------------------------- ");
+		};
+	}
+
+	@Bean
+	public CommandLineRunner showAllJobs(JobRepository repository) {
+		return (args) -> {
+			log.info("--------  Jobs found with findAll() ----------- ");
+			repository.findAll().forEach((job)-> {
+				log.info(job.toString());
+			});
+			log.info("-------------------------------------------------");
 		};
 	}
 
