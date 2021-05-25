@@ -11,7 +11,7 @@
 
 
 <body class="bg-light">
-    <h1 class="text-center font-weight-bold">Browse Jobs</h1>
+    <h1 class="text-center font-weight-bold mt-5">Browse Jobs</h1>
     <br>
     <div class="container">
         <div class="row pt-3">
@@ -73,7 +73,7 @@
                         <div>
                             <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">Company</h6>
                             <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">Location</h6>
-                            <button class="applyBtn">Apply</button>
+                            <button type="button" class="btn btn-success applyBtn"><a th:href="@{/jobs/jobView/{id}(id=${job.id})}">Apply</a></button>
                         </div>
                     </div>
                 </div>

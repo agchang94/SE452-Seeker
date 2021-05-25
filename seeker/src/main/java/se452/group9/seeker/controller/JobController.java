@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 
@@ -35,6 +38,12 @@ public class JobController {
 	@GetMapping("addJob")
     public String addJobForm(Job job) {
         return "addJob";
+    }
+
+    @GetMapping("jobView/{id}")
+    public String jobView(@PathVariable("id") long id, Model model){
+        model.addAttribute("job", jobRepository.getOne(id));
+        return "jobView";
     }
 
     @GetMapping("addRegister")

@@ -1,3 +1,5 @@
+/*Job Listing Styles */
+
 .card-title{
   display: inline-block;
 }
@@ -42,4 +44,32 @@
 .box select{
   width: 100%;
   color: #aaa;
+}
+
+.applyBtn a {
+  color:white;
+}
+
+/* Job View Styles */
+
+.jobOverview{
+  border:1px solid;
+  width: 80%;
+}
+
+.overviewTxt{
+  padding:3px;
+}
+
+.textBox{
+  padding:12px;
+}
+
+.overviewBtn{
+  padding: 15px;
+  text-align: center;
+}
+
+.overviewBtn a{
+  color: white;
 }
