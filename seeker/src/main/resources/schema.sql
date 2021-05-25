@@ -10,12 +10,14 @@ DROP TABLE IF EXISTS STUDENT_RESUME;
 
 CREATE SEQUENCE hibernate_sequence START WITH 100 INCREMENT BY 1;
 
+/*
 CREATE TABLE dummy_jobs (
     jobID           INT AUTO_INCREMENT PRIMARY KEY,
     jobTitle        VARCHAR(50),
     jobInfo         VARCHAR(250),
     PRIMARY KEY(jobID)
 );
+*/
 
 CREATE TABLE companies (
     companyID       INT AUTO_INCREMENT PRIMARY KEY,    
@@ -28,7 +30,7 @@ CREATE TABLE companies (
 CREATE TABLE company_jobs (
     id              INT AUTO_INCREMENT PRIMARY KEY,
     company_ID      INT(8),
-    job_ID          INT(8),
+    job_ID          BIGINT(19),
     PRIMARY KEY(id)
 );
 
