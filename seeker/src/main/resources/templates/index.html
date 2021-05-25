@@ -6,31 +6,72 @@
     <link rel="stylesheet"btype="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
+
+    <!-- Header IMG --> 
+    <div class="container">
+    <img src="../static/images/header.jpg" class="img-fluid mt-5" alt="header" th:src="@{images/header.jpg}"/>
+    </div>
+
+    <!--Navigation Bar-->
+    <div class="container">
+        <ul class="nav justify-content-center" style="font-size:20pt;margin:20px 20px 20px 20px">
+          <li class="nav-item">
+            <a class="nav-link" style="color:#df4759" aria-current="page" href="jobs/jobPosts">Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color:#df4759" href="userType">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color:#df4759" href="login">Login</a>
+          </li>
+        </ul>
+    </div>
+
+    <!--Search Bar --> 
+      <div class="container">
+        <form class="form-inline justify-content-center" style="margin:20px 20px 20px 20px">
+          <i class="fas fa-search" aria-hidden="true"></i>
+            <input class="form-control form-control-lg w-75" aria-label="Search Jobs">
+          <a class="btn btn-danger ml-3 btn-lg">Search</a>
+        </form>
+      </div>
+
+
+    <!--login form-->
+    <div class="container justify-content-center" style="max-width:800px;">
+      <form>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="username" class="form-control" id="username" aria-describedby="username" placeholder="Enter username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="password">
+          </div>
+          <button type="submit" class="btn btn-danger">Submit</button>
+        </form>
+      </div>
+    
+    <!--Select user type to register-->
     <div class="container text-center">
-    <div>
-        <h1>Welcome To The Seeker Job App</h1>
-        </div>
-    <p><a href="jobs/jobPosts">Jobs</a></p>
+          <h2 style="color:#df4759"> I am seeking to: </h2>
+          <button type="button" class="btn btn-outline-danger btn-lg">Apply for jobs</button>
+          <button type="button" class="btn btn-outline-danger btn-lg">Hire for my company</button>
+  </div>
+
+
+  <p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      Link with href
+    </a>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Button with data-target
+    </button>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
     </div>
-    <img src="../static/images/Seeker.jpg" width="850" height="775" th:src="@{images/Seeker.jpg}"/>
-    
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username">
-    </div>
-    
-    <div>
-        <label for="pass">Password (8 characters minimum):</label>
-        <input type="password" id="pass" name="password"
-               minlength="8" required>
-    </div>
-    
-    <input type="submit" value="Sign in">
-    
-    
-    <div>
-        <p style="text-align: right">Click on the link below to register!</p>
-        <h3 style="text-align: right"><a href="jobs/register">Register</a></h3>
-    </div>
+  </div>
 </body>
 </html>

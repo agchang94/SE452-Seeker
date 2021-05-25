@@ -20,10 +20,16 @@ import javax.validation.Valid;
 public class HomeController {
 
     private final JobRepository jobRepository;
+    private final StudentRepository studentRepository;
+    private final RecruiterRepository recruiterRepository;
 
     @Autowired
-	public HomeController(JobRepository jobRepository){
+	public HomeController(JobRepository jobRepository, 
+                          StudentRepository studentRepository, 
+                          RecruiterRepository recruiterRepository){
 		this.jobRepository = jobRepository;
+        this.studentRepository = studentRepository;
+        this.recruiterRepository = recruiterRepository;
 	}
 
     @GetMapping("jobsListing")
@@ -32,4 +38,11 @@ public class HomeController {
         model.addAttribute("jobs", jobs);
         return "jobsListing";
     }
+
+    /** 
+    @GetMapping("login")
+    public String login(Model model){
+        return "login";
+    }
+    */
 }
