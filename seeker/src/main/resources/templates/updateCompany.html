@@ -13,35 +13,21 @@
 
 <body>
   <div class="container my-5">
-    <h2 class="mb-4">Company Information</h2>
-    <p>Select your company. If none present, add the company you represent</p>
+    <h2 class="mb-4">Update Company</h2>
       <div class="card">
         <div class="card-body">
           <form action="#" method="post">
             <div class="row">
               <div class="form-group col-md-8">
-                <label for="label_select_company" class="col-form-label">Select company:</label>
-                <select class="form-control" id="company_list" name="companyList">
-                  <option></option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                </select>
+                <label for="address" class="col-form-label">Address</label> 
+                <input type="text" th:field="*{addresss}" class="form-control" id="address"> <span th:if="${#fields.hasErrors('address')}" th:errors="*{address" class="text-danger"></span>
               </div>
               <div class="form-group col-md-8">
-                <label for="label_companyName" class="col-form-label">Company Name</label> 
-                <input type="text" th:field="*{companyName}" class="form-control" id="companyName"> <span th:if="${#fields.hasErrors('companyName')}" th:errors="*{companyName" class="text-danger"></span>
-              </div>
-              <div class="form-group col-md-8">
-                <label for="label_companyAddress" class="col-form-label">Address</label> 
-                <input type="text" th:field="*{label_companyAddress}" class="form-control" id="companyAddress"> <span th:if="${#fields.hasErrors('companyAddress')}" th:errors="*{companyName" class="text-danger"></span>
-              </div>
-              <div class="form-group col-md-8">
-                <label for="label_companyInfo" class="col-form-label">Description</label> 
+                <label for="companyInfo" class="col-form-label">Description</label> 
                 <textarea rows="10" cols="10" type="text" maxlength="250" th:field="*{companyInfo}" class="form-control" id="companyInfo"></textarea><span th:if="${#fields.hasErrors('companyInfo')}" th:errors="*{companyInfo}" class="text-danger"></span>
               </div>
               <div class="col-md-6">
-                <input type="submit" class="btn btn-primary" value="Next">
+                <input type="submit" class="btn btn-primary" value="Update Company">
               </div>
             </div>
           </form>
