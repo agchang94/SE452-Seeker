@@ -6,8 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import java.util.Date;
 
 import lombok.Data;
 
@@ -44,11 +42,11 @@ public class Job {
     // }
     //Getters and Setters
 
-    public Long getID(){
+    public Long getId(){
         return id;
     }
 
-    public void setID(Long id){
+    public void setId(Long id){
         this.id = id;
     }
 
