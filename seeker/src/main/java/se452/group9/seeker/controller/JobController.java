@@ -90,5 +90,29 @@ public class JobController {
         return "redirect:jobPosts";
     }
 
+    /*@GetMapping("studentacademic")
+    public String showCertsForm(Model model) {
+        model.addAttribute("studentacademics", new StudentAcademics());
+        return "addAcademic";
+    }
+
+    @PostMapping("studentacademic")
+    public String addCerts(StudentAcademics studentAcademics){
+        studentAcademicRepository.save(studentAcademics);
+        return "register";
+    }
+ 
+    /*@GetMapping("studentcerts")
+    public String showCertsForm(Model model) {
+        model.addAttribute("studentcerts", new StudentCerts());
+        return "addCerts";
+    }
+
+    @PostMapping("studentcerts")
+    public String addCerts(StudentCerts studentCerts){
+        studentCertsRepository.save(studentCerts);
+        return "addCerts"; 
+    } */
+
 
 }

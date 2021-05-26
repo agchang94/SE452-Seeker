@@ -65,7 +65,7 @@
                         <div class="col-sm-8">
                             <select th:field="*{student}" class="form-control">
                                 <th:block th:each="stu : ${listStudents}">
-                                <option th:text="${stu.fname}" th:value="${stu.id}" ></option>
+                                <option th:text="${stu.fname}" th:value="${stu.id}" >
                                 </th:block>
                             </select> 
                         </div>

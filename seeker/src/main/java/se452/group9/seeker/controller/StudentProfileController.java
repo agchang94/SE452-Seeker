@@ -78,8 +78,6 @@ public class StudentProfileController {
     
     @GetMapping("studentcerts")
     public String showCertsForm(Model model) {
-        List<Student> listStudents = studentRepository.findAll();
-        model.addAttribute("listStudents", listStudents);
         model.addAttribute("studentcerts", new StudentCerts());
         return "addCerts";
     }
