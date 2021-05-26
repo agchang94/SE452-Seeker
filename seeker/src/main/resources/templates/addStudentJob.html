@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Registration</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Registration Succeeded</title>
+    <link rel="stylesheet"btype="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    
+   
+</head>
+
+<body>
+    <div class="container">
+    <div>
+        <h1 class = "display 1">Add a Job! </h1>
+    </div>
+
+
+    <div class = "btn-group-vertical" >
+        <button type = "button" class = "btn btn-default btn-lg col-md-15 ">Add Another Job</button>
+        <div class="mx-auto mb-5 p-3" style="width:400 px;"></div>
+        <button type = "button" class = "btn btn-default btn-lg col-md-15 ">Add Skills</button>
+        <div class="mx-auto mb-5 p-3" style="width:400 px;"></div>
+        <button type = "button" class = "btn btn-default btn-lg col-md-15">Add Academic Info</button>
+        <div class="mx-auto mb-5 p-3" style="width:400 px;"></div>
+        <button type = "button" class = "btn btn-default btn-lg col-md-15">Add Certifications</button>
+      </div>
+
+      <div class="d-flex justify-content-center align-items-center container ">
+
+        <div class="row ">
+      
+      <form th:action="@{/jobs/studentjob}" th:object="${studentresume}" method="post">
+        <form action="/action_page.php">
+                
+      
+            <div class="form-group">
+              <label for="currentjob">Is This the Current Job?:</label>
+              <select class="form-control" id="currentjob" name="currentjob"
+              th:field="*{isCurrentJob}">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            </div>
+
+            <div class="form-group">
+                <label for="example-date-input">Start Date</label>
+                <input class="form-control" type="date" value="" id="example-date-input"
+                  th:field="*{startDate}" >
+                </div>
+
+                <div class="form-group">
+                    <label for="example-date-input">End Date (Enter today's date if still employed</label>
+                    <input class="form-control" type="date" value="" id="example-date-input" 
+                        th:field="*{endDate}" >
+                     </div>
+
+                     <div class="form-group">
+                        <label for="title">Job Title:</label>
+                        <input type="text" class="form-control" id="" th:field="*{title}">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" class="form-control" id="city"
+                        th:field="*{city}" >
+                      </div>
+
+                      <div class="form-group">
+                        <label for="state">State</label>
+                        
+                            <select class="form-control" id="state" name="state"
+                            th:field="*{state}" >
+                                <option value="">N/A</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DC">District of Columbia</option>
+                                <option value="DE">Delaware</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="IA">Iowa</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MD">Maryland</option>
+                                <option value="ME">Maine</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MT">Montana</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NY">New York</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="PR">Puerto Rico</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VA">Virginia</option>
+                                <option value="VT">Vermont</option>
+                                <option value="WA">Washington</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country">Country:</label>
+                            <input type="text" class="form-control" id="country"
+                            th:field="*{country}" >
+                          </div>
+
+                          <div class="form-group">
+                            <label for="jobdescription">Job Description:</label>
+                            <input type="text" class="form-control" id="jobdescription" 
+                            th:field="*{description}">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="Student">Student:</label>
+                            <div class="col-sm-8">
+                                <select th:field="*{student}" class="form-control">
+                                    <th:block th:each="stu : ${listStudents}">
+                                    <option th:text="${stu.fname}" th:value="${stu.id}" >
+                                    </th:block>
+                                </select> 
+                            </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-default">Submit</button>
+
+
+    </form>
+    </div>
+
+</div>
+    
+</div>
+    
+    
+    </body>
+    </html>
