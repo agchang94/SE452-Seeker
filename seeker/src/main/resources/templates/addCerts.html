@@ -29,11 +29,42 @@
       <div class="d-flex justify-content-center align-items-center container ">
 
         <div class="row ">
+    
+        <form th:action="@{/jobs/studentcerts}" th:object="${student}" method="post">
+                <form action="/action_page.php">
+
+                    <div class="form-group">
+                        <label for="Student">Student:</label>
+                        <div class="col-sm-8">
+                                <th:block th:each="stu : ${listStudents}">
+                                <option th:text="${stu.fname}"></option>
+                                <option th:text="${stu.id}"></option>
+                                </th:block>
+                            </select> 
+                        </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+                    <div class="d-flex justify-content-center align-items-center container ">
+
+                        <div class="row ">
       
-      <form th:action="@{/jobs/studentcerts}" th:object="${studentcerts}" method="post">
+    <form th:action="@{/jobs/studentcerts}" th:object="${studentcerts}" method="post">
         <form action="/action_page.php">
 
-
+            
+            
+            
+            <div class="form-group">
+                <label for="certs">Add In Your Id:</label>
+                <input type="text" class="form-control" id="id"
+                th:field="*{id}" >
+              </div>
+            
             <div class="form-group">
                 <label for="certs">Add a Certification:</label>
                 <input type="text" class="form-control" id="certs"
