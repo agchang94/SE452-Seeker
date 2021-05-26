@@ -49,11 +49,6 @@ public class JobController {
         return "addJob";
     }
 
-    @GetMapping("jobView/{id}")
-    public String jobView(@PathVariable("id") long id, Model model){
-        model.addAttribute("job", jobRepository.getOne(id));
-        return "jobView";
-    }
 
     @GetMapping("addRegister")
     public String getRegisterSuccess(Student student) {
