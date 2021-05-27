@@ -3,6 +3,7 @@ package se452.group9.seeker.model;
 import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ public class StudentResume {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private int studentID;
+    
     private String isCurrentJob;
     private Date startDate;
     private Date endDate;
@@ -50,9 +51,9 @@ public class StudentResume {
     @Column(name="jobDescription")
     private String description;  
     
-    /** 
-    @ManyToOne
+    
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "st_id", nullable = false)
     private Student student;
-    */
+    
 }

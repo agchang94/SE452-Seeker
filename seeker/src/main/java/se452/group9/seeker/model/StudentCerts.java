@@ -23,5 +23,6 @@ import lombok.Data;
 public class StudentCerts {
     @Id
     private String id;
-    private List <Certs> certs;
+    private List <String> certs;
+    //private String certs;
 }

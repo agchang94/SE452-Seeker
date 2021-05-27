@@ -32,7 +32,7 @@ CREATE TABLE company_jobs (
     PRIMARY KEY(id)
 );
 
-CREATE TABLE STUDENT_LOGS (
+/*CREATE TABLE STUDENT_LOGS (
     id INT AUTO_INCREMENT  PRIMARY KEY,
     studentID INT,
     lastLoginDate DATE,
@@ -53,3 +53,4 @@ CREATE TABLE STUDENT_RESUME (
     jobDescription	 VARCHAR(999)
 
 );
+ */
