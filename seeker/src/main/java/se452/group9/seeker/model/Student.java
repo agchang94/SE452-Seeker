@@ -1,6 +1,8 @@
 package se452.group9.seeker.model;
 
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 import lombok.Data;
@@ -42,9 +44,12 @@ public class Student {
     cascade = CascadeType.ALL)
     private StudentAcademics studentAcademics;
 
-    /*@OneToOne (mappedBy = "student", fetch = FetchType.LAZY,
+    @OneToOne(mappedBy = "student", fetch = FetchType.LAZY,
     cascade = CascadeType.ALL)
-    private StudentCerts studentCerts; */
+    private StudentLogs studentLogs;
+    
+    @OneToMany (mappedBy = "student", fetch = FetchType.LAZY,
+    cascade = CascadeType.ALL)
+    private List<StudentResume> studentResumes;
 
-    //@CreationTimeStamp is used to make a time stamp 
 }

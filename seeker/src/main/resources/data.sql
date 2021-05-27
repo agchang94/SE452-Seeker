@@ -39,7 +39,7 @@ values (127, 'Henry', 'Wilson', 'hwilson@gmail.com', 'ON', 'Toronto', '224 Seele
 
 insert into SA (STUDENT_ID, SA_ID, SA_ACC, SA_MAJOR, SA_GPA, SA_UNI) values (123, 1000, 'none', 'Computer Science', 1.85, 'DePaul University');
 
-insert into SA (SA_ID, SA_ACC, SA_MAJOR, SA_GPA, SA_UNI, student_id) values (2, 'valedictorian, rhodes scholar, student of the month', 'Business', 3.95, 'Harvard University', 124);
+/*insert into SA (SA_ID, SA_ACC, SA_MAJOR, SA_GPA, SA_UNI, student_id) values (2, 'valedictorian, rhodes scholar, student of the month', 'Business', 3.95, 'Harvard University', 124);
 
 insert into SA (SA_ID, SA_ACC, SA_MAJOR, SA_GPA, SA_UNI, student_id) values (3, 'none', 'Computer Science', 2.84, 'Truman College', 125);
 
@@ -105,7 +105,7 @@ INSERT INTO company_jobs (company_ID, job_ID) VALUES
     (501,602),
     (502,603);
 
-INSERT INTO STUDENT_LOGS (studentID, lastLoginDate, lastApplicationDate) VALUES (9999, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+/*INSERT INTO STUDENT_LOGS (studentID, lastLoginDate, lastApplicationDate) VALUES (9999, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO STUDENT_LOGS (studentID, lastLoginDate, lastApplicationDate) VALUES (1111, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO STUDENT_LOGS (studentID, lastLoginDate, lastApplicationDate) VALUES (0000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
@@ -114,5 +114,5 @@ INSERT INTO STUDENT_LOGS (studentID, lastLoginDate, lastApplicationDate) VALUES 
 INSERT INTO STUDENT_RESUME(studentID, isCurrentJob, startDate, endDate, jobTitle, companyName, 
                             jobCity, jobState, jobCountry, jobDescription) 
                     VALUES (9999, 'N', '2014-12-03', '2019-04-19', 'Test Job Title', 'Test Company', 
-                            'Test Job City', 'Test Job State', 'Test Job Country', 'Test Job Description');
+                            'Test Job City', 'Test Job State', 'Test Job Country', 'Test Job Description'); */
 

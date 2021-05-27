@@ -1,15 +1,19 @@
 package se452.group9.seeker.model;
 
+import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import java.util.Date;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "jobs")
@@ -29,8 +33,11 @@ public class Job {
     private String title;
     @Column(name="description", length=2000)
     private String desc;
-    private String datePosted;
+    private String requirements;
+    @Getter @Setter private String datePosted;
     private Boolean isActive;
+
+   
     // private int companyID;
    
 
@@ -44,11 +51,11 @@ public class Job {
     // }
     //Getters and Setters
 
-    public Long getID(){
+    public Long getId(){
         return id;
     }
 
-    public void setID(Long id){
+    public void setId(Long id){
         this.id = id;
     }
 
@@ -67,13 +74,13 @@ public class Job {
     public void setDescription(String description){
         this.desc = description;
     }
-    public String getDatePosted(){
-        return datePosted;
-    }
+    // public String getDatePosted(){
+    //     return datePosted;
+    // }
 
-    public void setDatePosted(String datePosted){
-        this.datePosted = datePosted;
-    }
+    // public void setDatePosted(String datePosted){
+    //     this.datePosted = datePosted;
+    // }
 
     public Boolean getIsActive(){
         return isActive;
@@ -81,6 +88,14 @@ public class Job {
 
     public void setIsActive(Boolean isActive){
         this.isActive = isActive;
+    }
+
+    public String getRequirements(){
+        return requirements;
+    }
+
+    public void setRequirements(String req){
+        this.requirements = req;
     }
 
 }

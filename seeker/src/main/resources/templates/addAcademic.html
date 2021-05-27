@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Registration</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Registration Succeeded</title>
+    <link rel="stylesheet"btype="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    
+   
+</head>
+
+<body>
+    <div class="container">
+    <div>
+        <h1 class = "display 1">Add Your Certifications! </h1>
+    </div>
+
+
+    <div class = "btn-group-vertical" >
+        <button type = "button" class = "btn btn-default btn-lg col-md-15 ">Add Another Job</button>
+        <div class="mx-auto mb-5 p-3" style="width:400 px;"></div>
+        <button type = "button" class = "btn btn-default btn-lg col-md-15 ">Add Skills</button>
+        <div class="mx-auto mb-5 p-3" style="width:400 px;"></div>
+        <button type = "button" class = "btn btn-default btn-lg col-md-15">Add Academic Info</button>
+        <div class="mx-auto mb-5 p-3" style="width:400 px;"></div>
+        <button type = "button" class = "btn btn-default btn-lg col-md-15">Add Certifications</button>
+      </div>
+
+     <!--- <form th:action="@{/jobs/studentcerts}" th:object="${studentcerts}" method="post"  ></form> -->
+     
+        <div class="d-flex justify-content-center align-items-center container ">
+
+        <div class="row ">
+    
+            <form th:action="@{/jobs/studentacademic}" th:object="${studentacademics}" method="post"  >
+             <form action="/action_page.php">
+                
+      
+                    <div class="form-group">
+                      <label for="accomplishments">Accomplishments:</label>
+                      <input type="text" class="form-control" id="accomplishments" 
+                      th:field="*{accomplishments}">
+                    </div>
+      
+                    <div class="form-group">
+                      <label for="major">Major:</label>
+                      <input type="text" class="form-control" id="major" th:field="*{major}">
+                    </div>
+      
+                    <div class="form-group">
+                      <label for="gpa">GPA:</label>
+                      <input type="text" class="form-control" id="gpa" th:field="*{gpa}">
+                    </div>
+      
+                    
+                      <div class="form-group">
+                      <label for="university">University:</label>
+                      <input type="text" class="form-control" id="universityName"
+                      th:field="*{universityName}" >
+                      
+                      </div>
+
+                      <div class="form-group">
+                        <label for="Student">Student:</label>
+                        <div class="col-sm-8">
+                            <select th:field="*{student}" class="form-control">
+                                <th:block th:each="stu : ${listStudents}">
+                                <option th:text="${stu.fname}" th:value="${stu.id}" >
+                                </th:block>
+                            </select> 
+                        </div>
+                        </div>
+      
+                
+
+                  <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+    
+        </div>
+    </div>
+    
+    </div>
+    </body>
+    </html>
+ 
