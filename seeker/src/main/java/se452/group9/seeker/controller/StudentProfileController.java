@@ -47,6 +47,29 @@ public class StudentProfileController {
         this.jobSkillRepository=jobSkillRepository;
 	}
 
+    
+     @GetMapping("addRegister")
+     public String getRegisterSuccess(Student student) {
+         return "register_sucess";
+    }
+
+
+    @GetMapping("register")
+     public String showSignUpForm(Model model) {
+        model.addAttribute("student", new Student());
+         return "register";
+     }
+
+     @PostMapping("addRegister")
+     public String processRegistration(Student student){
+
+         studentRepository.save(student);
+         return "register_success";
+     }
+    
+    
+    
+    
     @GetMapping("studentacademic")
     public String showAcademicForm(Model model) {
         List<Student> listStudents = studentRepository.findAll();
