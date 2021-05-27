@@ -13,7 +13,7 @@ import se452.group9.seeker.repo.JobRepository;
 import se452.group9.seeker.repo.JobTypeRepository;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/search/")
 public class SearchController {
 
     private final JobRepository jobRepository;
