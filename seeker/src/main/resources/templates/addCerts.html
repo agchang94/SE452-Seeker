@@ -17,20 +17,20 @@
 
 
     <div class = "btn-group-vertical" >
-        <button type = "button" class = "btn btn-default btn-lg col-md-15 ">Add Another Job</button>
+        <button type = "button" class = "btn btn-default btn-lg col-md-15 "><a href="http://localhost:8081/studentjob">Add Another Job</button>
         <div class="mx-auto mb-5 p-3" style="width:400 px;"></div>
-        <button type = "button" class = "btn btn-default btn-lg col-md-15 ">Add Skills</button>
+        <button type = "button" class = "btn btn-default btn-lg col-md-15 "><a href="http://localhost:8081/studentskills">Add Skills</button>
         <div class="mx-auto mb-5 p-3" style="width:400 px;"></div>
-        <button type = "button" class = "btn btn-default btn-lg col-md-15">Add Academic Info</button>
+        <button type = "button" class = "btn btn-default btn-lg col-md-15"><a href="http://localhost:8081/studentacademic">Add Adademic Information</button>
         <div class="mx-auto mb-5 p-3" style="width:400 px;"></div>
-        <button type = "button" class = "btn btn-default btn-lg col-md-15">Add Certifications</button>
+        <button type = "button" class = "btn btn-default btn-lg col-md-15"><a href="http://localhost:8081/studentcerts">Add Certifications</button>
       </div>
 
       <div class="d-flex justify-content-center align-items-center container ">
 
         <div class="row ">
       
-      <form th:action="@{/jobs/studentcerts}" th:object="${studentcerts}" method="post">
+      <form th:action="@{/studentcerts}" th:object="${studentcerts}" method="post">
         <form action="/action_page.php">
 
 
