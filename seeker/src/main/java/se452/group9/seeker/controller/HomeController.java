@@ -46,6 +46,6 @@ public class HomeController {
         Iterable<Job> jobs = service.listAll(keyword);
         model.addAttribute("jobs", jobs);
         model.addAttribute("keyword", keyword);  
-        return "jobPosts";
+        return "jobsListing";
     }
 }
