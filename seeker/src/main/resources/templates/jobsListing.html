@@ -68,8 +68,8 @@
                     <div class="card-body">
                         <div>
                             <div class="card-title" th:text = "${job.title}"></div>
-                            <div class="jobType">Job Type</div>
-                        </div>
+                            <h6 style="float: right;" th:text="${job.datePosted}"></h6>
+                        </div>                
                         <div>
                             <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">Company</h6>
                             <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">Location</h6>

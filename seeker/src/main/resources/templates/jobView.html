@@ -9,9 +9,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-8">
-                <div th:each = "j: ${job}">
+        <div class="row" th:each="j: ${job}">
+                <div class="col-8">
                     <div class="mt-5">
                         <h3 th:text = "${j.title}"></h3>
                     </div>
@@ -28,22 +27,21 @@
                     </div>
                     <div class=" card mt-5">
                         <h4 class="card-header">Requirements</h4>
-                        <p class="textBox">There are many variations of passages of Lorem Ipsum availablethe majority have suffered alteration in some form slightlyyou need to be sure there isn't anything embarrassing hiddengenerators on the Internet tend to repeat predefined chunks as necessarymaking this the first true generator on the Internet It uses a dictionaryAbility to solve problems creatively and effectivelycombined with a handful of model sentence structuresstandard chunk of Lorem Ipsum used since the 1500s is reproduced</p>
+                        <p class="textBox" th:text="${j.requirements}">There are many variations of passages of Lorem Ipsum availablethe majority have suffered alteration in some form slightlyyou need to be sure there isn't anything embarrassing hiddengenerators on the Internet tend to repeat predefined chunks as necessarymaking this the first true generator on the Internet It uses a dictionaryAbility to solve problems creatively and effectivelycombined with a handful of model sentence structuresstandard chunk of Lorem Ipsum used since the 1500s is reproduced</p>
+                    </div>
+                </div>
+                <div class="col-4" th:each="jt: ${jobType}">
+                    <div class="mt-5 ml-3 pl-3 jobOverview">
+                        <h4 class="overviewTxt pt-4">Job Overview</h4>
+                        <h6 class="overviewTxt" th:inline="text">Date Posted: [[${j.datePosted}]]</h6>
+                        <h6 class="overviewTxt">Location: </h6>
+                        <h6 class="overviewTxt" th:inline="text">Job Type: [[${jt.type}]]</h6>
+                        <div class="overviewBtn">
+                            <button type="button" class="btn btn-success"><a href="#">Apply</a></button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="mt-5 ml-3 pl-3 jobOverview">
-                    <h4 class="overviewTxt pt-4">Job Overview</h4>
-                    <h6 class="overviewTxt">Posted Date: </h6>
-                    <h6 class="overviewTxt">Location: </h6>
-                    <h6 class="overviewTxt">Job Type: </h6>
-                    <div class="overviewBtn">
-                        <button type="button" class="btn btn-success"><a href="#">Apply</a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </body>
 </html>

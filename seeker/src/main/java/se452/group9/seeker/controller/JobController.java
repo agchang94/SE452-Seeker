@@ -1,9 +1,11 @@
 package se452.group9.seeker.controller;
 
 import se452.group9.seeker.model.Job;
+import se452.group9.seeker.model.JobSkill;
 import se452.group9.seeker.model.JobType;
 import se452.group9.seeker.model.Student;
 import se452.group9.seeker.repo.JobRepository;
+import se452.group9.seeker.repo.JobSkillRepository;
 import se452.group9.seeker.repo.JobTypeRepository;
 import se452.group9.seeker.repo.StudentRepository;
 
@@ -32,13 +34,15 @@ public class JobController {
 
 	private final JobRepository jobRepository;
     private final JobTypeRepository jobTypeRepository;
+    private final JobSkillRepository jobSkillRepository;
     private long id;
     // private final StudentRepository studentRepository;
 	
 	@Autowired
-	public JobController(JobRepository jobRepository, JobTypeRepository jobTypeRepository){
+	public JobController(JobRepository jobRepository, JobTypeRepository jobTypeRepository, JobSkillRepository jobSkillRepository){
 		this.jobRepository = jobRepository;
         this.jobTypeRepository = jobTypeRepository;
+        this.jobSkillRepository = jobSkillRepository;
 
         // this.studentRepository=studentRepository;
 	} 
@@ -51,6 +55,7 @@ public class JobController {
     @GetMapping("jobView/{id}")
     public String jobView(@PathVariable("id") long id, Model model){
         model.addAttribute("job", jobRepository.getOne(id));
+        jobTypeRepository.findById(id).ifPresent(o -> model.addAttribute("jobType", o));
         return "jobView";
     }
 
@@ -86,7 +91,23 @@ public class JobController {
         // }
         jobType.setId(id);
         jobTypeRepository.save(jobType);
-        return "redirect:../jobsListing";
+        return "redirect:addJobSkill";
+    }
+
+    @GetMapping("addJobSkill")
+    public String getJobSkill(Model model, JobSkill jobSkill){
+        model.addAttribute("jobSkillCarry", jobRepository.getOne(id));
+        return "addJobSkill";
+    }
+
+    @PostMapping("addJobSkill")
+    public String addJobType(JobSkill jobSkill) {
+        // if (result.hasErrors()) {
+        //     return "addJobType";
+        // }
+        jobSkill.setId(id);
+        jobSkillRepository.save(jobSkill);
+        return "redirect:/jobsListing";
     }
 
     // @GetMapping("addRegister")
