@@ -47,6 +47,7 @@ public class JobController {
 		this.jobRepository = jobRepository;
         this.jobTypeRepository = jobTypeRepository;
         this.jobSkillRepository = jobSkillRepository;
+    }
 
         // this.studentRepository=studentRepository;
     // private final StudentRepository studentRepository;
