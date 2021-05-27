@@ -75,30 +75,3 @@ public class StudentProfileController {
         return "register_success";
     }
     
-    
-    @GetMapping("studentcerts")
-    public String showCertsForm(Model model) {
-        model.addAttribute("studentcerts", new StudentCerts());
-        return "addCerts";
-    }
-
-    @PostMapping("studentcerts")
-    public String addCerts(StudentCerts studentCerts){
-        studentCertsRepository.save(studentCerts);
-        return "register_success"; 
-    }
-
-    @GetMapping("studentskills")
-    public String showSkillsForm(Model model) {
-        model.addAttribute("jobskill", new JobSkill());
-        return "addSkill";
-    }
-
-    @PostMapping("studentskills")
-    public String addSkills(JobSkill jobSkill) {
-        jobSkillRepository.save(jobSkill);
-        return "register_success";
-    }
-    }
-
-
