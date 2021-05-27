@@ -28,7 +28,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/jobs/")
+@RequestMapping("/profile/")
 public class StudentProfileController {
     private final StudentRepository studentRepository;
     private final StudentAcademicRepository studentAcademicRepository;
