@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface JobRepository extends JpaRepository<Job, Long> {
 
     @Query("Select j from Job j where j.title like %?1%")
-    public List<Job> search(String keyword);
+    public List<Job> searchByTitle(String keyword);
 }
