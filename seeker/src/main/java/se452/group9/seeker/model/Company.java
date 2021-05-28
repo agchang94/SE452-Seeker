@@ -28,7 +28,7 @@ public class Company {
     @GeneratedValue
     @Min(value = 1, message = "company ID must be greater than 0")
     @Max(value = 99999999, message = "company ID can be at most 8 digits")
-    private int companyID;
+    private long companyID;
 
     @Column(name = "companyName")
     @Size(min = 1, max = 50, message = "limit for company name is 50 chars.")
