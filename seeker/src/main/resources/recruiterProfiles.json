@@ -4,20 +4,23 @@
         "recruiterCompany": "Capital One",
         "fname": "John",
         "lname": "Smith",
-        "email": "jSmith1@depaul.edu"
+        "email": "jSmith1@depaul.edu",
+        "_class": "se452.group9.seeker.model.Recruiter"
     },
     {
         "recruiterID": 2,
         "recruiterCompany": "AllState",
         "fname": "David",
         "lname": "Lee",
-        "email": "dLee2@depaul.edu"
+        "email": "dLee2@depaul.edu",
+        "_class": "se452.group9.seeker.model.Recruiter"
     },
     {
         "recruiterID": 3,
         "recruiterCompany": "Motorola Solutions",
         "fname": "Jane",
         "lname": "Doe",
-        "email": "jDoe3@depaul.edu"
+        "email": "jDoe3@depaul.edu",
+        "_class": "se452.group9.seeker.model.Recruiter"
     }
 ]

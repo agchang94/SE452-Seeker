@@ -38,7 +38,7 @@ public class CompanyController {
         }*/
 
         companyService.add(company);
-        return "redirect:listCompanies";
+        return "redirect:/recruiter/addRecruiter";
     }    
     
     

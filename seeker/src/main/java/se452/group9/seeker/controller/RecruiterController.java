@@ -37,6 +37,11 @@ public class RecruiterController {
         return "listRecruiters";
 	}
 
+    @GetMapping("recruiterProfile")
+    public String redirectToRecruiterProfile() {
+        return "recruiterProfile";
+    }
+
 	@PostMapping("addRecruiter")
     public String addRecruiter(@Valid Recruiter recruiter, BindingResult result, Model model) {
         /*if (result.hasErrors()) {
@@ -47,8 +52,11 @@ public class RecruiterController {
         recruiterIDTracker = recruiterIDTracker + 1;
 
         recruiterRepository.save(recruiter);
-        return "redirect:listRecruiters";
+        return "redirect:recruiterProfile";
     }
+
+
+    
 
 
 

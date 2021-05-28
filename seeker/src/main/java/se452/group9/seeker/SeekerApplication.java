@@ -365,7 +365,7 @@ return(args) -> {
 			Recruiter rec = repository.findByrecruiterID(4);
 
 			
-			// if recruiter with id 403 is not in database, add him
+			// if recruiter with id 4 is not in database, add him
 			if((rec == null) || (rec.getRecruiterID() != 4)) {
 				Recruiter newRecruit = new Recruiter();
 				newRecruit.setRecruiterID(4);
