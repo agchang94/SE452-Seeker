@@ -2,8 +2,6 @@ package se452.group9.seeker.service;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
-
-import org.h2.engine.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
