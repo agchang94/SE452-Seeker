@@ -13,7 +13,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Document(collection = "jobSkills")
 @Data
 @Getter 

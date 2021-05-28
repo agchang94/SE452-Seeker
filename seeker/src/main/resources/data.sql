@@ -96,7 +96,7 @@ INSERT INTO Applications (applicationID, studentID, companyID, applicationDate, 
     (603,'Software Developer','Develops and codes software programs, algorithms and automated processes');
 
 INSERT INTO companies (companyID,companyName,companyAddress,companyInfo) VALUES
-    (500,'Capitol One','Chicago, IL 60695', 'A bank holding company'),
+    (500,'Capital One','Chicago, IL 60695', 'A bank holding company'),
     (501,'AllState','2775 Sanders Rd, NORTHBROOK, IL 60062-6110', 'An insurance company'),
     (502,'Motorola Solutions','500 W. Monroe St, Chicago, IL', 'data communications and telecommunications equipment provider');
 

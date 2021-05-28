@@ -7,5 +7,4 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface RecruiterRepository extends MongoRepository<Recruiter, Integer> {
  
     Recruiter findByrecruiterID(int id);
-    Recruiter deleteByrecruiterID(int id);
 }

@@ -11,6 +11,5 @@ public interface ICompanyService {
 
     public Company findBycompanyName(String companyName);
     
-    public void deleteBycompanyID(int id);
     
 }

@@ -35,7 +35,15 @@
                                 <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
                             </div>
                             
-                            
+                            <div class="form-group col-md-8">
+                                <label for="recruiterCompany">Select company:</label>
+                                <select class="form-control" th:field="*{recruiterCompany}" id="recruiterCompany" name="recruiterCompany">
+                                  <option value="Capital One">Capital One</option>
+                                  <option value="AllState">AllState</option>
+                                  <option value="Motorola Solutions">Motorola Solutions</option>
+                                  <option value="FakeCompany">FakeCompany</option>
+                                </select>
+                            </div>
 
                             <div class="form-group col-md-8"></div>
                             <div class="col-md-6">

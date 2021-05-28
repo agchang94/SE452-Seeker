@@ -13,28 +13,23 @@ import javax.persistence.Id;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 //@Entity
 //@Table(name = "recruiters")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Document(collection = "recruiterProfiles")
 public class Recruiter {
 
     @Id
     @GeneratedValue
-    //@Min(value = 1, message = "recruiter ID must be greater than 0")
-    //@Max(value = 99999999, message = "recruiter ID can be at most 8 digits")
-    private int recruiterID;
+    private long recruiterID;
 
-    //@Column(name = "companyID")
-    //@Min(value = 1, message = "company ID must be greater than 0")
-    //@Max(value = 99999999, message = "company ID can be at most 8 digits")
-    private int companyID;
+    private String recruiterCompany;
 
     //@Column(name = "fname")
     //@Size(max = 50, message = "first name can be at most 50 chars")

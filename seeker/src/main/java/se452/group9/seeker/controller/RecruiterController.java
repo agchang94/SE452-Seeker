@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,10 +18,12 @@ import se452.group9.seeker.repo.RecruiterRepository;
 public class RecruiterController {
     
     private final RecruiterRepository recruiterRepository;
+    private long recruiterIDTracker;
 
     @Autowired
     public RecruiterController (RecruiterRepository recruiterRepository) {
         this.recruiterRepository = recruiterRepository;
+        this.recruiterIDTracker = 5;
     }
 
 	@GetMapping("addRecruiter")
@@ -42,15 +43,13 @@ public class RecruiterController {
             return "addRecruiter";
         }*/
 
+        recruiter.setRecruiterID(recruiterIDTracker);
+        recruiterIDTracker = recruiterIDTracker + 1;
+
         recruiterRepository.save(recruiter);
         return "redirect:listRecruiters";
     }
 
-    @GetMapping("/delete/{recruiterID}")
-    public String delete(@PathVariable("recruiterID") int recruiterID, Model model) {
-        recruiterRepository.deleteByrecruiterID(recruiterID);
-        return "redirect:listRecruiters";
-    }
 
 
 }

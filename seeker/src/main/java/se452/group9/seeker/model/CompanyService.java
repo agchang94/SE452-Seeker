@@ -34,9 +34,6 @@ public class CompanyService implements ICompanyService {
         return companyRepository.findBycompanyName(companyName).get(0);
     }
     
-    @Override
-    public void deleteBycompanyID(int id) {
-        companyRepository.deleteById(id);
-    }
+    
     
 }

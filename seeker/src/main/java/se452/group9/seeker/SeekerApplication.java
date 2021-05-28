@@ -50,8 +50,6 @@ public class SeekerApplication {
 
   private static final Logger log = LoggerFactory.getLogger(SeekerApplication.class);
 
-
-
   @Bean
   public CommandLineRunner saveJobAlert(JobAlertRepository repository) {
     return (args) -> {
@@ -262,46 +260,6 @@ return(args) -> {
 	// private static final Logger log = LoggerFactory.getLogger(SeekerApplication.class);
 
 	@Bean
-	public CommandLineRunner addRecruiter(RecruiterRepository repository) {
-		return (args) -> {
-			log.info("--------  Adding recruiter Chris Field ----------- ");
-
-			Recruiter rec = repository.findByrecruiterID(404);
-
-			
-			// if recruiter with id 404 is not in database, add him
-			if((rec == null) || (rec.getRecruiterID() != 404)) {
-				Recruiter newRecruit = new Recruiter();
-				newRecruit.setRecruiterID(404);
-				newRecruit.setCompanyID(502);
-				newRecruit.setFname("Chris");
-				newRecruit.setLname("Field");
-				newRecruit.setEmail("test01@depaul.edu");
-
-				repository.save(newRecruit);
-			}
-			else {
-				log.info("recruiter with recruiterID [404] is already in database");
-			}
-			
-			log.info("----------------------------------------------------- ");
-
-		};
-	}
-
-	@Bean
-	public CommandLineRunner showRecruiters(RecruiterRepository repository) {
-		return (args) -> {
-			// fetching recruiters
-			log.info("--------  Recruiters found with findAll() ----------- ");
-			repository.findAll().forEach((recruiter)-> {
-				log.info(recruiter.toString());
-			});
-			log.info("------------------------------------------------------");
-		};
-	}
-
-	@Bean
 	public CommandLineRunner addCompanyJobs(CompanyRepository companyRepo, JobRepository jobRepo) {
 		return (args) -> {
 			log.info("--------  Adding jobs to the job table  ----------");
@@ -340,10 +298,10 @@ return(args) -> {
 			Company c3 = new Company();
 			Company c4 = new Company();
 
-			c1.setCompanyName("Capitol One");
+			c1.setCompanyName("Capital One");
 			c2.setCompanyName("AllState");
 			c3.setCompanyName("Motorola Solutions");
-			c4.setCompanyName("DummyCompany1");
+			c4.setCompanyName("FakeCompany");
 
 			c1.setAddress("Chicago, IL 60695");
 			c2.setAddress("2775 Sanders Rd, NORTHBROOK, IL 60062");
@@ -394,6 +352,46 @@ return(args) -> {
 			log.info("--------  Companies found with findAll() ----------- ");
 			repository.findAll().forEach((company)-> {
 				log.info(company.toString());
+			});
+			log.info("------------------------------------------------------");
+		};
+	}
+
+	@Bean
+	public CommandLineRunner addRecruiter(RecruiterRepository repository) {
+		return (args) -> {
+			log.info("--------  Adding recruiter Chris Field ----------- ");
+
+			Recruiter rec = repository.findByrecruiterID(4);
+
+			
+			// if recruiter with id 403 is not in database, add him
+			if((rec == null) || (rec.getRecruiterID() != 4)) {
+				Recruiter newRecruit = new Recruiter();
+				newRecruit.setRecruiterID(4);
+				newRecruit.setRecruiterCompany("FakeCompany");
+				newRecruit.setFname("Chris");
+				newRecruit.setLname("Field");
+				newRecruit.setEmail("test01@depaul.edu");
+
+				repository.save(newRecruit);
+			}
+			else {
+				log.info("recruiter with recruiterID [4] is already in database");
+			}
+			
+			log.info("----------------------------------------------------- ");
+
+		};
+	}
+
+	@Bean
+	public CommandLineRunner showRecruiters(RecruiterRepository repository) {
+		return (args) -> {
+			// fetching recruiters
+			log.info("--------  Recruiters found with findAll() ----------- ");
+			repository.findAll().forEach((recruiter)-> {
+				log.info(recruiter.toString());
 			});
 			log.info("------------------------------------------------------");
 		};
