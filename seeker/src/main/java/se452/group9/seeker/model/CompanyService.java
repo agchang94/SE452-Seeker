@@ -25,7 +25,7 @@ public class CompanyService implements ICompanyService {
     }
   
     @Override
-    public Company findBycompanyID(int id) {
+    public Company findBycompanyID(long id) {
         return companyRepository.findById(id).get();
     }
 

@@ -19,7 +19,7 @@ CREATE SEQUENCE hibernate_sequence START WITH 100 INCREMENT BY 1;
 */
 
 CREATE TABLE companies (
-    companyID       INT AUTO_INCREMENT PRIMARY KEY,    
+    companyID       NUMBER(8) AUTO_INCREMENT PRIMARY KEY,    
     companyName     VARCHAR(50),
     companyAddress  VARCHAR(250),
     companyInfo     VARCHAR(250),
@@ -27,9 +27,9 @@ CREATE TABLE companies (
 );
 
 CREATE TABLE company_jobs (
-    id              INT AUTO_INCREMENT PRIMARY KEY,
-    company_ID      INT(8),
-    job_ID          INT(8),
+    id              NUMBER(8) AUTO_INCREMENT PRIMARY KEY,
+    company_ID      NUMBER(8),
+    job_ID          NUMBER(8),
     PRIMARY KEY(id)
 );
 

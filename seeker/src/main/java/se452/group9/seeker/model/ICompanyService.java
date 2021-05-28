@@ -7,7 +7,7 @@ public interface ICompanyService {
     
     public Company add(Company company);
   
-    public Company findBycompanyID(int id);
+    public Company findBycompanyID(long id);
 
     public Company findBycompanyName(String companyName);
     

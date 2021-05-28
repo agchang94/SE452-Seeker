@@ -4,7 +4,7 @@ import se452.group9.seeker.model.Recruiter;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface RecruiterRepository extends MongoRepository<Recruiter, Integer> {
+public interface RecruiterRepository extends MongoRepository<Recruiter, Long> {
  
-    Recruiter findByrecruiterID(int id);
+    Recruiter findByrecruiterID(long id);
 }
