@@ -61,5 +61,9 @@ public class Company {
         jobs.add(newJob);
     }
 
+    public List<Job> getCompanyJobs(){
+        return jobs;
+    }
+
 
 }

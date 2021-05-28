@@ -28,22 +28,22 @@ public class HomeController {
     private final SearchService service;
     
     @Autowired
-	public HomeController(JobRepository jobRepository){
+	public HomeController(JobRepository jobRepository, LocationRepository location, CompanyRepository company){
 		this.jobRepository = jobRepository;
-        service = new SearchService(jobRepository);
+        service = new SearchService(jobRepository, location, company);
     }
 
     @GetMapping("jobsListing")
     public String listAllJobs(Model model){
         //Iterable<Job> jobs = jobRepository.findAll();
-        Iterable<Job> jobs = service.listAll(null);
+        Iterable<Job> jobs = service.search(null);
         model.addAttribute("jobs", jobs);
         return "jobsListing";
     }    
     
     @GetMapping("searchResults")
     public String searchResults(Model model, @Param("keyword") String keyword){
-        Iterable<Job> jobs = service.listAll(keyword);
+        Iterable<Job> jobs = service.search(keyword);
         model.addAttribute("jobs", jobs);
         model.addAttribute("keyword", keyword);  
         return "jobsListing";
