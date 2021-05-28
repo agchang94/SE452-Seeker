@@ -88,14 +88,15 @@ INSERT INTO Applications (applicationID, studentID, companyID, applicationDate, 
 (123, 111, 111, '2021-04-28', 'active'),
 (456, 111, 333, '2021-04-28', 'inactive'),
 (789, 111, 222, '2021-04-28', 'active');
-INSERT INTO dummy_jobs (jobID,jobTitle,jobInfo) VALUES 
+
+/*INSERT INTO dummy_jobs (jobID,jobTitle,jobInfo) VALUES 
     (600,'Junior Software Developer','Skills with relational databases and moderately advanced SQL is a must'),
     (601,'Python Software Engineer','Work on backend applications to support new features and capabilities'),
     (602,'Front End Developer','Build front-end architectures that integrate easily with other systems and technologies'),
     (603,'Software Developer','Develops and codes software programs, algorithms and automated processes');
 
 INSERT INTO companies (companyID,companyName,companyAddress,companyInfo) VALUES
-    (500,'Capitol One','Chicago, IL 60695', 'A bank holding company'),
+    (500,'Capital One','Chicago, IL 60695', 'A bank holding company'),
     (501,'AllState','2775 Sanders Rd, NORTHBROOK, IL 60062-6110', 'An insurance company'),
     (502,'Motorola Solutions','500 W. Monroe St, Chicago, IL', 'data communications and telecommunications equipment provider');
 
@@ -104,6 +105,7 @@ INSERT INTO company_jobs (company_ID, job_ID) VALUES
     (500,601),
     (501,602),
     (502,603);
+*/
 
 /*INSERT INTO STUDENT_LOGS (studentID, lastLoginDate, lastApplicationDate) VALUES (9999, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO STUDENT_LOGS (studentID, lastLoginDate, lastApplicationDate) VALUES (1111, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
