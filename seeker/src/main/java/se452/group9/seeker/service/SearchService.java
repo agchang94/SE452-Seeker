@@ -19,7 +19,15 @@ public class SearchService {
 
     public List<Job> listAll(String keyword){
         if (keyword != null) {
-            return repo.search(keyword);
+            //search parameters to display results regardless of case
+            String upper = keyword.toUpperCase();
+            String lower = keyword.toLowerCase();
+            String k = upper.charAt(0) + lower.substring(1);
+
+            List<Job> search = repo.search(k);
+            search.addAll(repo.search(upper));
+            search.addAll(repo.search(lower));
+            return search;
         }
         return repo.findAll();
     }
