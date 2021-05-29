@@ -58,8 +58,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //provide spring security configuration details
-        http.authorizeRequests().antMatchers("/*").permitAll()
-        .and().formLogin()
+        http.authorizeRequests().antMatchers("/*").permitAll().and()
+        .authorizeRequests().antMatchers("/console/**").permitAll().and().formLogin()
         .usernameParameter("email").defaultSuccessUrl("/")
         .permitAll()
         .and()
@@ -67,8 +67,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .invalidateHttpSession(true)
         .clearAuthentication(true)
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-        .logoutSuccessUrl("/login?logout").permitAll();
-
+        .logoutSuccessUrl("/login?logout").permitAll();;
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
         
 
     

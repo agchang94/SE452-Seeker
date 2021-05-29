@@ -24,26 +24,26 @@ import javax.validation.Valid;
 @RequestMapping("/")
 public class HomeController {
 
-    private final JobRepository jobRepository;
+    //private final JobRepository jobRepository;
     private final SearchService service;
     
     @Autowired
-	public HomeController(JobRepository jobRepository){
-		this.jobRepository = jobRepository;
-        service = new SearchService(jobRepository);
+	public HomeController(JobRepository jobRepository, CompanyRepository company){
+		//this.jobRepository = jobRepository;
+        service = new SearchService(jobRepository, company);
     }
 
     @GetMapping("jobsListing")
     public String listAllJobs(Model model){
         //Iterable<Job> jobs = jobRepository.findAll();
-        Iterable<Job> jobs = service.listAll(null);
+        Iterable<Job> jobs = service.search(null);
         model.addAttribute("jobs", jobs);
         return "jobsListing";
     }    
     
     @GetMapping("searchResults")
     public String searchResults(Model model, @Param("keyword") String keyword){
-        Iterable<Job> jobs = service.listAll(keyword);
+        Iterable<Job> jobs = service.search(keyword);
         model.addAttribute("jobs", jobs);
         model.addAttribute("keyword", keyword);  
         return "jobsListing";
