@@ -27,7 +27,7 @@ public class SearchService {
             List<Job> j = searchByTitle(keyword);
             j.addAll(searchByLocation(keyword));
             j.addAll(searchByCompany(keyword));
-            return j;
+            return removeDupes(j);
         }
         return jobRepo.findAll();
     }
@@ -54,5 +54,17 @@ public class SearchService {
             job.addAll(c.getJobs());
         }
         return job;
+    }
+
+    private List<Job> removeDupes(List<Job> jobs){
+        
+        List<Job> j = new ArrayList<>();
+
+        for(Job job : jobs){
+            if(!j.contains(job)){
+                j.add(job);
+            }
+        }
+        return j;
     }
 }
