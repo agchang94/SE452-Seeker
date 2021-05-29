@@ -31,7 +31,7 @@ public class CompanyService implements ICompanyService {
 
     @Override
     public Company findBycompanyName(String companyName) {
-        return companyRepository.findBycompanyName(companyName).get(0);
+        return companyRepository.findByCompanyName(companyName.toLowerCase()).get(0);
     }
     
     
