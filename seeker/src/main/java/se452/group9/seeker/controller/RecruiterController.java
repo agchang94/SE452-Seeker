@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import se452.group9.seeker.model.Company;
+import se452.group9.seeker.model.ICompanyService;
 import se452.group9.seeker.model.Recruiter;
 import se452.group9.seeker.repo.RecruiterRepository;
 
@@ -17,11 +19,13 @@ import se452.group9.seeker.repo.RecruiterRepository;
 @RequestMapping("/recruiter/")
 public class RecruiterController {
     
+    private final ICompanyService companyService;
     private final RecruiterRepository recruiterRepository;
     private long recruiterIDTracker;
 
     @Autowired
-    public RecruiterController (RecruiterRepository recruiterRepository) {
+    public RecruiterController (RecruiterRepository recruiterRepository, ICompanyService companyService) {
+        this.companyService = companyService;
         this.recruiterRepository = recruiterRepository;
         this.recruiterIDTracker = 5;
     }
@@ -32,7 +36,7 @@ public class RecruiterController {
     }
 
 	@GetMapping("listRecruiters")
-	public String listCompanies(Model model) {
+	public String listRecruiters(Model model) {
         model.addAttribute("recruiters", recruiterRepository.findAll());
         return "listRecruiters";
 	}
@@ -55,8 +59,27 @@ public class RecruiterController {
         return "redirect:recruiterProfile";
     }
 
+    /* Company Services  */
+    @GetMapping("addCompany")
+    public String addCompanyForm(Company company) {
+        return "addCompany";
+    }
 
-    
+	@GetMapping("listCompanies")
+	public String listCompanies(Model model) {
+        model.addAttribute("companies", companyService.findAll());
+        return "listCompanies";
+	}
+
+	@PostMapping("addCompany")
+    public String addCompany(@Valid Company company, BindingResult result, Model model) {
+        /*if (result.hasErrors()) {
+            return "addCompany";
+        }*/
+
+        companyService.add(company);
+        return "redirect:addRecruiter";
+    }    
 
 
 
