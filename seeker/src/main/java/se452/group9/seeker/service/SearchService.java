@@ -26,42 +26,39 @@ public class SearchService {
     
     public List<Job> search(String keyword){
         if(keyword != null ){
-            List<Job> j = searchByTitle(keyword);
-            j.addAll(searchByLocation(keyword));
+            String upper = keyword.toUpperCase();
+            String lower = keyword.toLowerCase();
+            String k = upper.charAt(0) + lower.substring(1);
+
+            List<Job> j = searchByTitle(upper, lower, k);
+            //j.addAll(searchByLocation(upper, lower, k));
             return j;
         }
         return jobRepo.findAll();
     }
 
-    private List<Job> searchByTitle(String keyword){
-        //search parameters to display results regardless of case
-        String upper = keyword.toUpperCase();
-        String lower = keyword.toLowerCase();
-        String k = upper.charAt(0) + lower.substring(1);
-
+    private List<Job> searchByTitle(String upper, String lower, String k){
         List<Job> search = jobRepo.searchByTitle(k);
         search.addAll(jobRepo.searchByTitle(upper));
         search.addAll(jobRepo.searchByTitle(lower));
         return search;      
     }
 
-    private List<Job> searchByLocation(String keyword){
-
-        //search parameters to display results regardless of case
-        String upper = keyword.toUpperCase();
-        String lower = keyword.toLowerCase();
-        String k = upper.charAt(0) + lower.substring(1);
-
+    /** 
+    private List<Job> searchByLocation(String upper, String lower, String k){
+        //find all the matching locations
         List<Location> loc = locationRepo.search(upper);
         loc.addAll(locationRepo.search(lower));
         loc.addAll(locationRepo.search(k));
 
         List<Job> job;
-
-        /** 
         for(Location l: loc){
             companyRepo.findBycompanyID(l.getCompanyID());
-        }*/
+        }
  
     }
+
+    private List<Job> searchByCompany(String keyword){
+
+    }*/
 }
