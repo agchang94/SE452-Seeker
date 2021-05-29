@@ -61,5 +61,11 @@ public class Company {
         jobs.add(newJob);
     }
 
+    public void removeJob(Job job) {
+        if (job == null) throw new IllegalArgumentException();
+
+        jobs.remove(job);
+    }
+
 
 }

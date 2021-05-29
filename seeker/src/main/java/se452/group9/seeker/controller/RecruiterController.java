@@ -59,7 +59,9 @@ public class RecruiterController {
         return "redirect:recruiterProfile";
     }
 
-    /* Company Services  */
+    
+
+    /***  Company Services  ***/
     @GetMapping("addCompany")
     public String addCompanyForm(Company company) {
         return "addCompany";
@@ -80,6 +82,12 @@ public class RecruiterController {
         companyService.add(company);
         return "redirect:addRecruiter";
     }    
+
+    @GetMapping("updateCompany")
+	public String updateCompanies(Model model) {
+        model.addAttribute("companies", companyService.findAll());
+        return "updateCompany";
+	}
 
 
 
