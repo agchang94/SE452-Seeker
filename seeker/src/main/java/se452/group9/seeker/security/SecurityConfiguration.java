@@ -51,14 +51,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
+        auth.authenticationProvider(authenticationProvider()).jdbcAuthentication()
+        .dataSource(dataSource);;
     }
     
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //provide spring security configuration details
-        http.authorizeRequests().antMatchers("/*").permitAll()
+
+        /*http.authorizeRequests().antMatchers("/*").permitAll()
         .and().formLogin()
         .usernameParameter("email").defaultSuccessUrl("/")
         .permitAll()
@@ -67,8 +69,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .invalidateHttpSession(true)
         .clearAuthentication(true)
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-        .logoutSuccessUrl("/login?logout").permitAll();
+        .logoutSuccessUrl("/login?logout").permitAll(); */
+        http.authorizeRequests().antMatchers("/*").permitAll().and()
+        .authorizeRequests().antMatchers("/console/**").permitAll().and().formLogin()
+        .usernameParameter("email").defaultSuccessUrl("/")
+        .permitAll()
+        .and()
+        .logout()
+        .invalidateHttpSession(true)
+        .clearAuthentication(true)
+        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+        .logoutSuccessUrl("/login?logout").permitAll();;
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
 
+
+        
         
 
     

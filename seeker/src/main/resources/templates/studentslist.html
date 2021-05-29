@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>List of Students</title> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/df05b1b135.js"></script>
+</head>
+<body>
+
+
+<div class="container my-2">
+    <h1>Find Your Name and Edit Your Details! Please Do not Touch Anyone Elses Information!</h1>
+    <h2>Students List</h2>
+
+    <table border="1" class= "table table-striped table-responsive-md">
+        <thread>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Address</th>
+                <th>Update Profile Info</th>
+                <th>Update Academics</th>
+                <th>Update Skills</th>
+                <th>Update Resume</th>
+                <th>Update Certs</th>
+            </tr>
+        </thread>
+        <tbody>
+            <tr th:each="student : ${listStudents}">
+                <td th:text="${student.fname}"></td>
+                <td th:text="${student.lname}"></td>
+                <td th:text="${student.email}"></td>
+                <td> <a th:href="@{/edit/{id}(id=${student.id})}"
+                class = "btn btn-primary" >Update Profile</a> </td>
+
+                <td> <a th:href="@{/edit/{id}(id=${student.id})}"
+                    class = "btn btn-primary" >Update Academics</a> </td>
+
+                    <td> <a th:href="@{/updatestudent/{id}(id=${student.id})}"
+                        class = "btn btn-primary" >Update Skills</a> </td>
+                    
+                    <td> <a th:href="@{/updatestudent/{id}(id=${student.id})}"
+                            class = "btn btn-primary" >Update Resume</a> </td>
+                    
+                    <td> <a th:href="@{/updatestudent/{id}(id=${student.id})}"
+                                class = "btn btn-primary" >Update Certs</a> </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

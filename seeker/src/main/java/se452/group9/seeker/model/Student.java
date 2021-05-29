@@ -16,7 +16,6 @@ public class Student {
     // @GeneratedValue(strategy = GenerationType.AUTO) -> Would use this to auto generate values for the primary key 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ST_ID")
     private long id;
     @Column(name = "ST_fname")
     private String fname;
@@ -51,5 +50,14 @@ public class Student {
     @OneToMany (mappedBy = "student", fetch = FetchType.LAZY,
     cascade = CascadeType.ALL)
     private List<StudentResume> studentResumes;
+
+    public Long getId() {
+		return id;
+	}
+
+    public void setId(Long id) {
+		this.id = id;
+	}
+
 
 }
