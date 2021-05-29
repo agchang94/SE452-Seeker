@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import se452.group9.seeker.repo.JobRepository;
-//import se452.group9.seeker.service.JobService;
 import se452.group9.seeker.service.SearchService;
 
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -24,18 +22,15 @@ import javax.validation.Valid;
 @RequestMapping("/")
 public class HomeController {
 
-    private final JobRepository jobRepository;
     private final SearchService service;
     
     @Autowired
-	public HomeController(JobRepository jobRepository, LocationRepository location, CompanyRepository company){
-		this.jobRepository = jobRepository;
-        service = new SearchService(jobRepository, location, company);
+	public HomeController(JobRepository jobRepository, CompanyRepository company){
+        service = new SearchService(jobRepository, company);
     }
 
     @GetMapping("jobsListing")
     public String listAllJobs(Model model){
-        //Iterable<Job> jobs = jobRepository.findAll();
         Iterable<Job> jobs = service.search(null);
         model.addAttribute("jobs", jobs);
         return "jobsListing";

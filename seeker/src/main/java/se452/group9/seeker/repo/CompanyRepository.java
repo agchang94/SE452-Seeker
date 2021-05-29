@@ -8,6 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 public interface CompanyRepository extends JpaRepository<Company, Long> {
     Company findBycompanyID(long id);
 
-    //@Query("SELECT c FROM companies c WHERE c.companyName is LIKE %?1%")
-    List<Company> findBycompanyName(String companyName);
+    @Query("SELECT c FROM Company c WHERE lower(c.companyName) LIKE %?1%")
+    List<Company> findByCompanyName(String companyName);
+
+    @Query("SELECT c from Company c where lower(c.address) LIKE %?1%")
+    List<Company> findByAddress(String address);
 }

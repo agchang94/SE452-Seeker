@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface JobRepository extends JpaRepository<Job, Long> {
-
-    @Query("Select j from Job j where j.title like %?1%")
-    public List<Job> searchByTitle(String keyword);
+    @Query("Select j from Job j where lower(j.title) like %?1%")
+    public List<Job> searchByTitle(String title);
 }
