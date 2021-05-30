@@ -48,4 +48,12 @@ public class HomeController {
         model.addAttribute("keyword", keyword);  
         return "jobsListing";
     }
+
+
+    @GetMapping("choose_user")
+    public String choose_user() {
+        return "choose_user";
+    }
+
+
 }

@@ -12,5 +12,5 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
     List<Company> findByCompanyName(String companyName);
 
     @Query("SELECT c from Company c where lower(c.address) LIKE %?1%")
-    List<Company> findByAddress(String address);
+    List<Company> findByAddress(String address);    
 }

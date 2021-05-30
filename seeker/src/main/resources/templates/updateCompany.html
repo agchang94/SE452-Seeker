@@ -1,47 +1,86 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>List Companies</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Browse all Jobs</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <script src="https://use.fontawesome.com/df05b1b135.js"></script>
 </head>
 
-<body>
-<div class="container my-2">
-    <div class="card">
-        <div class="card-body">
-            <div th:switch="${companies}" class="container my-5">
-                <div class="col-md-10">
-                    <h2 th:case="null">No Companies yet!</h2>
-                    <div th:case="*">
-                        <table class="table table-striped table-responsive-md">
-                            <thead>
-                            <tr>
-                                <th>companyID</th>
-                                <th>companyName</th>
-                                <th>Edit</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="company : ${companies}">
-                                <td th:text="${company.companyID}"></td>
-                                <td th:text="${company.companyName}"></td>
-                                <td><a th:href="@{/recruiter/edit/{id}(id=${student.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
 
+<body class="bg-light">
+    <h1 class="text-center font-weight-bold mt-5">Browse Jobs</h1>
+    <br>
+    <div class="container">
+        <div class="row pt-3">
+            <div class="col-4">
+                <div class="row">
+                    <h3>Location</h3>
+                    <div class="form-group has-search">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" class="form-control" placeholder="Search">
+                      </div>
+                </div>
+                <div class="row mt-5">
+                    <h3>Job Category</h3>
+                    <div class="box">
+                        <select class="form-control">
+                          <option>Option 1</option>
+                          <option>Option 2</option>
+                          <option>Option 3</option>
+                          <option>Option 4</option>
+                          <option>Option 5</option>
+                        </select>
+                      </div>
+                </div>
+                <div class="row jobTypesCheck mt-5">
+                    <h3>Job Type</h3>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Full-Time
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                        <label class="form-check-label" for="defaultCheck2">
+                          Part-Time
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+                        <label class="form-check-label" for="defaultCheck3">
+                          Internship
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+                        <label class="form-check-label" for="defaultCheck4">
+                          Temporary
+                        </label>
+                      </div>
                 </div>
             </div>
+            <div class="col-8">
+                <div th:each = "job: ${jobs}" class="card mb-3">
+                    <div class="card-body">
+                        <div>
+                            <div class="card-title" th:text = "${job.title}"></div>
+                            <h6 style="float: right;" th:text="${job.datePosted}"></h6>
+                        </div>                
+                        <div>
+                            <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">Company</h6>
+                            <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">Location</h6>
+                            <button type="button" class="btn btn-success applyBtn"><a th:href="@{/jobs/jobView/{id}(id=${job.id})}">Apply</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
         </div>
+        
     </div>
-</div>
+                    
 </body>
-
 </html>

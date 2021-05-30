@@ -288,6 +288,11 @@ return(args) -> {
 			job3.setIsActive(true);
 			job4.setIsActive(true);
 
+			job1.setRequirements("College degree (Associates or Bachelors)");
+			job2.setRequirements("AWS, Python, Javascript, XML, JSON, MySQL etc.");
+			job3.setRequirements("2-5 years application development experience");
+			job4.setRequirements("Java, 1 year (Preferred). Master degree (Preferred)");
+
 			log.info("--------------------------------------------------");
 
 
