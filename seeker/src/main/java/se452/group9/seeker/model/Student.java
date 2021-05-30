@@ -25,15 +25,6 @@ public class Student {
     private String password;
     @Column(name = "ST_email")
     private String email; 
-   
-    @Column(name = "ST_state")
-    private String state;
-    @Column(name = "ST_city")
-    private String city;
-    @Column(name = "ST_address")
-    private String address;
-    @Column(name = "ST_zip")
-    private int zip;
     @Column(name = "ST_phone")
     private String phone;
     @Column(name = "ST_dob")

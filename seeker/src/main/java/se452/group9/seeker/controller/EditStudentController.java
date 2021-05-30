@@ -69,23 +69,23 @@ public class EditStudentController {
         return "editstudent";
     }
 
-    public Student getStudentById(Long id)
+    public Student getStudentById(long id)
 	{
 		System.out.println("getEmployeeById");
 		Optional<Student> employee = studentRepository.findById(id);
-		
+		Student student = null;
 		if(employee.isPresent()) {
-			return employee.get();
+			student=employee.get();
 		} else {
 			System.out.println("No employee record exist for given id");
 		}
-        return employee.get();
+        return student;
 	}
     
     
     
-    @RequestMapping(path = {"/edit", "/edit/{id}"})
-	public String editEmployeeById(Model model, @PathVariable("id") Long id) 
+    @RequestMapping(path = {"/edit/{id}"})
+	public String editEmployeeById(@PathVariable(value = "id") long id, Model model) 
 							
 	{
 		
@@ -117,10 +117,10 @@ public class EditStudentController {
 			student3.setFname(student.getFname());
             student3.setLname(student.getLname());
             student3.setEmail(student.getEmail());
-            student3.setState(student.getState());
+            /*student3.setState(student.getState());
             student3.setCity(student.getCity());
             student3.setAddress(student.getAddress());
-            student3.setZip(student.getZip());
+            student3.setZip(student.getZip()); */
             student3.setPhone(student.getPhone());
             student3.setDob(student.getDob());
             student3.setPassword(student.getPassword());

@@ -21,10 +21,10 @@ public class StudentReader {
                 student.setFname(fields[0]);
                 student.setLname(fields[1]);
                 student.setEmail(fields[2]);
-                student.setState(fields[3]);
+                /*student.setState(fields[3]);
                 student.setCity(fields[4]);
                 student.setAddress(fields[5].concat(" ").concat(fields[6]).concat(" ").concat(fields[7]));
-                student.setZip(Integer.parseInt(fields[8]));
+                student.setZip(Integer.parseInt(fields[8])); */
                 student.setPhone(fields[9]);
                 student.setDob((fields[10]));
                 student.setPassword(fields[11]);
