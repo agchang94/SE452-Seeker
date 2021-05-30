@@ -16,12 +16,12 @@ import se452.group9.seeker.repo.JobTypeRepository;
 public class SearchController {
 
     private final JobRepository jobRepository;
-    private final JobTypeRepository jobTypeRepository;
+    //private final JobTypeRepository jobTypeRepository;
 
     @Autowired
 	public SearchController(JobRepository jobRepository, JobTypeRepository jobTypeRepository){
 		this.jobRepository = jobRepository;
-        this.jobTypeRepository = jobTypeRepository;
+        //this.jobTypeRepository = jobTypeRepository;
 	}
 
     @GetMapping("jobsListing")
