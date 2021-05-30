@@ -24,15 +24,20 @@
                             <tr>
                                 <th>companyID</th>
                                 <th>companyName</th>
+                                <th>address</th>
+                                <th>companyInfo</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="company : ${companies}">
                                 <td th:text="${company.companyID}"></td>
                                 <td th:text="${company.companyName}"></td>
+                                <td th:text="${company.address}"></td>
+                                <td th:text="${company.companyInfo}"></td>
                             </tr>
                             </tbody>
                         </table>
+                        <a href="/recruiter/recruiterProfile" class="btn btn-primary">Back to Profile</a>
                     </div>
 
                 </div>

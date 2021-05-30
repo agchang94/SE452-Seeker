@@ -104,8 +104,8 @@ public class RecruiterController {
             return "updateCompany";
         }*/
 
-        companyService.add(company);
-        return "redirect:addRecruiter";
+        //companyService.add(company);
+        return "redirect:listCompanies";
     } 
 
     @GetMapping("manageJobs")
