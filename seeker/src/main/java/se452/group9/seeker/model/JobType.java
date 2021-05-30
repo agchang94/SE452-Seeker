@@ -12,27 +12,38 @@ package se452.group9.seeker.model;
 // import javax.validation.constraints.NotBlank;
 // import java.util.Date;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Document(collection = "jobTypes")
 @Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobType {
+
+    
 
     private long id;
     private String type;
 
-    public void setId(long id){
-        this.id = id;
-    }
-    public Long getId() {
-        return this.id;
-    }
+    // public void setId(long id){
+    //     this.id = id;
+    // }
+    // public Long getId() {
+    //     return this.id;
+    // }
 
-    public void setType(String type){
-        this.type = type;
-    }
-    public String getType() {
-        return this.type;
-    }
+    // public void setType(String type){
+    //     this.type = type;
+    // }
+    // public String getType() {
+    //     return this.type;
+    // }
 }
