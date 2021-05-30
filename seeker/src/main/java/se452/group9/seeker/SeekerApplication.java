@@ -55,31 +55,6 @@ public class SeekerApplication {
   }
 
   @Bean
-  public CommandLineRunner saveJobSkill(JobSkillRepository repository) {
-    return (args) -> {
-      JobSkill JobSkill1 = new JobSkill();
-      JobSkill1.setId(111);
-      JobSkill1.setSkills("Skill1, Skill2, Skill3");
-	  repository.deleteAll();  
-	  repository.save(JobSkill1);
-   
-    };
-  }
-
-  @Bean
-  public CommandLineRunner saveJobType(JobTypeRepository repository) {
-    return (args) -> {
-      JobType JobType1 = new JobType();
-      JobType1.setId(111);
-      JobType1.setType("Computer Engineer");;
-	  repository.deleteAll();  
-	  repository.save(JobType1);
-   
-    };
-  }
-
-
-  @Bean
   public CommandLineRunner saveSchool(SchoolRepository repository) {
     return (args) -> {
       School school1 = new School();
@@ -227,7 +202,7 @@ StudentResumeRepository resumeRepo ) {
 	// private static final Logger log = LoggerFactory.getLogger(SeekerApplication.class);
 
 	@Bean
-	public CommandLineRunner addCompanyJobs(CompanyRepository companyRepo, JobRepository jobRepo) {
+	public CommandLineRunner addCompanyJobs(CompanyRepository companyRepo, JobRepository jobRepo, JobTypeRepository jobTypeRepo, JobSkillRepository jobSkillRepo) {
 		return (args) -> {
 			log.info("--------  Adding jobs to the job table  ----------");
 			Job job1 = new Job();
@@ -240,10 +215,10 @@ StudentResumeRepository resumeRepo ) {
 			job3.setTitle("Front End Developer");
 			job4.setTitle("Software Developer");
 
-			job1.setDescription("Skills with relational databases and moderately advanced SQL is a must");
-			job2.setDescription("Work on backend applications to support new features and capabilities");
-			job3.setDescription("Build front-end frames that integrate easily with other systems and technologies");
-			job4.setDescription("Develops and codes software programs, algorithms and automated processes");
+			job1.setDesc("Skills with relational databases and moderately advanced SQL is a must");
+			job2.setDesc("Work on backend applications to support new features and capabilities");
+			job3.setDesc("Build front-end frames that integrate easily with other systems and technologies");
+			job4.setDesc("Develops and codes software programs, algorithms and automated processes");
 
 			job1.setDatePosted("2021-04-01");
 			job2.setDatePosted("2021-04-02");
@@ -255,10 +230,11 @@ StudentResumeRepository resumeRepo ) {
 			job3.setIsActive(true);
 			job4.setIsActive(true);
 
-			job1.setRequirements("College degree (Associates or Bachelors)");
+      job1.setRequirements("College degree (Associates or Bachelors)");
 			job2.setRequirements("AWS, Python, Javascript, XML, JSON, MySQL etc.");
 			job3.setRequirements("2-5 years application development experience");
 			job4.setRequirements("Java, 1 year (Preferred). Master degree (Preferred)");
+
 
 			log.info("--------------------------------------------------");
 
@@ -296,6 +272,28 @@ StudentResumeRepository resumeRepo ) {
 			jobRepo.save(job2);
 			jobRepo.save(job3);
 			jobRepo.save(job4);
+
+			JobType jobType1 = new JobType(job1.getId(),"Full-Time");
+			JobType jobType2 = new JobType(job2.getId(),"Part-Time");
+			JobType jobType3 = new JobType(job3.getId(),"Full-Time");
+			JobType jobType4 = new JobType(job4.getId(),"Temp");
+
+			JobSkill jobSkill1 = new JobSkill(job1.getId(), "Java, Angular, HTML");
+			JobSkill jobSkill2 = new JobSkill(job2.getId(), "JavaScript, Python");
+			JobSkill jobSkill3 = new JobSkill(job3.getId(), "Test");
+			JobSkill jobSkill4 = new JobSkill(job4.getId(), "Test2");
+
+
+			jobTypeRepo.save(jobType1);
+			jobTypeRepo.save(jobType2);
+			jobTypeRepo.save(jobType3);
+			jobTypeRepo.save(jobType4);
+
+			jobSkillRepo.save(jobSkill1);
+			jobSkillRepo.save(jobSkill2);
+			jobSkillRepo.save(jobSkill3);
+			jobSkillRepo.save(jobSkill4);
+
 
 			companyRepo.save(c1);
 			companyRepo.save(c2);
@@ -361,7 +359,7 @@ StudentResumeRepository resumeRepo ) {
 	public CommandLineRunner showRecruiters(RecruiterRepository repository) {
 		return (args) -> {
 			// fetching recruiters
-			log.info("--------  Recruiters found with findAll() ----------- ");
+			// log.info("--------  Recruiters found with findAll() ----------- ");
 			repository.findAll().forEach((recruiter)-> {
 				log.info(recruiter.toString());
 			});
@@ -411,11 +409,11 @@ StudentResumeRepository resumeRepo ) {
 	public CommandLineRunner showStudentResumes(StudentResumeRepository repository) {
 		return (args) -> {
 			// fetching student resumes
-			log.info("--------  Resumes found with findAll() ----------- ");
+			// log.info("--------  Resumes found with findAll() ----------- ");
 			repository.findAll().forEach((resume)-> {
 				log.info(resume.toString());
 			});
-			log.info("------------------------------------------------------");
+			// log.info("------------------------------------------------------");
 		};
 	}
 
@@ -423,11 +421,11 @@ StudentResumeRepository resumeRepo ) {
 	public CommandLineRunner showStudentLogs(StudentLogsRepository repository) {
 		return (args) -> {
 			// fetching student logs
-			log.info("--------  Logs found with findAll() ----------- ");
+			// log.info("--------  Logs found with findAll() ----------- ");
 			repository.findAll().forEach((logs)-> {
 				log.info(logs.toString());
 			});
-			log.info("------------------------------------------------------");
+			// log.info("------------------------------------------------------");
 		};
 	}
 
@@ -435,11 +433,11 @@ StudentResumeRepository resumeRepo ) {
 	public CommandLineRunner showStudentAttributes(StudentAttributesRepository repository) {
 		return (args) -> {
 			// fetching attributes
-			log.info("--------  Attributes found with findAll() ----------- ");
+			// log.info("--------  Attributes found with findAll() ----------- ");
 			repository.findAll().forEach((attributes)-> {
 				log.info(attributes.toString());
 			});
-			log.info("------------------------------------------------------");
+			// log.info("------------------------------------------------------");
 		};
 	}
 
