@@ -1,12 +1,9 @@
 package se452.Persistence;
 
 import java.io.BufferedReader;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
-import antlr.collections.List;
+import java.util.ArrayList;
+
 import se452.group9.seeker.model.*;
 
 public class StudentReader {

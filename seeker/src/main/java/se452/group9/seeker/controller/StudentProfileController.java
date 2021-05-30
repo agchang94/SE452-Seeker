@@ -1,12 +1,10 @@
 package se452.group9.seeker.controller;
 
-import se452.group9.seeker.model.Job;
 import se452.group9.seeker.model.JobSkill;
 import se452.group9.seeker.model.Student;
 import se452.group9.seeker.model.StudentAcademics;
 import se452.group9.seeker.model.StudentCerts;
 import se452.group9.seeker.model.StudentResume;
-import se452.group9.seeker.repo.JobRepository;
 import se452.group9.seeker.repo.JobSkillRepository;
 import se452.group9.seeker.repo.StudentAcademicRepository;
 import se452.group9.seeker.repo.StudentCertsRepository;
@@ -16,16 +14,12 @@ import se452.group9.seeker.repo.StudentResumeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
-import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/")

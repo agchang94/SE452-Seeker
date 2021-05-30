@@ -1,34 +1,24 @@
 package se452.group9.seeker;
 
-import lombok.Data;
 import se452.Persistence.StudentAcademicReader;
 // import se452.Persistence.StudentCertsReader;
 import se452.Persistence.StudentReader;
 
 import se452.group9.seeker.model.*;
 import se452.group9.seeker.repo.StudentAcademicRepository;
-import se452.group9.seeker.repo.StudentCertsRepository;
 import se452.group9.seeker.repo.StudentRepository;
 // import se452.*;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
 
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.List;
-import java.util.Set;
 import java.sql.Date;
-import java.sql.Timestamp;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 
 // import org.h2.command.Command;
 import org.slf4j.Logger;

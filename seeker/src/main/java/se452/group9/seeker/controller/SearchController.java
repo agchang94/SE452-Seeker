@@ -1,7 +1,6 @@
 package se452.group9.seeker.controller;
 
 import se452.group9.seeker.model.Job;
-import se452.group9.seeker.model.JobType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -71,8 +71,6 @@ public class RecruiterController {
     }
 
     
-
-    /***  Company Services  ***/
     @GetMapping("addCompany")
     public String addCompanyForm(Company company) {
         return "addCompany";
@@ -116,7 +114,8 @@ public class RecruiterController {
         Iterable<Job> jobs = searchService.search(null);
         model.addAttribute("manageJobs", jobs);
         return "manageJobs";
-    }   
+    }
+
 
     @GetMapping("/deleteJob/{id}")
     public String delete(@PathVariable("id") Long jobId, Model model) {
