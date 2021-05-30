@@ -1,5 +1,4 @@
 package se452.group9.seeker.model;
-import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

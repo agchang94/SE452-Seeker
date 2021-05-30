@@ -1,7 +1,6 @@
 package se452.group9.seeker.security;
 
 
-import javax.annotation.security.PermitAll;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
