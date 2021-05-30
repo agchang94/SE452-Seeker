@@ -1,7 +1,10 @@
 package se452.group9.seeker.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -16,11 +19,15 @@ public class Application {
     @Id
     private long applicationID;
     
-    private long studentID;
+    //private long studentID;
 
     private long companyID;
 
     private String applicationDate;
 
     private String applicationStatus;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "st_id", nullable = false)
+    private Student student;
 }
