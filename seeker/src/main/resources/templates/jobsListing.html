@@ -6,6 +6,32 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{css/style.css}">
     <script src="https://use.fontawesome.com/df05b1b135.js"></script>
+
+    <!-- Header IMG --> 
+    <div class="container">
+      <img src="../static/images/header.jpg" class="img-fluid mt-5" alt="header" th:src="@{images/header.jpg}"/>
+      </div>
+  
+    <!--Navigation Bar-->
+      <div class="container">
+        <ul class="nav justify-content-center" style="font-size:20pt;margin:20px 20px 20px 20px">
+          <li class="nav-item">
+            <a class="nav-link" style="color:#df4759" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color:#df4759" aria-current="page" href="jobsListing">Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color:#df4759" href="choose_user">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color:#df4759" href="login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color:#df4759" href="editstudent">Edit Profile!</a>
+          </li>
+          </ul>
+      </div>    
 </head>
 
 
@@ -72,7 +98,7 @@
                         <div>
                             <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">Company</h6>
                             <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">Location</h6>
-                            <button type="button" class="btn btn-success applyBtn"><a th:href="@{/jobs/jobView/{id}(id=${job.id})}">Apply</a></button>
+                            <button type="button" class="btn btn-danger applyBtn"><a th:href="@{/jobs/jobView/{id}(id=${job.id})}">Apply</a></button>
                         </div>
                     </div>
                 </div>
