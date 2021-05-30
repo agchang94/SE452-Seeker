@@ -229,30 +229,7 @@ StudentResumeRepository resumeRepo ) {
 }
 
 //@Bean
-public CommandLineRunner deleteStudents (StudentRepository studentRepository) {
-	return(args) ->  {
-	Optional<Student> stu = studentRepository.findById((long) 127);
-	Student deleteStudent = stu.orElse(new Student());
-	studentRepository.delete(deleteStudent);
 
-	log.info(stu.toString());
-	studentRepository.save(deleteStudent);
-	
-	};
-}
-
-//@Bean
-public CommandLineRunner updateStudents (StudentRepository studentRepository) {
-return(args) -> {
-	Optional<Student> stu = studentRepository.findById((long) 127);
-	Student updateStudent = stu.orElse(new Student());
-	updateStudent.setFname("Kyle");
-
-	log.info(stu.toString());
-	studentRepository.save(updateStudent);
-	
-};
-}
 
 
 

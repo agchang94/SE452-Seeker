@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>List of Students</title> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/df05b1b135.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>Edit Registration Details</h1>
+        </div>
+
+        <form action="#" th:action="@{/success}" th:object="${student}" method="post"  > 
+          <input type="hidden" id="id" th:field="*{id}">
+            
+            <form action="/action_page.php">
+                
+            <div class="form-group">
+                  <label for="email">Email address:</label>
+                  <input type="email" class="form-control" id="email" th:field="*{email}" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" th:field="*{password}" required minlength="3"
+                    maxlength="10">
+                  </div>
+                 
+    
+                  <div class="form-group">
+                    <label for="fname">First Name:</label>
+                    <input type="text" class="form-control" id="fname" th:field="*{fname}" required minlength="3" maxlength="15">
+                  </div>
+    
+                  <div class="form-group">
+                    <label for="lname">Last Name:</label>
+                    <input type="text" class="form-control" id="lname" th:field="*{lname}" required minlength="3" maxlength="15">
+                  </div>
+    
+                  <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" class="form-control" id="phone" th:field="*{phone}">
+                  </div>
+    
+                  <div class="form-group">
+                    <label for="example-date-input">Date of Birth</label>
+                      <input class="form-control" type="date" value="" id="example-date-input" 
+                      th:field="*{dob}" >
+                    </div>
+    
+                  
+                    
+                </div>
+    
+                <button type="submit" class="btn btn-default">Submit</button>
+                
+        </form>
+
+</body>
+</html>
