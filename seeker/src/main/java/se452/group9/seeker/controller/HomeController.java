@@ -20,9 +20,9 @@ public class HomeController {
     private final SearchService service;
     
     @Autowired
-	public HomeController(JobRepository jobRepository, CompanyRepository company){
+	public HomeController(JobRepository jobRepository, CompanyRepository company, JobTypeRepository jobTypeRepository){
 		//this.jobRepository = jobRepository;
-        service = new SearchService(jobRepository, company);
+        service = new SearchService(jobRepository, company, jobTypeRepository);
     }
 
     @GetMapping("jobsListing")
