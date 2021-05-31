@@ -37,7 +37,7 @@
                         <h6 class="overviewTxt">Location: </h6>
                         <h6 class="overviewTxt" th:inline="text">Job Type: [[${jt.type}]]</h6>
                         <div class="overviewBtn">
-                            <button type="button" class="btn btn-success"><a href="#">Apply</a></button>
+                            <button type="button" class="btn btn-success"><a th:href="@{/jobs/applyJob/{id}(id=${j.id})}">Apply</a></button>
                         </div>
                     </div>
                 </div>

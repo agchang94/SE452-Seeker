@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Apply For Job</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet"btype="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+
+        <!--Navigation Bar-->
+        <div class="container">
+            <ul class="nav justify-content-center" style="font-size:20pt;margin:20px 20px 20px 20px">
+              <li class="nav-item">
+                <a class="nav-link" style="color:#df4759" aria-current="page" href="/">Home</a>
+              </li>
+        </div>
+
+   <div class="container">
+    <h2>Application Confirmed</h2>
+       <div class="row mt-5" th:each="stu : ${student}">
+           <div class="col-12">
+            <div>
+                <h4>Student Info</h4>
+                <h5 th:text="${stu.fname}"></h5>
+                <h5 th:text="${stu.lname}"></h5>
+                <h5 th:text="${stu.email}"></h5>
+            </div>
+           </div>
+       </div>
+       <div class="row mt-5" th:each="job : ${job}">
+        <div class="col-12">
+            <div>
+                <h4>Job Info</h4>
+                <h5 th:text="${job.title}"></h5>
+                <h5 th:text="${job.datePosted}"></h5>
+                <h5 th:text="${job.desc}"></h5>
+            </div>
+            <!-- <form th:action="@{/jobs/applyJob}" th:object="${app}" method="post">
+                <div class="form-group col-md-8">
+                    <label for="date" class="col-form-label">Date</label> <input type="date" th:field="*{applicationDate}" class="form-control" id="appDates" placeholder="applyDate"> 
+                </div>
+                <button type="button" class=" mt-5 btn btn-success">Apply</button>
+            </form> -->
+        </div>
+    </div>
+   </div>
+
+</body>
+</html>
