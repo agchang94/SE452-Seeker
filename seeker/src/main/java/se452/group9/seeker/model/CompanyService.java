@@ -34,6 +34,10 @@ public class CompanyService implements ICompanyService {
         return companyRepository.findByCompanyName(companyName.toLowerCase()).get(0);
     }
     
-    
+    @Override
+    public Company updateCompany(Company company) {
+        companyRepository.save(company);
+        return company;
+    }
     
 }
