@@ -5,11 +5,15 @@ import java.util.List;
 import javax.persistence.*;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
 @Entity
 @Table(name = "ST")
 @Data
+@Getter
+@Setter
 public class Student {
    
     // @GeneratedValue(strategy = GenerationType.AUTO) -> Would use this to auto generate values for the primary key 
@@ -40,6 +44,10 @@ public class Student {
     @OneToMany (mappedBy = "student", fetch = FetchType.LAZY,
     cascade = CascadeType.ALL)
     private List<StudentResume> studentResumes;
+
+    @OneToMany(mappedBy = "student",fetch = FetchType.LAZY,
+    cascade = CascadeType.ALL)
+    private List<Application> apps;
 
     public Long getId() {
 		return id;
