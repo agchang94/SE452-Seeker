@@ -71,7 +71,7 @@ public class JobController {
         jobTypeRepository.findById(id).ifPresent(o -> model.addAttribute("jobType", o));
         model.addAttribute("student", stu);
         Date date = Calendar.getInstance().getTime();  
-        DateFormat dateFormat = new SimpleDateFormat("mm-dd-yy");  
+        DateFormat dateFormat = new SimpleDateFormat("mm-dd-yyyy");  
         String strDate = dateFormat.format(date);
         app.setApplicationDate(strDate);
         app.setApplicationStatus("Pending");

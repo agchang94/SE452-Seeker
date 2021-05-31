@@ -152,7 +152,7 @@ public class StudentProfileController {
         model.addAttribute("certs", c);
         model.addAttribute("language", l);
         model.addAttribute("skills", s);
-        model.addAttribute("apps", st.getStudentApplications());
+        model.addAttribute("apps", st.getApps());
         return "studentProfile";        
     }
 
