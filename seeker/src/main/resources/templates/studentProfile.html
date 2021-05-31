@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
   <!-- Header IMG --> 
     <div class="container">
       <img src="../static/images/header.jpg" class="img-fluid mt-5" alt="header" th:src="@{images/header.jpg}"/>
@@ -37,6 +36,11 @@
         </li>
       </ul>
     </div>
+
+  <!--Greeting--> 
+  <div class="container">
+    <h6 style="margin-left:300px;;" th:inline="text"> Welcome [[${student.fname}]]! </h6>
+  </div>
   
   <!--Search Bar --> 
     <div class="container">

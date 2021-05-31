@@ -122,7 +122,7 @@ public class StudentProfileController {
         return "register_success";
     }
 
-    @GetMapping("user/{id}")
+    @GetMapping("user/student/{id}")
     public String profile(@PathVariable("id") long id, Model model){
         Student st = studentRepository.getOne(id);
         model.addAttribute("student", st);
