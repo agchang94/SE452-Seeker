@@ -303,7 +303,7 @@ StudentResumeRepository resumeRepo ) {
 			c3.setCompanyName("Motorola Solutions");
 			c4.setCompanyName("FakeCompany");
 
-			c1.setAddress("Chicago, IL 60695");
+			c1.setAddress("1465 E 53rd St, Chicago, IL 60695");
 			c2.setAddress("2775 Sanders Rd, NORTHBROOK, IL 60062");
 			c3.setAddress("500 W. Monroe St, Chicago, IL");
 			c4.setAddress("600 W. Fake Street, Chicago, IL");
