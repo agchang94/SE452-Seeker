@@ -26,7 +26,7 @@ public class StudentResume {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     
     private String isCurrentJob;
@@ -50,6 +50,10 @@ public class StudentResume {
 
     @Column(name="jobDescription")
     private String description;  
+
+    public Long getId() {
+		return id;
+	} 
     
     
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

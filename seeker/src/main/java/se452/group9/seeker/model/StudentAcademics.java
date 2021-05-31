@@ -1,5 +1,6 @@
 package se452.group9.seeker.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,5 +33,9 @@ public class StudentAcademics {
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "st_id", nullable = false)
     private Student student;
+
+    public Long getId() {
+		return id;
+	} 
 
 }
