@@ -241,7 +241,7 @@ StudentResumeRepository resumeRepo ) {
 	// private static final Logger log = LoggerFactory.getLogger(SeekerApplication.class);
 
 	@Bean
-	public CommandLineRunner addCompanyJobs(CompanyRepository companyRepo, JobRepository jobRepo, JobTypeRepository jobTypeRepo, JobSkillRepository jobSkillRepo) {
+	public CommandLineRunner addCompanyStats(CompanyRepository companyRepo, JobRepository jobRepo, JobTypeRepository jobTypeRepo, JobSkillRepository jobSkillRepo){
 		return (args) -> {
 			log.info("--------  Adding jobs to the job table  ----------");
 			Job job1 = new Job();
@@ -269,7 +269,7 @@ StudentResumeRepository resumeRepo ) {
 			job3.setIsActive(true);
 			job4.setIsActive(true);
 
-      job1.setRequirements("College degree (Associates or Bachelors)");
+      		job1.setRequirements("College degree (Associates or Bachelors)");
 			job2.setRequirements("AWS, Python, Javascript, XML, JSON, MySQL etc.");
 			job3.setRequirements("2-5 years application development experience");
 			job4.setRequirements("Java, 1 year (Preferred). Master degree (Preferred)");
@@ -334,10 +334,64 @@ StudentResumeRepository resumeRepo ) {
 			jobSkillRepo.save(jobSkill4);
 
 
+			//saving companies
 			companyRepo.save(c1);
 			companyRepo.save(c2);
 			companyRepo.save(c3);
 			companyRepo.save(c4);
+
+
+			log.info("--------------------------------------------------- ");
+		};
+	}
+
+	@Bean
+	public CommandLineRunner setUpLocations(LocationRepository locRepo, CompanyRepository comRepo) {
+		return (args) -> {
+			log.info("--------  Setting up Locations  ----------");
+
+			Location loc1 = new Location();
+			Location loc2 = new Location();
+			Location loc3 = new Location();
+			Location loc4 = new Location();
+
+			loc1.setStreetName("1465 E 53rd St");
+			loc2.setStreetName("2775 Sanders Rd");
+			loc3.setStreetName("500 W. Monroe St");
+			loc4.setStreetName("600 W. Fake St");
+
+			loc1.setCityName("Chicago");
+			loc2.setCityName("Northbrook");
+			loc3.setCityName("Chicago");
+			loc4.setCityName("Chicago");
+
+			loc1.setStateName("IL");
+			loc2.setStateName("IL");
+			loc3.setStateName("IL");
+			loc4.setStateName("IL");
+
+			loc1.setCompanyName("Capital One");
+			loc2.setCompanyName("AllState");
+			loc3.setCompanyName("Motorola Solutions");
+			loc4.setCompanyName("FakeCompany");
+			
+			// getting companyID and setting them
+			List<Company> companyList = comRepo.findAll();
+
+			loc1.setCompanyID(companyList.get(0).getCompanyID());
+			loc2.setCompanyID(companyList.get(1).getCompanyID());
+			loc3.setCompanyID(companyList.get(2).getCompanyID());
+			loc4.setCompanyID(companyList.get(3).getCompanyID());
+
+			
+			//saving locations
+			locRepo.save(loc1);
+			locRepo.save(loc2);
+			locRepo.save(loc3);
+			locRepo.save(loc4);
+
+
+
 
 			log.info("--------------------------------------------------- ");
 		};
