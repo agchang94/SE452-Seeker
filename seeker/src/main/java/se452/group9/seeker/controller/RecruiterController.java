@@ -107,7 +107,7 @@ public class RecruiterController {
       return "update_company";
     }
   
-    @PostMapping("edit")
+    @PostMapping("update_company")
     public String updateCompany(@Valid Company company, BindingResult result) {
         /*if (result.hasErrors()) {
             return "edit-student";
