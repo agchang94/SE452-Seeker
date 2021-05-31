@@ -95,7 +95,12 @@ public class EditStudentController {
 
 
     
-    @GetMapping("/editstudent")
+    @GetMapping("/register_sucess")
+	public String getAddPage() {
+		return "register_success";
+	}
+	
+	@GetMapping("/editstudent")
     public String getEditPage() {
         return "editstudent";
     }
