@@ -315,10 +315,10 @@ StudentResumeRepository resumeRepo ) {
 			jobRepo.save(job3);
 			jobRepo.save(job4);
 
-			JobType jobType1 = new JobType(job1.getId(),"Full-Time");
-			JobType jobType2 = new JobType(job2.getId(),"Part-Time");
-			JobType jobType3 = new JobType(job3.getId(),"Full-Time");
-			JobType jobType4 = new JobType(job4.getId(),"Temp");
+			JobType jobType1 = new JobType(job1.getId(),"fulltime");
+			JobType jobType2 = new JobType(job2.getId(),"parttime");
+			JobType jobType3 = new JobType(job3.getId(),"fulltime");
+			JobType jobType4 = new JobType(job4.getId(),"temporary");
 
 			JobSkill jobSkill1 = new JobSkill(job1.getId(), "Java, Angular, HTML");
 			JobSkill jobSkill2 = new JobSkill(job2.getId(), "JavaScript, Python");
@@ -552,5 +552,6 @@ StudentResumeRepository resumeRepo ) {
 			}			
 		};
 	}
+
 
 }

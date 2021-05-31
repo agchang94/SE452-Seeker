@@ -19,6 +19,7 @@ import se452.group9.seeker.model.Job;
 import se452.group9.seeker.model.Recruiter;
 import se452.group9.seeker.repo.CompanyRepository;
 import se452.group9.seeker.repo.JobRepository;
+import se452.group9.seeker.repo.JobTypeRepository;
 import se452.group9.seeker.repo.RecruiterRepository;
 import se452.group9.seeker.service.SearchService;
 
@@ -33,8 +34,8 @@ public class RecruiterController {
     private long recruiterIDTracker;
 
     @Autowired
-    public RecruiterController (JobRepository jobRepo, CompanyRepository company, RecruiterRepository recruiterRepo, ICompanyService companyService) {
-        searchService = new SearchService(jobRepo, company);
+    public RecruiterController (JobRepository jobRepo, CompanyRepository company, RecruiterRepository recruiterRepo, ICompanyService companyService, JobTypeRepository jobTypeRepo) {
+        searchService = new SearchService(jobRepo, company, jobTypeRepo);
         this.jobRepo = jobRepo;
         this.companyService = companyService;
         this.recruiterRepo = recruiterRepo;
