@@ -1,6 +1,7 @@
 package se452.group9.seeker.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -42,6 +43,8 @@ public class RecruiterController {
         this.recruiterIDTracker = 5;
     }
 
+     /* ---------------- Start of recruiter handling recruiter methods --------------- */
+
 	@GetMapping("addRecruiter")
     public String addRecruiterForm(Recruiter recruiter) {
         return "addRecruiter";
@@ -72,6 +75,9 @@ public class RecruiterController {
     }
 
     
+     /* ---------------- Start of recruiter handling companies --------------- */
+
+
     @GetMapping("addCompany")
     public String addCompanyForm(Company company) {
         return "addCompany";
@@ -93,21 +99,29 @@ public class RecruiterController {
         return "redirect:addRecruiter";
     }    
 
+    @GetMapping("edit/{companyID}")
+    public String showUpdateCompany(@PathVariable("companyID") Long companyID, Model model) {
+      Company company = companyService.findBycompanyID(companyID);
 
-    @GetMapping("updateCompany")
-    public String updateCompanyForm(Company company) {
-        return "updateCompany";
+      model.addAttribute("company", company);
+      return "update_company";
+    }
+  
+    @PostMapping("edit")
+    public String updateCompany(@Valid Company company, BindingResult result) {
+        /*if (result.hasErrors()) {
+            return "edit-student";
+        }*/
+    
+        companyService.updateCompany(company);
+
+      return "redirect:listCompanies";
     }
 
-    @PostMapping("updateCompany")
-    public String updateCompany(@Valid Company company, BindingResult result, Model model) {
-        /*if (result.hasErrors()) {
-            return "updateCompany";
-        }*/
 
-        //companyService.add(company);
-        return "redirect:listCompanies";
-    } 
+    
+
+    /* ---------------- Start of recruiter handling jobs --------------- */
 
     @GetMapping("manageJobs")
     public String listManageJobs(Model model){
@@ -131,9 +145,7 @@ public class RecruiterController {
 
         // can safely delete from job table
         jobRepo.deleteById(jobId);
-
         return "redirect:/recruiter/manageJobs";
     } 
-
 
 }
