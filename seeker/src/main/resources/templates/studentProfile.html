@@ -70,33 +70,8 @@
         return "studentProfile";        
     }
 -->
-<p th:inline="text">Student [[${student.fname}]]</p>
-Certs
-<tr th:each="c:${certs}">
-  <td th:text="${c}"></td>
-</tr>  
 
-<br>
-
-Languages
-<tr th:each="l:${language}">
-  <td th:text="${l}"></td>
-</tr>  
-
-<br>
-
-Skills
-<tr th:each="s:${skills}">
-  <td th:text="${s}"></td>
-</tr>  
   
-
-
-
-
-
-
-
 <!-- Submitted Applications -->
 <div class ="container">
 <table class="table table-hover table-bordered" style="margin:20px 20px 20px 20px">
@@ -137,12 +112,20 @@ Skills
 
 
 
+<!--Student Attributes-->
 <!--Student Certifications-->
 
-
-<!--Student Attributes-->
-<div class="container">
-  <p class="text-center mt-3"><b>Attributes</b></p>
-</div>
-
+<div class="container justify justify-content-center" style="margin:20px 20px 20px 20px">
+  <div class="card">
+    <div class="card-header">
+      Certifications
+    </div>
+    <div class="card-body">
+      <p class="card-text" th:inline="text"><i> <b>[[${cert.certs}]],</b> </i></p>
+      <td> <a th:href="@{/editCerts/{id}(id=${cert.id})}"
+        class = "btn btn-danger" >Update Certs</a> </td>
+        <td> <a th:href="@{/deletecert{id}(id=${cert.id})}"
+          class = "btn btn-danger" >Delete Certs</a> </td>
+    </div>
+  </div>
 </body>

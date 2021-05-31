@@ -172,7 +172,6 @@ public class EditStudentController {
     @RequestMapping(path = "/successAcademics", method = RequestMethod.POST)
 	public String createOrUpdateStudentAcademics(StudentAcademics studentAcademics) 
 	{
-		System.out.println("createOrUpdateEmployee ");
 		
 		this.createOrUpdateAcademic(studentAcademics);
 		

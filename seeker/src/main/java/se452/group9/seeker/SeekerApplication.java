@@ -17,8 +17,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
-
-
+import java.util.Arrays;
 import java.util.List;
 import java.sql.Date;
 
@@ -97,27 +96,38 @@ public class SeekerApplication {
 
 	}
 	
-/*@Bean
-public CommandLineRunner addStudentCerts (StudentCertsRepository studentCertsRepository) {
-	return (args) -> {
+	@Bean
+	public CommandLineRunner addStudentCerts (StudentCertsRepository studentCertsRepository) {
+		return (args) -> {
+		
+			StudentCerts s0 = new StudentCerts();
+			StudentCerts s1 = new StudentCerts();
+			StudentCerts s3 = new StudentCerts();
+			StudentCerts s4 = new StudentCerts();
+			StudentCerts s5 = new StudentCerts();
+			
+			s0.setCerts(Arrays.asList("cisco, html, java"));
+			s0.setId((long) 1);
+			s1.setId((long) 2);
+			s3.setId((long) 3);
+			s4.setId((long) 4);
+			s5.setId((long) 5);
 	
-		StudentCerts s0 = new StudentCerts();
-        StudentCerts s1 = new StudentCerts();
-        StudentCerts s3 = new StudentCerts();
-        
-		s0.setCerts(Arrays.asList("cisco, html, java"));
-
-        s1.setCerts(Arrays.asList("none"));
-
-        s3.setCerts(Arrays.asList("Microsoft tech associate", "test"));            
-
-        studentCertsRepository.deleteAll();
-        studentCertsRepository.save(s0);
-		studentCertsRepository.save(s1);
-		studentCertsRepository.save(s3);
-	};
-	} */
-
+			s1.setCerts(Arrays.asList("none"));
+	
+			s3.setCerts(Arrays.asList("Microsoft tech associate", "test"));
+			
+			s4.setCerts(Arrays.asList("AWS Certified Solutions Architect "));
+			s5.setCerts(Arrays.asList("CompTIA A+, Certified Information Security Manager "));
+	
+			studentCertsRepository.deleteAll();
+			studentCertsRepository.save(s0);
+			studentCertsRepository.save(s1);
+			studentCertsRepository.save(s3);
+			studentCertsRepository.save(s4);
+			studentCertsRepository.save(s5);
+		};
+		} 
 
 @Bean
 public CommandLineRunner addStudents (StudentRepository studentRepository ,StudentAcademicRepository studentAcademicRepository, StudentLogsRepository logsRepo, 
