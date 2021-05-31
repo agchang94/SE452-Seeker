@@ -30,24 +30,4 @@ public class MainController {
         return "login";
     }
 
-
-    /*@GetMapping("/studentProfile")
-    public String showProfile(HttpServletRequest request, HttpServletResponse response, Model model){
-
-        Cookie[] cookies = request.getCookies();
-
-        for(Cookie temp : cookies){
-            if("remember-me".equals(temp.getName())){
-                String userName = temp.getValue();
-                model.addAttribute("userName", userName);
-                return "studentProfile";
-            }
-        }
-
-        Cookie newCookie = new Cookie ("userName", "username");
-        newCookie.setMaxAge(60*60*24);
-        response.addCookie(newCookie);
-    
-        return "index";
-    }*/
 }
