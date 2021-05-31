@@ -19,6 +19,7 @@ import se452.group9.seeker.model.Student;
 import se452.group9.seeker.model.StudentAcademics;
 import se452.group9.seeker.repo.JobSkillRepository;
 import se452.group9.seeker.repo.StudentAcademicRepository;
+import se452.group9.seeker.repo.StudentAttributesRepository;
 import se452.group9.seeker.repo.StudentCertsRepository;
 import se452.group9.seeker.repo.StudentRepository;
 import se452.group9.seeker.repo.StudentResumeRepository;
@@ -32,14 +33,17 @@ public class EditStudentController {
     private final StudentCertsRepository studentCertsRepository;
     private final StudentResumeRepository studentResumeRepository;
     private final JobSkillRepository jobSkillRepository;
+	private final StudentAttributesRepository studentAttributesRepository;
 
     @Autowired
-    public EditStudentController(StudentRepository studentRepository, StudentAcademicRepository studentAcademicRepository, StudentCertsRepository studentCertsRepository, StudentResumeRepository studentResumeRepository, JobSkillRepository jobSkillRepository) {
+    public EditStudentController(StudentRepository studentRepository, StudentAcademicRepository studentAcademicRepository, StudentCertsRepository studentCertsRepository, 
+	StudentResumeRepository studentResumeRepository, JobSkillRepository jobSkillRepository, StudentAttributesRepository studentAttributesRepository) {
         this.studentRepository = studentRepository;
         this.studentAcademicRepository = studentAcademicRepository;
         this.studentCertsRepository = studentCertsRepository;
         this.studentResumeRepository = studentResumeRepository;
         this.jobSkillRepository = jobSkillRepository;
+		this.studentAttributesRepository = studentAttributesRepository;
     }
 
  
@@ -68,7 +72,6 @@ public class EditStudentController {
     
     @GetMapping("/students")
     public String getStudents(Model model) {
-        System.out.println("getAllEmployees");
 		
 		List<Student> list = this.getAllStudents();
         model.addAttribute("listStudents", list);
@@ -105,7 +108,7 @@ public class EditStudentController {
 		if(studentAcademic.isPresent()) {
 			academic=studentAcademic.get();
 		} else {
-			System.out.println("No employee record exist for given id");
+			System.out.println("No student found");
 		}
         return academic;
 	}
@@ -183,13 +186,12 @@ public class EditStudentController {
     
     public Student getStudentById(long id)
 	{
-		System.out.println("getEmployeeById");
-		Optional<Student> employee = studentRepository.findById(id);
+		Optional<Student> temp = studentRepository.findById(id);
 		Student student = null;
-		if(employee.isPresent()) {
-			student=employee.get();
+		if(temp.isPresent()) {
+			student=temp.get();
 		} else {
-			System.out.println("No employee record exist for given id");
+			System.out.println("No student record exist for given id");
 		}
         return student;
 	}
@@ -197,20 +199,20 @@ public class EditStudentController {
     
     
     @RequestMapping(path = {"/edit/{id}"})
-	public String editEmployeeById(@PathVariable(value = "id") long id, Model model) 
+	public String editStudentById(@PathVariable(value = "id") long id, Model model) 
 							
 	{
 		
-		System.out.println("editEmployeeById" + id);
+	
 			Student student = this.getStudentById(id);
 			model.addAttribute("student", student);
 		
 		return "update_student";
 	}
 
-    public Student createOrUpdateEmployee(Student student) 
+    public Student UpdateStudent(Student student) 
 	{
-		System.out.println("createOrUpdateEmployee");
+
 		// Create new entry 
 		if(student.getId()  == null) 
 		{
@@ -221,11 +223,11 @@ public class EditStudentController {
 		else 
 		{
 			// update existing entry 
-			Optional<Student> employee = studentRepository.findById(student.getId());
+			Optional<Student> temp = studentRepository.findById(student.getId());
 			
-			if(employee.isPresent()) 
+			if(temp.isPresent()) 
 			{
-			Student student3 = employee.get();
+			Student student3 = temp.get();
 			student3.setFname(student.getFname());
             student3.setLname(student.getLname());
             student3.setEmail(student.getEmail());
@@ -248,11 +250,10 @@ public class EditStudentController {
     
     
     @RequestMapping(path = "/success", method = RequestMethod.POST)
-	public String createOrUpdateEmployee2(Student employee) 
+	public String createOrUpdateStudent(Student student) 
 	{
-		System.out.println("createOrUpdateEmployee ");
 		
-		this.createOrUpdateEmployee(employee);
+		this.UpdateStudent(student);
 		
 		return "editstudent";
 	}
