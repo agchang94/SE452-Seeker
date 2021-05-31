@@ -41,6 +41,10 @@ public class Student {
     cascade = CascadeType.ALL)
     private List<StudentResume> studentResumes;
 
+    @OneToMany (mappedBy = "student", fetch = FetchType.LAZY,
+    cascade = CascadeType.ALL)
+    private List<Application> studentApplications;
+
     public Long getId() {
 		return id;
 	} 
