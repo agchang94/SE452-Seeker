@@ -48,6 +48,10 @@ public class Student {
     @OneToMany(mappedBy = "student",fetch = FetchType.LAZY,
     cascade = CascadeType.ALL)
     private List<Application> apps;
+  
+//     @OneToMany (mappedBy = "student", fetch = FetchType.LAZY,
+//     cascade = CascadeType.ALL)
+//     private List<Application> studentApplications;
 
     public Long getId() {
 		return id;

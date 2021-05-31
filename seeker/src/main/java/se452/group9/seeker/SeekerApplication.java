@@ -8,14 +8,16 @@ import se452.group9.seeker.model.*;
 import se452.group9.seeker.repo.StudentAcademicRepository;
 import se452.group9.seeker.repo.StudentRepository;
 // import se452.*;
+import se452.group9.seeker.singleton.CertsSingleton;
+import se452.group9.seeker.singleton.LanguageSingleton;
+import se452.group9.seeker.singleton.SkillsSingleton;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
-
-
+import java.util.Arrays;
 import java.util.List;
 import java.sql.Date;
 
@@ -94,27 +96,38 @@ public class SeekerApplication {
 
 	}
 	
-/*@Bean
-public CommandLineRunner addStudentCerts (StudentCertsRepository studentCertsRepository) {
-	return (args) -> {
+	@Bean
+	public CommandLineRunner addStudentCerts (StudentCertsRepository studentCertsRepository) {
+		return (args) -> {
+		
+			StudentCerts s0 = new StudentCerts();
+			StudentCerts s1 = new StudentCerts();
+			StudentCerts s3 = new StudentCerts();
+			StudentCerts s4 = new StudentCerts();
+			StudentCerts s5 = new StudentCerts();
+			
+			s0.setCerts(Arrays.asList("cisco, html, java"));
+			s0.setId((long) 1);
+			s1.setId((long) 2);
+			s3.setId((long) 3);
+			s4.setId((long) 4);
+			s5.setId((long) 5);
 	
-		StudentCerts s0 = new StudentCerts();
-        StudentCerts s1 = new StudentCerts();
-        StudentCerts s3 = new StudentCerts();
-        
-		s0.setCerts(Arrays.asList("cisco, html, java"));
-
-        s1.setCerts(Arrays.asList("none"));
-
-        s3.setCerts(Arrays.asList("Microsoft tech associate", "test"));            
-
-        studentCertsRepository.deleteAll();
-        studentCertsRepository.save(s0);
-		studentCertsRepository.save(s1);
-		studentCertsRepository.save(s3);
-	};
-	} */
-
+			s1.setCerts(Arrays.asList("none"));
+	
+			s3.setCerts(Arrays.asList("Microsoft tech associate", "test"));
+			
+			s4.setCerts(Arrays.asList("AWS Certified Solutions Architect "));
+			s5.setCerts(Arrays.asList("CompTIA A+, Certified Information Security Manager "));
+	
+			studentCertsRepository.deleteAll();
+			studentCertsRepository.save(s0);
+			studentCertsRepository.save(s1);
+			studentCertsRepository.save(s3);
+			studentCertsRepository.save(s4);
+			studentCertsRepository.save(s5);
+		};
+		} 
 
 @Bean
 public CommandLineRunner addStudents (StudentRepository studentRepository ,StudentAcademicRepository studentAcademicRepository, StudentLogsRepository logsRepo, 
@@ -534,17 +547,22 @@ StudentResumeRepository resumeRepo ) {
 		};
 	}
 
-	// @Bean
-	// public CommandLineRunner findByType(JobTypeRepository jobTypeRepository) {
-	// 	return (args) -> {
-	// 		// fetching attributes
-	// 		// log.info("--------  Job Types found with findByType() ----------- ");
-	// 		jobTypeRepository.findByType("Full-Time").forEach((attributes)-> {
-	// 			log.info("id: " + attributes.getId());
-	// 		});
-	// 		// log.info("------------------------------------------------------");
-	// 	};
-	// }
+	@Bean
+	public CommandLineRunner testSingletons(StudentRepository students) {
+		return (args) -> {
+			// adding dummy info to test the Singleton NoSQL classes for Attributes and Certs
+			for(Student s : students.findAll()){
+				List<String> toTest = new ArrayList<>();
+				toTest.add(s.getFname()); 
+				toTest.add(s.getLname());
+
+				CertsSingleton.createCerts(s.getId(), toTest);
+				LanguageSingleton.createLanguages(s.getId(), toTest);
+				SkillsSingleton.createSkills(s.getId(), toTest);
+			}			
+		};
+	}
+
 
     // @Bean
 	// public CommandLineRunner addStudentwithApp(StudentRepository studentRepo, ApplicationRepository appRepo) {

@@ -19,6 +19,7 @@
                 <th>Last Name</th>
                 <th>School</th>
                 <th>Update Academics</th>
+                <th> Delete Academic Profile </th>
             </tr>
         </thread>
         <tbody>
@@ -28,6 +29,8 @@
                 <td th:text="${studentAcademic.universityName}"></td>
                 <td> <a th:href="@{/editacademic/{id}(id=${studentAcademic.id})}"
                     class = "btn btn-primary" >Update Academics</a> </td>
+                    <td> <a th:href="@{/deleteacademic{id}(id=${studentAcademic.id})}"
+                        class = "btn btn-primary">Delete Academic Info</a> </td>
             </tr>
 
             

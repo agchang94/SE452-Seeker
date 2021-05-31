@@ -123,7 +123,16 @@ public class EditStudentController {
 		return "update_academic";
 	}
 
-    public StudentAcademics createOrUpdateAcademic(StudentAcademics studentAcademics) 
+    @RequestMapping(path = {"/deleteacademic{id}"})
+	public String deleteAcademicById(@PathVariable(value = "id") long id, Model model) 
+							
+	{
+
+			studentAcademicRepository.deleteById(id);
+            return "editstudent";
+	}
+	
+	public StudentAcademics createOrUpdateAcademic(StudentAcademics studentAcademics) 
 	{
 		// Create new entry 
 		if(studentAcademics.getId()  == null) 
@@ -163,7 +172,6 @@ public class EditStudentController {
     @RequestMapping(path = "/successAcademics", method = RequestMethod.POST)
 	public String createOrUpdateStudentAcademics(StudentAcademics studentAcademics) 
 	{
-		System.out.println("createOrUpdateEmployee ");
 		
 		this.createOrUpdateAcademic(studentAcademics);
 		

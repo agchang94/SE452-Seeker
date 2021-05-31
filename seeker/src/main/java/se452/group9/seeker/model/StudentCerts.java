@@ -14,7 +14,7 @@ import lombok.Data;
 @Document (collection = "certs")
 public class StudentCerts {
     @Id
-    private String id;
+    private Long id;
     private List <String> certs;
     //private String certs;
 }
