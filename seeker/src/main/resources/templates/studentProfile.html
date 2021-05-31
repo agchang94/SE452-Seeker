@@ -55,6 +55,48 @@
     </div>
   
 
+<!--TEST AREA
+
+    @GetMapping("student/{id}")
+    public String profile(@PathVariable("id") long id, Model model){
+        Student st = studentRepository.getOne(id);
+        model.addAttribute("student", st);
+        model.addAttribute("academics", st.getStudentAcademics());
+        model.addAttribute("resume", st.getStudentResumes());
+        model.addAttribute("certs", CertsSingleton.getCerts(id));
+        model.addAttribute("language", LanguageSingleton.getLanguages(id));
+        model.addAttribute("skills", SkillsSingleton.getSkills(id));
+        model.addAttribute("apps", st.getStudentApplications());
+        return "studentProfile";        
+    }
+-->
+<p th:inline="text">Student [[${student.fname}]]</p>
+Certs
+<tr th:each="c:${certs}">
+  <td th:text="${c}"></td>
+</tr>  
+
+<br>
+
+Languages
+<tr th:each="l:${language}">
+  <td th:text="${l}"></td>
+</tr>  
+
+<br>
+
+Skills
+<tr th:each="s:${skills}">
+  <td th:text="${s}"></td>
+</tr>  
+  
+
+
+
+
+
+
+
 <!-- Submitted Applications -->
 <div class ="container">
 <table class="table table-hover table-bordered" style="margin:20px 20px 20px 20px">
