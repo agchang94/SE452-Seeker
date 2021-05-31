@@ -1,6 +1,7 @@
 package se452.group9.seeker.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -12,9 +13,12 @@ import lombok.Data;
 @Table(name = "locations")
 public class Location {
 
-    @Size(min = 1, max = 8, message = "city ID must be between 1 and 8 characters")
+    //@Size(min = 1, max = 8, message = "city ID must be between 1 and 8 characters")
     @Id
+    @GeneratedValue
     private long cityID;
+
+    private String streetName;
     
     private String cityName;
 

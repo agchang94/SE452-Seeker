@@ -62,13 +62,15 @@ DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS applications;
 
 CREATE TABLE locations (
-    cityID NUMBER(8) PRIMARY KEY,
-    cityName VARCHAR(50),
-    stateName VARCHAR(50),
+    cityID      NUMBER(8) AUTO_INCREMENT PRIMARY KEY,
+    streetName  VARCHAR(50),
+    cityName    VARCHAR(50),
+    stateName   VARCHAR(50),
     companyName VARCHAR(50),
-    companyID NUMBER(8)
-
+    companyID   NUMBER(8),
+    PRIMARY KEY(cityID)
 );
+
 
 CREATE TABLE applications (
     applicationID NUMBER(8) PRIMARY KEY,
@@ -79,10 +81,12 @@ CREATE TABLE applications (
 
 );
 
+/*
 INSERT INTO locations (cityID, cityName, stateName, companyName, companyID)VALUES
 (1, 'Chicago', 'Illinois', 'CME Group', 111),
 (2, 'Detroit', 'Michigan', 'Ford Motor Company', 222),
 (3, 'Cupertino', 'California', 'Apple', 333);
+*/
 
 INSERT INTO Applications (applicationID, studentID, companyID, applicationDate, applicationStatus)VALUES
 (123, 111, 111, '2021-04-28', 'active'),
