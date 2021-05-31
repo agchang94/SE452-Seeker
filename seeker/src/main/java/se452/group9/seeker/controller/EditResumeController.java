@@ -102,6 +102,15 @@ public class EditResumeController {
 		return "update_resume";
 	}
 
+	@RequestMapping(path = {"/deleteResume{id}"})
+	public String deleteResumeById(@PathVariable(value = "id") long id, Model model) 
+							
+	{
+
+			studentResumeRepository.deleteById(id);
+            return "editstudent";
+	}
+
     public StudentResume createOrUpdateResume(StudentResume studentResume) 
 	{
 		// Create new entry 

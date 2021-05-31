@@ -20,6 +20,7 @@
                 <th>Email Address</th>
                 <th>Job Id</th>
                 <th>Update Resume Info</th>
+                <th> Delete Job Posting </th>
         
             </tr>
         </thread>
@@ -30,7 +31,9 @@
                 <td th:text="${studentResume.student.email}"></td>
                 <td th:text="${studentResume.id}"></td>
                 <td> <a th:href="@{/editResume{id}(id=${studentResume.id})}"
-                class = "btn btn-primary" >Update Job Posting</a> </td>
+                class = "btn btn-primary" >Update Job Entry</a> </td>
+                <td> <a th:href="@{/deleteResume{id}(id=${studentResume.id})}"
+                    class = "btn btn-primary">Delete Job Entry</a> </td>
 
             </tr>
 
