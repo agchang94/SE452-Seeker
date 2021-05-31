@@ -31,7 +31,15 @@
             <a class="nav-link" style="color:#df4759" href="editstudent">Edit Profile!</a>
           </li>
           </ul>
-      </div>    
+      </div>  
+      
+    <!--Search Bar --> 
+    <div class="container">
+      <form th:action="@{/searchResults}" class="form-inline justify-content-center" style="margin:20px 20px 20px 20px">
+          <input class="form-control form-control-lg w-75" aria-label="Search Jobs" type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required>
+          <input type="submit" value="Search" class="btn btn-danger ml-3 btn-lg"/>
+      </form>
+    </div>  
 </head>
 
 
@@ -46,7 +54,7 @@
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>
                         <input type="text" class="form-control" placeholder="Search">
-                      </div>
+                    </div>
                 </div>
                 <div class="row mt-5">
                     <h3>Job Category</h3>

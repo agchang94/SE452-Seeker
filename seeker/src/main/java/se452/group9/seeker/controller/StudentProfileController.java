@@ -7,14 +7,19 @@ import se452.group9.seeker.model.StudentCerts;
 import se452.group9.seeker.model.StudentResume;
 import se452.group9.seeker.repo.JobSkillRepository;
 import se452.group9.seeker.repo.StudentAcademicRepository;
+import se452.group9.seeker.repo.StudentAttributesRepository;
 import se452.group9.seeker.repo.StudentCertsRepository;
 import se452.group9.seeker.repo.StudentRepository;
 import se452.group9.seeker.repo.StudentResumeRepository;
+import se452.group9.seeker.singleton.CertsSingleton;
+import se452.group9.seeker.singleton.LanguageSingleton;
+import se452.group9.seeker.singleton.SkillsSingleton;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,16 +34,21 @@ public class StudentProfileController {
     private final StudentCertsRepository studentCertsRepository;
     private final StudentResumeRepository studentResumeRepository;
     private final JobSkillRepository jobSkillRepository;
+    private final StudentAttributesRepository attributesRepo;
 
     @Autowired
-	public StudentProfileController(StudentRepository studentRepository, StudentAcademicRepository studentAcademicRepository, 
-        StudentCertsRepository studentCertsRepository, StudentResumeRepository studentResumeRepository
-        ,JobSkillRepository jobSkillRepository){
+	public StudentProfileController(StudentRepository studentRepository, 
+                                    StudentAcademicRepository studentAcademicRepository, 
+                                    StudentCertsRepository studentCertsRepository, 
+                                    StudentResumeRepository studentResumeRepository,
+                                    JobSkillRepository jobSkillRepository, 
+                                    StudentAttributesRepository attributesRepo){
         this.studentRepository=studentRepository;
         this.studentAcademicRepository=studentAcademicRepository;
         this.studentCertsRepository=studentCertsRepository;
         this.studentResumeRepository=studentResumeRepository;
         this.jobSkillRepository=jobSkillRepository;
+        this.attributesRepo = attributesRepo;
 	}
 
     
@@ -60,8 +70,6 @@ public class StudentProfileController {
          studentRepository.save(student);
          return "register_success";
      }
-    
-    
     
     
     @GetMapping("studentacademic")
@@ -116,6 +124,25 @@ public class StudentProfileController {
         jobSkillRepository.save(jobSkill);
         return "register_success";
     }
+
+    @GetMapping("student/{id}")
+    public String profile(@PathVariable("id") long id, Model model){
+        Student st = studentRepository.getOne(id);
+
+        Iterable<String> c = CertsSingleton.getCerts(id);
+        Iterable<String> l = LanguageSingleton.getLanguages(id);
+        Iterable<String> s = SkillsSingleton.getSkills(id);
+
+        model.addAttribute("student", st);
+        model.addAttribute("academics", st.getStudentAcademics());
+        model.addAttribute("resume", st.getStudentResumes());
+        model.addAttribute("certs", c);
+        model.addAttribute("language", l);
+        model.addAttribute("skills", s);
+        model.addAttribute("apps", st.getStudentApplications());
+        return "studentProfile";        
     }
+
+}
 
 

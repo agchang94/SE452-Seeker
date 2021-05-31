@@ -3,16 +3,9 @@ package se452.group9.seeker.controller;
 import se452.group9.seeker.model.Job;
 import se452.group9.seeker.model.JobSkill;
 import se452.group9.seeker.model.JobType;
-// import se452.group9.seeker.model.Student;
-// import se452.group9.seeker.model.StudentAcademics;
-// import se452.group9.seeker.model.StudentCerts;
 import se452.group9.seeker.repo.JobRepository;
 import se452.group9.seeker.repo.JobSkillRepository;
 import se452.group9.seeker.repo.JobTypeRepository;
-// import se452.group9.seeker.repo.StudentAcademicRepository;
-// import se452.group9.seeker.repo.StudentCertsRepository;
-// import se452.group9.seeker.repo.StudentRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,20 +36,6 @@ public class JobController {
         this.jobTypeRepository = jobTypeRepository;
         this.jobSkillRepository = jobSkillRepository;
     }
-
-        // this.studentRepository=studentRepository;
-    // private final StudentRepository studentRepository;
-    // private final StudentCertsRepository studentCertsRepository;
-    // private final StudentAcademicRepository studentAcademicRepository;
-	
-	// @Autowired
-	// public JobController(StudentCertsRepository studentCertsRepository,
-    //     JobRepository jobRepository, StudentRepository studentRepository, StudentAcademicRepository studentAcademicRepository){
-	// 	this.jobRepository = jobRepository;
-    //     this.studentRepository=studentRepository;
-    //     this.studentCertsRepository=studentCertsRepository;
-    //     this.studentAcademicRepository=studentAcademicRepository;
-	// } 
 
 	@GetMapping("addJob")
     public String addJobForm(Job job) {
@@ -120,26 +99,4 @@ public class JobController {
         jobSkillRepository.save(jobSkill);
         return "redirect:/jobsListing";
     }
-
-    // @GetMapping("addRegister")
-    // public String getRegisterSuccess(Student student) {
-    //     return "register_sucess";
-    // }
-
-
-    // @GetMapping("register")
-    // public String showSignUpForm(Model model) {
-    //     model.addAttribute("student", new Student());
-    //     return "register";
-    // }
-
-    // @PostMapping("addRegister")
-    // public String processRegistration(Student student){
-
-    //     studentRepository.save(student);
-    //     return "register_success";
-    // }
-
-
-
 }

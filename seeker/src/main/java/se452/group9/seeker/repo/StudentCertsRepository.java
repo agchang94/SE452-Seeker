@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import se452.group9.seeker.model.StudentCerts;
 
 @Repository
-public interface StudentCertsRepository extends MongoRepository<StudentCerts, String> {
+public interface StudentCertsRepository extends MongoRepository<StudentCerts, Long> {
     
 }
