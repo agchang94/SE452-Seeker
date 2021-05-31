@@ -48,7 +48,7 @@
     <br>
     <div class="container">
         <div class="row pt-3">
-            <div class="col-4">
+            <!-- <div class="col-4">
                 <div class="row">
                     <h3>Location</h3>
                     <div class="form-group has-search">
@@ -95,8 +95,8 @@
                         </label>
                       </div>
                 </div>
-            </div>
-            <div class="col-8">
+            </div> -->
+            <div class="col-12">
                 <div th:each = "job: ${jobs}" class="card mb-3">
                     <div class="card-body">
                         <div>
@@ -106,7 +106,7 @@
                         <div>
                             <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">Company</h6>
                             <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">Location</h6>
-                            <button type="button" class="btn btn-danger applyBtn"><a th:href="@{/jobs/jobView/{id}(id=${job.id})}">Apply</a></button>
+                            <button type="button" class="btn btn-danger applyBtn"><a th:href="@{/jobs/jobView/{id}(id=${job.id})}">View</a></button>
                         </div>
                     </div>
                 </div>

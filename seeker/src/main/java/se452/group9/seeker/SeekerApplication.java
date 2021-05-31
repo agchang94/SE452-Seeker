@@ -564,4 +564,26 @@ StudentResumeRepository resumeRepo ) {
 	}
 
 
+    // @Bean
+	// public CommandLineRunner addStudentwithApp(StudentRepository studentRepo, ApplicationRepository appRepo) {
+	// 	return (args) -> {
+	// 		// fetching attributes
+	// 		// log.info("--------  Save App ----------- ");
+	// 		Student student = new Student();
+	// 		student.setFname("Korey");
+	// 		student.setLname("Lo");
+
+	// 		studentRepo.save(student);
+
+	// 		Application app = new Application();
+	// 		app.setApplicationDate("05-31-21");
+	// 		app.setApplicationStatus("pending");
+	// 		app.setStudent(student);
+
+	// 		appRepo.save(app);
+
+	// 		// log.info("------------------------------------------------------");
+	// 	};
+	// }
+
 }

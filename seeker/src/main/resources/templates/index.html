@@ -37,7 +37,7 @@
       <div class="container">
         <form th:action="@{/searchResults}" class="form-inline justify-content-center" style="margin:20px 20px 20px 20px">
           <i class="fas fa-search" aria-hidden="true"></i>
-            <input class="form-control form-control-lg w-75" aria-label="Search Jobs" type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required>
+            <input class="form-control form-control-lg w-75" aria-label="Search Jobs" type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" placeholder="Title, Location, Company, Job Type" required>
           <input type="submit" value="Search" class="btn btn-danger ml-3 btn-lg"/>
         </form>
       </div>

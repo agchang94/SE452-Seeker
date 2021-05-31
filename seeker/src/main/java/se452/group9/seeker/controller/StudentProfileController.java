@@ -106,6 +106,8 @@ public class StudentProfileController {
     
     @GetMapping("studentcerts")
     public String showCertsForm(Model model) {
+        List<Student> listStudents = studentRepository.findAll();
+        model.addAttribute("listStudents", listStudents);
         model.addAttribute("studentcerts", new StudentCerts());
         return "addCerts";
     }
@@ -152,7 +154,7 @@ public class StudentProfileController {
         model.addAttribute("certs", c);
         model.addAttribute("language", l);
         model.addAttribute("skills", s);
-        model.addAttribute("apps", st.getStudentApplications());
+        model.addAttribute("apps", st.getApps());
         return "studentProfile";        
     }
 

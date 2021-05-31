@@ -1,5 +1,0 @@
-- When running the applicaiton go to http://localhost:8081/h2-console/. you can see all the tables there
-- This is just the preliminary code. I am not using sql statement to populate my table but rather using JPA as I find it a lot more efficient. 
-- There three txt files stored in the resources folder that pertain to the data the tables will have. I build three reader classes that essentially read these txt files and populate the tables. It is a pretty crude way of doing it but I hope to find more efficient methods down th eline. 
-- I still am working on building a controller folder that will pertain to the CRUD operations. Currently my crud operations are all coded in the main class. 
-- All three of my tables are SQL based at the moment. 
