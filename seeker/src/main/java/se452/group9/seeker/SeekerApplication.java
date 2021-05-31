@@ -8,6 +8,9 @@ import se452.group9.seeker.model.*;
 import se452.group9.seeker.repo.StudentAcademicRepository;
 import se452.group9.seeker.repo.StudentRepository;
 // import se452.*;
+import se452.group9.seeker.singleton.CertsSingleton;
+import se452.group9.seeker.singleton.LanguageSingleton;
+import se452.group9.seeker.singleton.SkillsSingleton;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -531,6 +534,22 @@ StudentResumeRepository resumeRepo ) {
 				log.info(attributes.toString());
 			});
 			// log.info("------------------------------------------------------");
+		};
+	}
+
+	@Bean
+	public CommandLineRunner testSingletons(StudentRepository students) {
+		return (args) -> {
+			// adding dummy info to test the Singleton NoSQL classes for Attributes and Certs
+			for(Student s : students.findAll()){
+				List<String> toTest = new ArrayList<>();
+				toTest.add(s.getFname()); 
+				toTest.add(s.getLname());
+
+				CertsSingleton.createCerts(s.getId(), toTest);
+				LanguageSingleton.createLanguages(s.getId(), toTest);
+				SkillsSingleton.createSkills(s.getId(), toTest);
+			}			
 		};
 	}
 

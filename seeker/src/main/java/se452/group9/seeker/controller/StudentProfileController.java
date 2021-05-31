@@ -11,6 +11,9 @@ import se452.group9.seeker.repo.StudentAttributesRepository;
 import se452.group9.seeker.repo.StudentCertsRepository;
 import se452.group9.seeker.repo.StudentRepository;
 import se452.group9.seeker.repo.StudentResumeRepository;
+import se452.group9.seeker.singleton.CertsSingleton;
+import se452.group9.seeker.singleton.LanguageSingleton;
+import se452.group9.seeker.singleton.SkillsSingleton;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -125,11 +128,17 @@ public class StudentProfileController {
     @GetMapping("student/{id}")
     public String profile(@PathVariable("id") long id, Model model){
         Student st = studentRepository.getOne(id);
+
+        Iterable<String> c = CertsSingleton.getCerts(id);
+        Iterable<String> l = LanguageSingleton.getLanguages(id);
+        Iterable<String> s = SkillsSingleton.getSkills(id);
+
         model.addAttribute("student", st);
         model.addAttribute("academics", st.getStudentAcademics());
         model.addAttribute("resume", st.getStudentResumes());
-        model.addAttribute("certs", studentCertsRepository.findById(id));
-        model.addAttribute("attributes", attributesRepo.findById(id));
+        model.addAttribute("certs", c);
+        model.addAttribute("language", l);
+        model.addAttribute("skills", s);
         model.addAttribute("apps", st.getStudentApplications());
         return "studentProfile";        
     }
