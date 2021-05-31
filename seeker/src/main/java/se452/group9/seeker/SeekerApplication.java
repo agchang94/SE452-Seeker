@@ -194,17 +194,30 @@ StudentResumeRepository resumeRepo ) {
 			sl.setStudent(students.get(2));
 			logsRepo.save(sl);
 
+			StudentResume sr3 = new StudentResume();
+			sr3.setIsCurrentJob("N");
+			sr3.setStartDate(Date.valueOf("2013-12-03"));
+			sr3.setEndDate(Date.valueOf("2017-04-19"));			
+			sr3.setCompany("Drake's House");
+			sr3.setTitle("Janitor");
+			sr3.setCity("Toronto");
+			sr3.setState("Ontorio");
+			sr3.setCountry("Canada");
+			sr3.setDescription("Cleaned Floors");
+			sr3.setStudent(students.get(1));
+			resumeRepo.save(sr3);
+			
 			
 			StudentResume sr = new StudentResume();
 			sr.setIsCurrentJob("N");
 			sr.setStartDate(Date.valueOf("2014-12-03"));
 			sr.setEndDate(Date.valueOf("2019-04-19"));			
-			sr.setCompany("company name");
-			sr.setTitle("title");
-			sr.setCity("city");
-			sr.setState("state");
-			sr.setCountry("country");
-			sr.setDescription("...");
+			sr.setCompany("MicroSoft");
+			sr.setTitle("Developer");
+			sr.setCity("Seattle");
+			sr.setState("Washington");
+			sr.setCountry("United States");
+			sr.setDescription("Managed database operations");
 			sr.setStudent(students.get(2));
 			resumeRepo.save(sr);
 
@@ -220,6 +233,32 @@ StudentResumeRepository resumeRepo ) {
 			sr2.setDescription("Coded cool stuff");
 			sr2.setStudent(students.get(2));
 			resumeRepo.save(sr2);
+
+			StudentResume sr4 = new StudentResume();
+			sr4.setIsCurrentJob("N");
+			sr4.setStartDate(Date.valueOf("2010-10-10"));
+			sr4.setEndDate(Date.valueOf("2015-06-25"));			
+			sr4.setCompany("Cisco");
+			sr4.setTitle("Cybersecurity Expert");
+			sr4.setCity("Los Angeles");
+			sr4.setState("California");
+			sr4.setCountry("United States");
+			sr4.setDescription("Prevented Hackers from Stealing Information");
+			sr4.setStudent(students.get(3));
+			resumeRepo.save(sr4);
+
+			StudentResume sr5 = new StudentResume();
+			sr5.setIsCurrentJob("Y");
+			sr5.setStartDate(Date.valueOf("2019-07-01"));
+			sr5.setEndDate(Date.valueOf("2021-05-30"));			
+			sr5.setCompany("University of Illinois at Chicago");
+			sr5.setTitle("Registered Nurse");
+			sr5.setCity("Chicago");
+			sr5.setState("Illinois");
+			sr5.setCountry("United States");
+			sr5.setDescription("Take Care of Sick People");
+			sr5.setStudent(students.get(4));
+			resumeRepo.save(sr5);
 
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
